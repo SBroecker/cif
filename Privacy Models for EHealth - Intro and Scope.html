@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – privacy-models-for-ehealth---intro-and-scope</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./Privacy Models for EHealth - Intro and Scope.html" aria-current="page">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Literature Review.html">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./E-Health DP Guide.html">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples.html">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - DP.html">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - Synthetic Data.html">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#use-case-physician-business-linkage-project" id="toc-use-case-physician-business-linkage-project" class="nav-link" data-scroll-target="#use-case-physician-business-linkage-project">Use Case: Physician-Business Linkage Project</a></li>
+  <li><a href="#privacy-models-motivation" id="toc-privacy-models-motivation" class="nav-link" data-scroll-target="#privacy-models-motivation">Privacy Models: Motivation</a></li>
+  <li><a href="#privacy-models-project-specific-challenges" id="toc-privacy-models-project-specific-challenges" class="nav-link" data-scroll-target="#privacy-models-project-specific-challenges">Privacy Models: Project-specific Challenges</a></li>
+  </ul></li>
+  <li><a href="#deliverable-1-literature-review" id="toc-deliverable-1-literature-review" class="nav-link" data-scroll-target="#deliverable-1-literature-review">Deliverable 1: Literature Review</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#implications-for-ehealth-program" id="toc-implications-for-ehealth-program" class="nav-link" data-scroll-target="#implications-for-ehealth-program">Implications for EHealth Program</a></li>
+  <li><a href="#open-questions-and-constraints" id="toc-open-questions-and-constraints" class="nav-link" data-scroll-target="#open-questions-and-constraints">Open Questions and Constraints</a></li>
+  </ul></li>
+  <li><a href="#deliverable-2-experimental-pipeline-pilots" id="toc-deliverable-2-experimental-pipeline-pilots" class="nav-link" data-scroll-target="#deliverable-2-experimental-pipeline-pilots">Deliverable 2: Experimental Pipeline Pilots</a>
+  <ul class="collapse">
+  <li><a href="#environment-for-experimentation" id="toc-environment-for-experimentation" class="nav-link" data-scroll-target="#environment-for-experimentation">Environment for Experimentation</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#project-pipelines" id="toc-project-pipelines" class="nav-link" data-scroll-target="#project-pipelines">Project Pipelines</a></li>
+  <li><a href="#pipeline-knowledge-capture" id="toc-pipeline-knowledge-capture" class="nav-link" data-scroll-target="#pipeline-knowledge-capture">Pipeline Knowledge Capture</a></li>
+  <li><a href="#research-questions-to-guide-pilots" id="toc-research-questions-to-guide-pilots" class="nav-link" data-scroll-target="#research-questions-to-guide-pilots">Research Questions to Guide Pilots</a></li>
+  </ul></li>
+  <li><a href="#conclusion-lessons-learned-and-recommendations" id="toc-conclusion-lessons-learned-and-recommendations" class="nav-link" data-scroll-target="#conclusion-lessons-learned-and-recommendations">Conclusion: Lessons Learned and Recommendations</a>
+  <ul class="collapse">
+  <li><a href="#decision-tree-selecting-the-right-pipeline-to-use" id="toc-decision-tree-selecting-the-right-pipeline-to-use" class="nav-link" data-scroll-target="#decision-tree-selecting-the-right-pipeline-to-use">Decision Tree: Selecting the Right Pipeline to Use</a></li>
+  <li><a href="#pipeline-2-dp-tables" id="toc-pipeline-2-dp-tables" class="nav-link" data-scroll-target="#pipeline-2-dp-tables">Pipeline 2 (DP Tables)</a></li>
+  <li><a href="#pipeline-3-synthetic-data" id="toc-pipeline-3-synthetic-data" class="nav-link" data-scroll-target="#pipeline-3-synthetic-data">Pipeline 3 (Synthetic Data)</a></li>
+  <li><a href="#pipeline-x-dp-complex-models" id="toc-pipeline-x-dp-complex-models" class="nav-link" data-scroll-target="#pipeline-x-dp-complex-models">Pipeline X (DP Complex Models)</a></li>
+  <li><a href="#areas-for-further-continued-study" id="toc-areas-for-further-continued-study" class="nav-link" data-scroll-target="#areas-for-further-continued-study">Areas for Further / Continued Study</a></li>
+  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned">Lessons Learned</a></li>
+  <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations">Recommendations</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/cover.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cover.png</figcaption><p></p>
+</figure>
+</div>
+<section id="background" class="level1">
+<h1>Background</h1>
+<section id="use-case-physician-business-linkage-project" class="level2">
+<h2 class="anchored" data-anchor-id="use-case-physician-business-linkage-project">Use Case: Physician-Business Linkage Project</h2>
+<ul>
+<li><strong>Motivation:</strong> The business of healthcare continues to evolve rapidly—but surprisingly little is known about how this restructuring of the industry impacts cost, quality, and access.</li>
+</ul>
+<hr>
+<p>Drivers of continued change include:</p>
+<blockquote class="blockquote">
+<ul>
+<li>Rapid consolidation of firms, incl.&nbsp;vertically into comprehensive health “systems”</li>
+<li>Shift of physicians from small business owners to employees</li>
+<li>Growing reliance on healthcare staffing agencies and outsourcing</li>
+<li>Prominent and controversial role of private equity in industry restructuring<br>
+</li>
+<li>Continued effects of changing regulatory environment (ACA)</li>
+<li>Impact of COVID-19 pandemic</li>
+</ul>
+</blockquote>
+<hr>
+<ul>
+<li><p><strong>Opportunity</strong>: This gap in knowledge is in part because there is no single authoritative source of data on the supply-side of health care—and the available data sources each present their own tradeoffs and limitations. As a consequence, <em>“even seemingly simple concepts, such as the number of practitioners may be more slippery than researchers realize”</em> (Maurer et al., HSR, 2021). How can Census help bridge this gap?</p></li>
+<li><p><strong>Goal:</strong> Leverage Census data on workers, taxpayers, businesses, and employers to enhance data on physicians and the institutions in which they work.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/mindmap.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">mindmap.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="privacy-models-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="privacy-models-motivation">Privacy Models: Motivation</h2>
+<ul>
+<li><p><strong>Program-level:</strong> The EHealth Program deals with the most sensitive of data—personal health records and income statements. As such, we need to have a robust awareness of best practices and emerging innovations regarding privacy preservation and disclosure avoidance.</p></li>
+<li><p><strong>Project-level:</strong> The physician-business linkage project offers insights that are often most helpful at the local levels at which healthcare markets operate. But traditional disclosure practices often limit releases at the state level (with explicit limitations for publishing statistics at geographies representing fewer than ~half a million residents). Research on privacy models may offer creative solutions for addressing this limitation.</p></li>
+<li><p><strong>Product-level:</strong> Our linkage project can support a wide range of data products and focus areas, but a limiting “privacy budget” will require us to prioritize what we release by balancing stakeholder demand vs.&nbsp;technical limitations. Research on privacy models can help surface technical limitations and opportunities.</p></li>
+</ul>
+</section>
+<section id="privacy-models-project-specific-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="privacy-models-project-specific-challenges">Privacy Models: Project-specific Challenges</h2>
+<ul>
+<li><p><strong>Multiple governance regimes:</strong> Our work includes both Title 13 and Title 26 data, as well as SSA-based Numident data and restricted CMS data. Each will require sign-offs from the respective data owners and governance regimes.</p></li>
+<li><p><strong>Multiple “privacy units”:</strong> Need to protect both individuals (physicians) and businesses simultaneously.</p></li>
+<li><p><strong>Much of the data already publicly available:</strong> The public availability of assets like the NPI registry of healthcare providers makes reidentification easier (much of our value-add is in the linking work rather than the individual characteristics).</p></li>
+<li><p><strong>High dimensional data:</strong> We have brought together lots of different fields to describe physician and business characteristics. Releasing data on many different characteristics makes it challenging to prevent re-identification.</p></li>
+<li><p><strong>Unable to fully anticipate all high-impact uses today:</strong> Shift towards formal privacy budgets benefits enormously from a clear roadmap and fully planned out data use cases vs.&nbsp;taking an incremental approach, as any early releases will draw down a limited privacy budget.</p></li>
+<li><p><strong>Undetermined frequency of data collection/publication:</strong> Not simply a question of protecting our 2018 data, but also protecting physicians and businesses across time as we add more years of data.</p></li>
+</ul>
+</section>
+</section>
+<section id="deliverable-1-literature-review" class="level1">
+<h1>Deliverable 1: Literature Review</h1>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>On August 3, 2022, the EHealth Team convened a knowledge sharing session to review and discuss introductory videos and readings on the topic of differential privacy, including:</p>
+<ul>
+<li><strong>Lay Audience:</strong> Minute Physics’ <strong><a href="https://youtu.be/pT19VwBAqKA">Protecting Privacy with Math</a></strong> (video: 10m)</li>
+<li><strong>Non-Technical Overview:</strong> MIT Press’ <strong><a href="https://youtu.be/cOu-sTV8J2M">Designing Access with Differential Privacy</a></strong> (webinar video: 25m) (alternative: <strong><a href="https://admindatahandbook.mit.edu/book/v1.0/diffpriv.html">book chapter</a></strong>)</li>
+<li><strong>Business Challenges:</strong> Abowd’s <strong><a href="https://arxiv.org/pdf/1809.02201">Issues Encountered Deploying Differential Privacy</a></strong> (article: 4p)</li>
+<li><strong>Technical Implementation:</strong> Chetty and Friedman’s <strong><a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/pandp.20191109">A Practical Method to Reduce Privacy Loss when Disclosing Statistics based on Small Samples</a></strong> (article: 7p)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/readings.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">readings.png</figcaption><p></p>
+</figure>
+</div>
+<p>Please see the Literature Review section (link in toolbar) for additional information.</p>
+</section>
+<section id="implications-for-ehealth-program" class="level2">
+<h2 class="anchored" data-anchor-id="implications-for-ehealth-program">Implications for EHealth Program</h2>
+<ul>
+<li><p>Differential privacy is a framework, not a mathematical formula that can be universally applied. In fact, there generally is no universally optimal method for non-count queries. The specifics of implementation need to depend on the data and on user requirements.</p></li>
+<li><p>Differentially private methods now exist for most basic statistical functions (from counts and CDF to regression and machine learning models), but efficiency can vary dramatically, and certain advanced research techniques simply do not (currently) offer support for DP.</p></li>
+<li><p>Lots of opportunities to be clever—“What you want is not always what you want to add noise to”: sometimes, it makes sense to aggregate data in a counterintuitive way and then running calculations on the noisy results to obtain a metric of interest in order to optimize the privacy-accuracy tradeoff (ex sum of noisy ages over sum of noisy population is more efficient than adding noise directly to the mean of ages).</p></li>
+<li><p><em>In short, the complexities of differential privacy cannot be fully abstracted or automated away. Instead, staff will need to be educated, work from agreed upon guidelines, and apply their own creativity to make full use of differential privacy.</em></p></li>
+</ul>
+</section>
+<section id="open-questions-and-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="open-questions-and-constraints">Open Questions and Constraints</h2>
+<p>While the literature review was enlightnening, the team continued to navigate a number of open questions, constraints, and unsettled debates, including:</p>
+<blockquote class="blockquote">
+<ul>
+<li><p>What is an appropriate epsilon (i.e.&nbsp;metric describing the risk of privacy loss, balanced against the trade-off of accuracy)?</p></li>
+<li><p>How can we best manage multiple (i.e.&nbsp;different kinds of) data releases against a single privacy budget?</p></li>
+<li><p>How do we employ a framework that allows for cyclical releases over time (i.e.&nbsp;not just protecting physicians in 2018 but across time)?</p></li>
+<li><p>What types of analysis can be supported by synthetic data (i.e.&nbsp;what features of the data are and are not preserved)?</p></li>
+<li><p>How can we best measure the accuracy of any analysis conducted using synthetic data?</p></li>
+<li><p>How do we best implement a dual guarantee for businesses and individuals?</p></li>
+<li><p>How do we report on business measures that amplify and rely heavily on a small number of (large) firms (ex: measures of market concentration for markets dominated by 2-3 firms)?</p></li>
+</ul>
+</blockquote>
+</section>
+</section>
+<section id="deliverable-2-experimental-pipeline-pilots" class="level1">
+<h1>Deliverable 2: Experimental Pipeline Pilots</h1>
+<section id="environment-for-experimentation" class="level2">
+<h2 class="anchored" data-anchor-id="environment-for-experimentation">Environment for Experimentation</h2>
+<p>To avoid the complexities and limitations of working with protected data, the project instead turned to large public data, primarily from CMS Medicare, to construct a proxy of the protected dataset. The specific datasets used were as follows:</p>
+<ul>
+<li><p><strong>Proxy for physician and establishment-level data:</strong> <strong><a href="https://data.cms.gov/provider-data/dataset/mj5m-pzi6">CMS Care Compare National Downloadable File</a></strong> of December 2018.</p></li>
+<li><p><strong>Proxy for physician numerical data:</strong> <strong><a href="https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider">CMS Medicare Program Use and Payments Data - by Provider dataset</a></strong> (MPUPD) of 2018.</p></li>
+<li><p><strong>Proxy for firm and EIN-level data:</strong> <strong><a href="https://www.ahrq.gov/chsp/data-resources/compendium-2018.html">AHRQ 2018 Compendium of US Health Systems</a></strong>, including the systems and group practice linkage file.</p></li>
+</ul>
+<p>Support files used include (a) Census mappings of zip codes to counties and counties to core based statistical areas and (b) a mapping of PECOS specialties to more rolled up specialty groups based on the method used by the CMS MD-PPAS dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/proxydata.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">proxydata.png</figcaption><p></p>
+</figure>
+</div>
+<p>Linking this data together provided a sufficiently rich, large, and parallel dataset that captures many of the same kinds of relationships and characteristics as our protected linked data. This data covered (rounded to 2-significant digits):</p>
+<ul>
+<li><p><strong>560,000</strong> unique physicians</p></li>
+<li><p><strong>160,000</strong> unique addresses – proxy for establishments, incl.&nbsp;self-employment</p></li>
+<li><p><strong>39,000</strong> unique named practices – proxy for EINs</p></li>
+<li><p><strong>640</strong> systems – proxy for (large) firms</p></li>
+</ul>
+</section>
+<section id="scope" class="level2">
+<h2 class="anchored" data-anchor-id="scope">Scope</h2>
+<p>The goal of the second deliverable is to learn by doing by conducting pilot implementations of competing privacy models on the public proxy data, with a focus on methods utilizing differential privacy. Where feasible, this work will ideally seed generalizable methods for implementing privacy models within the scope of the physician-business linkage project. This work will be guided by the following guidelines:</p>
+<ol type="1">
+<li><p><strong>Keep it simple and flexible:</strong> Most privacy models can be enhanced through extensive optimization and by incorporating more sophisticated techniques. However, this work by definition needs to be tailored tothe particular data, question, and statistical functions or models used. Since we do not yet have a final design for specific data products – and since the EHealth Team lacks mathematical statisticians – this initial research will instead focus on the straightforward and mostly generalizable techniques with the fewest moving pieces.</p></li>
+<li><p><strong>Focus on basic descriptive statistics:</strong> While our data may well provide a basis for models (from basic regressions to complex machine learning techniques), we do not currently have the specifics to define clear use cases using such methods. Since differential privacy and similar approaches often require specific implementations for specific types of modeling, this project will instead focus primarily on basic descriptive statistics like counts, ratios, and distributions, in part to comply with guideline 1 of keeping things simple.</p></li>
+<li><p><strong>Leverage pragmatic solutions and existing capabilities:</strong> Given the small size of our team, the EHealth Program is best served by solutions that are easy to implement (and maintain) on existing, standard-issue infrastructure. Accordingly, we seek to adopt the following preferences:</p>
+<ol type="a">
+<li>A bias for existing/emerging solutions already offered, maintained, and/or hosted by the Census Bureau – or, failing that, reputable and well maintained open source solutions;</li>
+<li>A bias for techniques that have a track record of success within the Bureau, including past disclosure avoidance review approvals;</li>
+<li>An openness to techniques that may lack a formal privacy guarantee provided they offer credible techniques for privacy preservation that will likely be endorsed by the disclosure avoidance review process.</li>
+</ol></li>
+</ol>
+<p>The above guidelines have led, for instance, to a preference for the Redacted tool – an emerging, general-purpose tool developed, supported, and endorsed by other parts of the Bureau (incl.&nbsp;as a possible tool for the ACS) – should this prove roughly competitive with synthetic data techniques that offer a more formal privacy guarantee.</p>
+</section>
+<section id="project-pipelines" class="level2">
+<h2 class="anchored" data-anchor-id="project-pipelines">Project Pipelines</h2>
+<p>The pilot implementations will primarily be structured around exploring options for differentiated pipelines, specifically:</p>
+<ul>
+<li><p><strong><u>Pipeline 0</u>: True actuals (no processing and no protection)</strong> (no actions needed)</p></li>
+<li><p><strong><u>Pipeline 1</u>: Traditional disclosure rules / rounding and suppression</strong> <em><font color="purple">(out of scope: to be implemented by EHealth staff rather than CDF fellow)</font></em></p></li>
+<li><p><strong><u>Pipeline 2</u>: Differentially private aggregate tables</strong></p></li>
+<li><p><strong><u>Pipeline 3</u>: Synthetic data: Redacted (nonDP) and DP alternative</strong></p></li>
+<li><p><strong><u>Pipeline X</u>: Differentially private model-based estimates (regression, machine learning, etc.)</strong> <em><font color="purple">(out of scope: cursory summary of tools and approaches only, due to diffusion of options depending on model-approach used; example tools incl.&nbsp;OpenDP / SmartNoise / PyDP / r-Diffpriv)</font></em></p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/models.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">models.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="pipeline-knowledge-capture" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-knowledge-capture">Pipeline Knowledge Capture</h2>
+<p>For each pipeline, we seek to learn the following:</p>
+<ul>
+<li><p><strong>General approach:</strong> High-level implementation steps/sequence for processing the data and the methods used.</p></li>
+<li><p><strong>Scope of application:</strong> Conditions under which this pipeline makes a good fit and should be considered.</p></li>
+<li><p><strong>Pros / Opportunities:</strong> Strengths of this approach, including unique opportunities.</p></li>
+<li><p><strong>Cons / Limitations:</strong> Weaknesses and limitations of this approach.</p></li>
+<li><p><strong>Level of Effort:</strong> Short discussion of the difficulty and complexity of utilizing this pipeline.</p></li>
+<li><p><strong>Tools:</strong> Tools that need to or can be used to assist with the implementation of this pipeline.</p></li>
+<li><p><strong>Decision Points:</strong> 1-4 key decisions that need to be made in either selecting or calibrating this method and the consequences that result.</p></li>
+</ul>
+</section>
+<section id="research-questions-to-guide-pilots" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions-to-guide-pilots">Research Questions to Guide Pilots</h2>
+<p>In order to provide specific use cases, the project will compile data around the following questions. The resulting data will then be passed through the privacy models being piloted:</p>
+<ol type="1">
+<li><p><strong>Ratio of physicians (by specialty) to population</strong></p></li>
+<li><p><strong>Distribution of physicians by organization type</strong></p></li>
+<li><p><strong>Community representativeness - Comparison of physician vs.&nbsp;population demographics (age/gender)</strong> (as stand-in for race and other characteristics)</p></li>
+<li><p><strong>Firm market concentration by geography</strong> (as measured in terms of employed physicians)</p></li>
+<li><p><strong>Common business ownership/integration across geographies</strong> (ex: state pairings)</p></li>
+<li><p><strong>Secondary sources of work for physicians</strong> (i.e.&nbsp;business characteristics of secondary employers)</p></li>
+<li><p><strong>Determinants/correlates of Medicare charges</strong> (as stand-in for income)</p></li>
+<li><p><strong>Care coordination - Number and specialty diversity of colleagues by organization type</strong></p></li>
+</ol>
+<p>The reporting for the questions above is typically broken down by <strong>state</strong> and by <strong>core based statistical area</strong> (with a focus on larger metropolitan statistical areas).</p>
+<p><em>Note: while these pilots uses real (public) data, this data is only really intended to serve as a proxy for the protected data. These research questions are therefore intended to be fairly nominal, and the project is not directly focused on providing the most elegant or correct answer to these questions. Rather, they exist to generate a variety of disparate tables against which to apply and evaluate privacy models.</em></p>
+</section>
+</section>
+<section id="conclusion-lessons-learned-and-recommendations" class="level1">
+<h1>Conclusion: Lessons Learned and Recommendations</h1>
+<section id="decision-tree-selecting-the-right-pipeline-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="decision-tree-selecting-the-right-pipeline-to-use">Decision Tree: Selecting the Right Pipeline to Use</h2>
+<p>The graphic below depicts a series of decisions that users can use to determine which pipeline best suits their project needs:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/decision_tree.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">decision_tree.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="pipeline-2-dp-tables" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-2-dp-tables">Pipeline 2 (DP Tables)</h2>
+<ul>
+<li><p><strong>General approach:</strong> Run traditional analyses, then inject noise</p></li>
+<li><p><strong>Scope of application:</strong> This approach is advantageous when a specific question or set of questions is known about in advance. It could also be useful if a centralized approach to DP is chosen, where partners send queries and we send back noisy results.</p></li>
+<li><p><strong>Pros / Opportunities:</strong> The main advantage is a more precise application of the privacy budget. We have control over how and how often the data is accessed, so we can allocate the privacy budget efficiently.</p></li>
+<li><p><strong>Cons / Limitations:</strong> Lack of flexibility. Researchers or partners with questions we hadn’t considered won’t be able to get answers from the data if there isn’t any more room in the privacy budget.</p></li>
+<li><p><strong>Level of Effort:</strong> The biggest challenge will be deciding on how the privacy budget is allocated. Since budget is allocated per query, we need to prioritize the queries we run.</p></li>
+<li><p><strong>Tools:</strong> The E-Health DP Guide has guidance implementations. Tools like OpenDP or PyDP could also be useful.</p></li>
+<li><p><strong>Decision Points:</strong> 1) Which queries are most important? 2) How many questions can be reasonably answered with the given privacy budget?</p></li>
+</ul>
+</section>
+<section id="pipeline-3-synthetic-data" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-3-synthetic-data">Pipeline 3 (Synthetic Data)</h2>
+<ul>
+<li><p><strong>General approach:</strong> Build a synthetic dataset based on the original dataset. Release the synthetic dataset for partners/researchers to run queries on.</p></li>
+<li><p><strong>Scope of application:</strong> We want to maintain as much flexibility as possible in terms of running queries. This approach could also be structured in a way that partners get access to the synthetic data to run tests on, and then they send their finalized queries back to us to run on the original data.</p></li>
+<li><p><strong>Pros / Opportunities:</strong> We’d be giving partners much greater latitude to poke and prod the dataset. They would have the freedom to explore the data in a way that precomputed tables doesn’t allow.</p></li>
+<li><p><strong>Cons / Limitations:</strong> Synthetic datasets only support certain kinds of analyses (counting queries). They also sacrifice a bit of accuracy when comparing single queries from Pipeline 2.</p></li>
+<li><p><strong>Level of Effort:</strong> There needs to be clear communication with partners/researchers about the limitations of the data. Synthetic datasets are a very powerful tool, but they’re not a silver bullet.</p></li>
+<li><p><strong>Tools:</strong> MST, Redacted (also part of E-Health DP Guide)</p></li>
+<li><p><strong>Decision Points:</strong> 1) What’s the ratio of columns to rows? A dataset with too few rows per cell could be problematic when building a synthetic dataset. 2) Are there really important, single questions that you want from the dataset? If not, synthetic data might be your best bet.</p></li>
+</ul>
+</section>
+<section id="pipeline-x-dp-complex-models" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-x-dp-complex-models">Pipeline X (DP Complex Models)</h2>
+<ul>
+<li><p><strong>General approach:</strong> Applying concepts of DP to more advanced analyses (regressions, neural nets, clustering, etc.)</p></li>
+<li><p><strong>Scope of application:</strong> Partners/researchers with more complex questions they want to address with the data.</p></li>
+<li><p><strong>Pros / Opportunities:</strong> The opportunity to do a deeper dive into the data and find connections or information that isn’t readily available with counting queries.</p></li>
+<li><p><strong>Cons / Limitations:</strong> More effort. There will likely need to be a closer partnership with the stakeholder, and new tools will need to be explored.</p></li>
+<li><p><strong>Level of Effort:</strong> High, but not prohibitive. There are off-the-shelf tools that can do many/most of the analysis a partner might be looking for. It’ll just be a matter of finding and getting a grasp of them.</p></li>
+<li><p><strong>Tools:</strong> List from NIST: https://www.nist.gov/itl/applied-cybersecurity/privacy-engineering/collaboration-space/focus-areas/de-id/tools</p></li>
+<li><p><strong>Decision Points:</strong> 1) Can the question be answered with a counting query? If not, you’ll need Pipeline X.</p></li>
+</ul>
+</section>
+<section id="areas-for-further-continued-study" class="level2">
+<h2 class="anchored" data-anchor-id="areas-for-further-continued-study">Areas for Further / Continued Study</h2>
+<ol type="1">
+<li>Pre-built privacy tools</li>
+<li>Incremental data release</li>
+<li>Tuning Redacted</li>
+<li>Centralized query management (partners send us queries to run on the data)</li>
+<li>Protecting multiple entities (physicians and businesses)</li>
+<li>Optimization (ex: Select-Measure-Reconstruct framework)</li>
+<li>Alternative models (see Pufferfish framework)</li>
+</ol>
+</section>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned</h2>
+<ol type="1">
+<li><p>No one method will be able to do everything.</p></li>
+<li><p>There’s an inherent sacrifice to accuracy that needs to be made to retain privacy.</p></li>
+<li><p>There isn’t a single right answer when choosing epsilon. The “best” epsilon is all about balancing priorities.</p>
+<ul>
+<li>There’s a lot of art - as opposed to science - in DP</li>
+</ul></li>
+<li><p>You can do a lot with “simple” analyses. Most projects that will want to use the data will only need to able able to answer counting queries.</p></li>
+<li><p>No matter how many times you test it, fully trusting the accuracy of a synthetic dataset is difficult and terrifying.</p>
+<ul>
+<li>That said, synthetic datasets are really cool</li>
+</ul></li>
+</ol>
+</section>
+<section id="recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="recommendations">Recommendations</h2>
+<ol type="1">
+<li><p>Maintain a smaller privacy budget than Google and Microsoft</p></li>
+<li><p>I might be blinded by the shiny newness of the synthetic data technologies, but go with synthetic data unless there’s a very compelling case to release specific analyses</p></li>
+<li><p>Maintain open dialogue with the Redacted team</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Privacy%20Models%20for%20EHealth%20-%20Intro%20and%20Scope_files/figure-html/brainstorm.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">brainstorm.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>This technical review of the opportunities and limitations presented by modern privacy preservation techniques offers the team with new insights to guide the selection and development of data products. These considerations will be weighed against the demand and interest demonstrated by stakeholders for specific data products and focus areas through a series of expert stakeholder consultations. This combined assessment of demand opportunities vs.&nbsp;supply limitations will guide the final priorities for the data products to be released through the physician-business linkage project.</p>
+<p>Next, the team will design data products that best balance demand and technical limitations. Once these products have been fully scoped, the team will determine which of the identified privacy models pipelines best suits product design and implement the needed infrastructure.</p>
+<p>In addition, given the sensitivity of the data we work with, the EHealth Team will continue to build knowledge and capacity on privacy model implementations, including for potential application within projects working with sensitive patient records.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

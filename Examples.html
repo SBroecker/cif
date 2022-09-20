@@ -1,0 +1,4938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – examples</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Privacy Models for EHealth - Intro and Scope.html">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Literature Review.html">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./E-Health DP Guide.html">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Examples.html" aria-current="page">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - DP.html">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - Synthetic Data.html">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#differential-privacy-examples" id="toc-differential-privacy-examples" class="nav-link active" data-scroll-target="#differential-privacy-examples">Differential Privacy: Examples</a>
+  <ul class="collapse">
+  <li><a href="#prep-load-libraries-and-datasets" id="toc-prep-load-libraries-and-datasets" class="nav-link" data-scroll-target="#prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</a></li>
+  <li><a href="#research-q1-ratio-of-physicians-to-population-by-geography" id="toc-research-q1-ratio-of-physicians-to-population-by-geography" class="nav-link" data-scroll-target="#research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</a></li>
+  <li><a href="#research-q2-distribution-of-physicians-by-organization-type" id="toc-research-q2-distribution-of-physicians-by-organization-type" class="nav-link" data-scroll-target="#research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</a></li>
+  <li><a href="#research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" id="toc-research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" class="nav-link" data-scroll-target="#research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race">Research Q3: Community Representativeness: Age and Gender (as Stand-ins for Race)</a></li>
+  <li><a href="#research-q4-firm-market-concentration-by-geography" id="toc-research-q4-firm-market-concentration-by-geography" class="nav-link" data-scroll-target="#research-q4-firm-market-concentration-by-geography">Research Q4: Firm Market Concentration by Geography</a></li>
+  <li><a href="#from-this-point-on-my-answers-are-mostly-incomplete" id="toc-from-this-point-on-my-answers-are-mostly-incomplete" class="nav-link" data-scroll-target="#from-this-point-on-my-answers-are-mostly-incomplete">From this point on my answers are mostly incomplete</a></li>
+  <li><a href="#research-q5-business-ownershipintegration-across-states" id="toc-research-q5-business-ownershipintegration-across-states" class="nav-link" data-scroll-target="#research-q5-business-ownershipintegration-across-states">Research Q5: Business Ownership/Integration Across States</a></li>
+  <li><a href="#research-q6-secondary-sources-of-work-for-physicians" id="toc-research-q6-secondary-sources-of-work-for-physicians" class="nav-link" data-scroll-target="#research-q6-secondary-sources-of-work-for-physicians">Research Q6: Secondary Sources of Work for Physicians</a></li>
+  <li><a href="#research-q7-determinants-of-medicare-charges-as-stand-in-for-income" id="toc-research-q7-determinants-of-medicare-charges-as-stand-in-for-income" class="nav-link" data-scroll-target="#research-q7-determinants-of-medicare-charges-as-stand-in-for-income">Research Q7: Determinants of Medicare Charges (as Stand-in for Income)</a></li>
+  <li><a href="#research-q8-care-coordination-number-and-specialty-diversity-of-colleagues-by-organization-type" id="toc-research-q8-care-coordination-number-and-specialty-diversity-of-colleagues-by-organization-type" class="nav-link" data-scroll-target="#research-q8-care-coordination-number-and-specialty-diversity-of-colleagues-by-organization-type">Research Q8: Care Coordination: Number and Specialty Diversity of Colleagues by Organization Type</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<section id="differential-privacy-examples" class="level1">
+<h1>Differential Privacy: Examples</h1>
+<p><i>CDF Summer Project 2022</i></p>
+<section id="prep-load-libraries-and-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</h2>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data science libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-scrolled="true" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>physicians <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"physicians.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>establishments <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"establishments.csv"</span>, dtype<span class="op">=</span>{<span class="st">'zip'</span>: <span class="bu">str</span>, <span class="st">'zip9'</span>: <span class="bu">str</span>, <span class="st">'zip3'</span>: <span class="bu">str</span>})</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>practices <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"practices.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>firms <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"firms.csv"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>phys2estab <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2estab.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>phys2prac <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2prac.csv"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cbsa <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_cbsas.csv"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_state.csv"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>state_agesex <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_state_agesex.csv"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>state_abr <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"state_abr.csv"</span>, names<span class="op">=</span>[<span class="st">"name"</span>, <span class="st">"abr"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="15">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read from raw agesex data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>state_agesex_raw <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"state_agesex_raw.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out national counts and total counts</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>state_agesex_raw_filtered <span class="op">=</span> state_agesex_raw[(state_agesex_raw[<span class="st">"STATE"</span>] <span class="op">&gt;</span> <span class="dv">0</span>) </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="op">&amp;</span> (state_agesex_raw[<span class="st">"AGE"</span>] <span class="op">!=</span> <span class="dv">999</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="op">&amp;</span> (state_agesex_raw[<span class="st">"SEX"</span>] <span class="op">!=</span> <span class="dv">0</span>)][[<span class="st">"NAME"</span>, <span class="st">"SEX"</span>, <span class="st">"AGE"</span>, <span class="st">"POPEST2019_CIV"</span>]]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># update M/F to match physician dataset</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>state_agesex_raw_filtered[<span class="st">"SEX"</span>] <span class="op">=</span> np.where(state_agesex_raw_filtered[<span class="st">"SEX"</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">"M"</span>, <span class="st">"F"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># put ages into bins of 10 years</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>age_bins <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">110</span>, <span class="dv">10</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>idxs <span class="op">=</span> np.digitize(state_agesex_raw_filtered[<span class="st">"AGE"</span>], age_bins)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add bin labels to dataset</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>state_agesex_raw_filtered[<span class="st">"bin"</span>] <span class="op">=</span> idxs</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># group by bins and get total populations</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>state_agesex_binned <span class="op">=</span> state_agesex_raw_filtered.groupby([<span class="st">"NAME"</span>, <span class="st">"SEX"</span>, <span class="st">"bin"</span>]).agg({<span class="st">"POPEST2019_CIV"</span>: <span class="st">"sum"</span>, <span class="st">"AGE"</span>: [<span class="st">"min"</span>, <span class="st">"max"</span>]})</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># format column names</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>state_agesex_binned.columns <span class="op">=</span> state_agesex_binned.columns.<span class="bu">map</span>(<span class="st">'_'</span>.join)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>state_agesex_f <span class="op">=</span> state_agesex_binned.reset_index()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>state_agesex_f.drop(columns<span class="op">=</span>[<span class="st">"bin"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>state_agesex_f.columns <span class="op">=</span> [<span class="st">"st"</span>, <span class="st">"sex"</span>, <span class="st">"pop"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span>]</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># update state names to match physician files</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>state_agesex_st_nms <span class="op">=</span> pd.merge(state_agesex_f, state_abr, how<span class="op">=</span><span class="st">"left"</span>, left_on<span class="op">=</span><span class="st">"st"</span>, right_on<span class="op">=</span><span class="st">"name"</span>)[[<span class="st">"sex"</span>, <span class="st">"pop"</span>, <span class="st">"bin_min"</span>, <span class="st">"bin_max"</span>, <span class="st">"abr"</span>]]</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># save to csv</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>state_agesex_st_nms.to_csv(data_dir <span class="op">+</span> <span class="st">"state_agesex.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>state_agesex <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"state_agesex.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="research-q1-ratio-of-physicians-to-population-by-geography" class="level2">
+<h2 class="anchored" data-anchor-id="research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</h2>
+<p>While this research question can be answered using existing public data (including Census ACS), it’s included here as an example of a simple aggregate table that can be generated at different geographic levels. Note that the data above already loads population counts for cbsa and state-level statistics.</p>
+<p>Breakdown by Characteristics: Specialty Category</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents in the United States</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>physicians.NPI.count() <span class="op">/</span> (states[<span class="st">'pop'</span>].<span class="bu">sum</span>() <span class="op">/</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>17.00683953715448</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents in the United States for each specialty category</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>phys_by_spec <span class="op">=</span> physicians.pri_spec_category.value_counts().reset_index()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>phys_by_spec[<span class="st">'per 10k'</span>] <span class="op">=</span> phys_by_spec[<span class="st">'pri_spec_category'</span>] <span class="op">/</span> (states[<span class="st">'pop'</span>].<span class="bu">sum</span>() <span class="op">/</span> <span class="dv">10000</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>phys_by_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>index</th>
+      <th>pri_spec_category</th>
+      <th>per 10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Primary care</td>
+      <td>176865</td>
+      <td>5.362390</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hospital based</td>
+      <td>123518</td>
+      <td>3.744956</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Medical specialty</td>
+      <td>115389</td>
+      <td>3.498492</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Surgery specialty</td>
+      <td>98614</td>
+      <td>2.989889</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>OBGYN</td>
+      <td>26941</td>
+      <td>0.816827</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Psychiatry</td>
+      <td>19601</td>
+      <td>0.594285</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents for each US state</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use drop duplicates to ensure we only count a physician once per state</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]].copy().drop_duplicates()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>phys_by_state <span class="op">=</span> phys_estab_state.groupby(<span class="st">'st'</span>).NPI.count().reset_index()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec <span class="op">=</span> pd.crosstab(phys_estab_state.st, phys_estab_state.pri_spec_category)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>states.rename(columns<span class="op">=</span>{<span class="st">'state'</span>: <span class="st">'st'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec <span class="op">=</span> pd.merge(states[[<span class="st">'st'</span>, <span class="st">'pop'</span>]], phys_by_state_spec, on<span class="op">=</span><span class="st">'st'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec <span class="op">=</span> pd.merge(phys_by_state_spec, phys_by_state, on<span class="op">=</span><span class="st">'st'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> phys_by_state_spec.columns[<span class="op">~</span>phys_by_state_spec.columns.isin(states.columns)]:</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    phys_by_state_spec[col <span class="op">+</span> <span class="st">" per 10k"</span>] <span class="op">=</span> (phys_by_state_spec[col] <span class="op">/</span> (phys_by_state_spec[<span class="st">'pop'</span>] <span class="op">/</span> <span class="dv">10000</span>)).<span class="bu">round</span>()</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec.sort_values(by<span class="op">=</span><span class="st">'NPI per 10k'</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>pop</th>
+      <th>Hospital based</th>
+      <th>Medical specialty</th>
+      <th>OBGYN</th>
+      <th>Primary care</th>
+      <th>Psychiatry</th>
+      <th>Surgery specialty</th>
+      <th>NPI</th>
+      <th>Hospital based per 10k</th>
+      <th>Medical specialty per 10k</th>
+      <th>OBGYN per 10k</th>
+      <th>Primary care per 10k</th>
+      <th>Psychiatry per 10k</th>
+      <th>Surgery specialty per 10k</th>
+      <th>NPI per 10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>DC</td>
+      <td>701974</td>
+      <td>664.0</td>
+      <td>711.0</td>
+      <td>191.0</td>
+      <td>806.0</td>
+      <td>106.0</td>
+      <td>516.0</td>
+      <td>2994.0</td>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>11.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MA</td>
+      <td>6873003</td>
+      <td>4356.0</td>
+      <td>4290.0</td>
+      <td>826.0</td>
+      <td>5592.0</td>
+      <td>1044.0</td>
+      <td>2865.0</td>
+      <td>18973.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>VT</td>
+      <td>624340</td>
+      <td>328.0</td>
+      <td>236.0</td>
+      <td>71.0</td>
+      <td>551.0</td>
+      <td>107.0</td>
+      <td>265.0</td>
+      <td>1558.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>9.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>RI</td>
+      <td>1057798</td>
+      <td>508.0</td>
+      <td>501.0</td>
+      <td>133.0</td>
+      <td>860.0</td>
+      <td>158.0</td>
+      <td>407.0</td>
+      <td>2567.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CT</td>
+      <td>3570549</td>
+      <td>1773.0</td>
+      <td>1903.0</td>
+      <td>496.0</td>
+      <td>2343.0</td>
+      <td>459.0</td>
+      <td>1487.0</td>
+      <td>8461.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ME</td>
+      <td>1340825</td>
+      <td>694.0</td>
+      <td>526.0</td>
+      <td>119.0</td>
+      <td>1112.0</td>
+      <td>136.0</td>
+      <td>561.0</td>
+      <td>3148.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MN</td>
+      <td>5600166</td>
+      <td>2590.0</td>
+      <td>2637.0</td>
+      <td>503.0</td>
+      <td>4446.0</td>
+      <td>442.0</td>
+      <td>2049.0</td>
+      <td>12667.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>MD</td>
+      <td>6037624</td>
+      <td>2976.0</td>
+      <td>2917.0</td>
+      <td>621.0</td>
+      <td>4035.0</td>
+      <td>573.0</td>
+      <td>2461.0</td>
+      <td>13583.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>NJ</td>
+      <td>8885418</td>
+      <td>4304.0</td>
+      <td>4475.0</td>
+      <td>965.0</td>
+      <td>5176.0</td>
+      <td>705.0</td>
+      <td>3481.0</td>
+      <td>19106.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>PA</td>
+      <td>12794885</td>
+      <td>6453.0</td>
+      <td>6143.0</td>
+      <td>1359.0</td>
+      <td>8421.0</td>
+      <td>1074.0</td>
+      <td>5092.0</td>
+      <td>28542.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>NY</td>
+      <td>19514849</td>
+      <td>9979.0</td>
+      <td>10052.0</td>
+      <td>1990.0</td>
+      <td>11500.0</td>
+      <td>1991.0</td>
+      <td>7507.0</td>
+      <td>43019.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>ND</td>
+      <td>760394</td>
+      <td>367.0</td>
+      <td>316.0</td>
+      <td>71.0</td>
+      <td>467.0</td>
+      <td>68.0</td>
+      <td>329.0</td>
+      <td>1618.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>DE</td>
+      <td>967679</td>
+      <td>415.0</td>
+      <td>405.0</td>
+      <td>113.0</td>
+      <td>680.0</td>
+      <td>62.0</td>
+      <td>374.0</td>
+      <td>2049.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>736990</td>
+      <td>440.0</td>
+      <td>200.0</td>
+      <td>67.0</td>
+      <td>533.0</td>
+      <td>50.0</td>
+      <td>280.0</td>
+      <td>1570.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>WI</td>
+      <td>5806975</td>
+      <td>3164.0</td>
+      <td>2239.0</td>
+      <td>526.0</td>
+      <td>3827.0</td>
+      <td>426.0</td>
+      <td>2095.0</td>
+      <td>12277.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>WY</td>
+      <td>581348</td>
+      <td>317.0</td>
+      <td>216.0</td>
+      <td>52.0</td>
+      <td>328.0</td>
+      <td>22.0</td>
+      <td>257.0</td>
+      <td>1192.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>MI</td>
+      <td>9973907</td>
+      <td>4143.0</td>
+      <td>3702.0</td>
+      <td>1032.0</td>
+      <td>6552.0</td>
+      <td>707.0</td>
+      <td>3356.0</td>
+      <td>19492.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>SD</td>
+      <td>879336</td>
+      <td>373.0</td>
+      <td>320.0</td>
+      <td>88.0</td>
+      <td>574.0</td>
+      <td>45.0</td>
+      <td>366.0</td>
+      <td>1766.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MT</td>
+      <td>1061705</td>
+      <td>564.0</td>
+      <td>357.0</td>
+      <td>77.0</td>
+      <td>660.0</td>
+      <td>53.0</td>
+      <td>410.0</td>
+      <td>2121.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>WV</td>
+      <td>1807426</td>
+      <td>755.0</td>
+      <td>627.0</td>
+      <td>152.0</td>
+      <td>1188.0</td>
+      <td>122.0</td>
+      <td>694.0</td>
+      <td>3538.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>OH</td>
+      <td>11675275</td>
+      <td>4996.0</td>
+      <td>4609.0</td>
+      <td>1157.0</td>
+      <td>7041.0</td>
+      <td>744.0</td>
+      <td>4106.0</td>
+      <td>22653.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>OR</td>
+      <td>4176346</td>
+      <td>1813.0</td>
+      <td>1420.0</td>
+      <td>332.0</td>
+      <td>2570.0</td>
+      <td>206.0</td>
+      <td>1397.0</td>
+      <td>7738.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MO</td>
+      <td>6124160</td>
+      <td>2713.0</td>
+      <td>2464.0</td>
+      <td>577.0</td>
+      <td>3225.0</td>
+      <td>440.0</td>
+      <td>2146.0</td>
+      <td>11565.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>IA</td>
+      <td>3150011</td>
+      <td>1408.0</td>
+      <td>1138.0</td>
+      <td>249.0</td>
+      <td>1766.0</td>
+      <td>193.0</td>
+      <td>1105.0</td>
+      <td>5859.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>IL</td>
+      <td>12716164</td>
+      <td>5324.0</td>
+      <td>4935.0</td>
+      <td>1197.0</td>
+      <td>7517.0</td>
+      <td>759.0</td>
+      <td>3936.0</td>
+      <td>23668.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>KY</td>
+      <td>4461952</td>
+      <td>1751.0</td>
+      <td>1639.0</td>
+      <td>413.0</td>
+      <td>2408.0</td>
+      <td>231.0</td>
+      <td>1525.0</td>
+      <td>7967.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>KS</td>
+      <td>2912619</td>
+      <td>1213.0</td>
+      <td>1062.0</td>
+      <td>242.0</td>
+      <td>1659.0</td>
+      <td>158.0</td>
+      <td>1032.0</td>
+      <td>5366.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>NE</td>
+      <td>1923826</td>
+      <td>870.0</td>
+      <td>681.0</td>
+      <td>171.0</td>
+      <td>1021.0</td>
+      <td>91.0</td>
+      <td>716.0</td>
+      <td>3550.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>IN</td>
+      <td>6696893</td>
+      <td>2951.0</td>
+      <td>2326.0</td>
+      <td>599.0</td>
+      <td>3721.0</td>
+      <td>349.0</td>
+      <td>2157.0</td>
+      <td>12103.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>HI</td>
+      <td>1420074</td>
+      <td>688.0</td>
+      <td>407.0</td>
+      <td>118.0</td>
+      <td>917.0</td>
+      <td>78.0</td>
+      <td>396.0</td>
+      <td>2604.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>WA</td>
+      <td>7512465</td>
+      <td>3290.0</td>
+      <td>2672.0</td>
+      <td>474.0</td>
+      <td>4588.0</td>
+      <td>339.0</td>
+      <td>2268.0</td>
+      <td>13631.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>TN</td>
+      <td>6772268</td>
+      <td>2354.0</td>
+      <td>2371.0</td>
+      <td>619.0</td>
+      <td>3581.0</td>
+      <td>271.0</td>
+      <td>2123.0</td>
+      <td>11319.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NC</td>
+      <td>10386227</td>
+      <td>3938.0</td>
+      <td>3642.0</td>
+      <td>984.0</td>
+      <td>5268.0</td>
+      <td>679.0</td>
+      <td>3194.0</td>
+      <td>17705.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>VA</td>
+      <td>8509358</td>
+      <td>3036.0</td>
+      <td>2919.0</td>
+      <td>740.0</td>
+      <td>4646.0</td>
+      <td>532.0</td>
+      <td>2544.0</td>
+      <td>14417.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>FL</td>
+      <td>21216924</td>
+      <td>7438.0</td>
+      <td>7974.0</td>
+      <td>1537.0</td>
+      <td>11185.0</td>
+      <td>980.0</td>
+      <td>6283.0</td>
+      <td>35397.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>SC</td>
+      <td>5091517</td>
+      <td>1763.0</td>
+      <td>1527.0</td>
+      <td>483.0</td>
+      <td>2842.0</td>
+      <td>281.0</td>
+      <td>1595.0</td>
+      <td>8491.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>LA</td>
+      <td>4664616</td>
+      <td>1635.0</td>
+      <td>1636.0</td>
+      <td>497.0</td>
+      <td>2297.0</td>
+      <td>213.0</td>
+      <td>1620.0</td>
+      <td>7898.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>AL</td>
+      <td>4893186</td>
+      <td>1456.0</td>
+      <td>1523.0</td>
+      <td>423.0</td>
+      <td>2521.0</td>
+      <td>213.0</td>
+      <td>1488.0</td>
+      <td>7624.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NM</td>
+      <td>2097021</td>
+      <td>827.0</td>
+      <td>558.0</td>
+      <td>166.0</td>
+      <td>1203.0</td>
+      <td>114.0</td>
+      <td>549.0</td>
+      <td>3417.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CO</td>
+      <td>5684926</td>
+      <td>2412.0</td>
+      <td>1783.0</td>
+      <td>386.0</td>
+      <td>2668.0</td>
+      <td>234.0</td>
+      <td>1687.0</td>
+      <td>9170.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AR</td>
+      <td>3011873</td>
+      <td>999.0</td>
+      <td>823.0</td>
+      <td>262.0</td>
+      <td>1712.0</td>
+      <td>135.0</td>
+      <td>812.0</td>
+      <td>4743.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AZ</td>
+      <td>7174064</td>
+      <td>2695.0</td>
+      <td>2337.0</td>
+      <td>400.0</td>
+      <td>3460.0</td>
+      <td>332.0</td>
+      <td>1905.0</td>
+      <td>11129.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>OK</td>
+      <td>3949342</td>
+      <td>1322.0</td>
+      <td>1062.0</td>
+      <td>315.0</td>
+      <td>2034.0</td>
+      <td>188.0</td>
+      <td>1070.0</td>
+      <td>5991.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MS</td>
+      <td>2981835</td>
+      <td>1094.0</td>
+      <td>912.0</td>
+      <td>272.0</td>
+      <td>1293.0</td>
+      <td>103.0</td>
+      <td>944.0</td>
+      <td>4618.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID</td>
+      <td>1754367</td>
+      <td>529.0</td>
+      <td>462.0</td>
+      <td>125.0</td>
+      <td>908.0</td>
+      <td>69.0</td>
+      <td>548.0</td>
+      <td>2641.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>UT</td>
+      <td>3151239</td>
+      <td>1211.0</td>
+      <td>815.0</td>
+      <td>187.0</td>
+      <td>1312.0</td>
+      <td>122.0</td>
+      <td>891.0</td>
+      <td>4538.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>GA</td>
+      <td>10516579</td>
+      <td>3278.0</td>
+      <td>3042.0</td>
+      <td>756.0</td>
+      <td>4609.0</td>
+      <td>415.0</td>
+      <td>2854.0</td>
+      <td>14954.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA</td>
+      <td>39346023</td>
+      <td>13534.0</td>
+      <td>11304.0</td>
+      <td>1955.0</td>
+      <td>18319.0</td>
+      <td>1850.0</td>
+      <td>9537.0</td>
+      <td>56499.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>TX</td>
+      <td>28635442</td>
+      <td>8845.0</td>
+      <td>8004.0</td>
+      <td>1902.0</td>
+      <td>11883.0</td>
+      <td>980.0</td>
+      <td>6915.0</td>
+      <td>38529.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>PR</td>
+      <td>3255642</td>
+      <td>531.0</td>
+      <td>948.0</td>
+      <td>152.0</td>
+      <td>1370.0</td>
+      <td>110.0</td>
+      <td>596.0</td>
+      <td>3707.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>MV</td>
+      <td>3030281</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>MH</td>
+      <td>1355244</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents for each CBSA</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use drop duplicates to ensure we only count a physician once per cbsa</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>phys_estab_cbsa <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'cbsa'</span>, <span class="st">'pri_spec_category'</span>]].copy().drop_duplicates()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa <span class="op">=</span> phys_estab_cbsa.groupby(<span class="st">'cbsa'</span>).NPI.count().reset_index()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa_spec <span class="op">=</span> pd.crosstab(phys_estab_cbsa.cbsa, phys_estab_cbsa.pri_spec_category)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa_spec <span class="op">=</span> pd.merge(cbsa, phys_by_cbsa_spec, on<span class="op">=</span><span class="st">'cbsa'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa_spec <span class="op">=</span> pd.merge(phys_by_cbsa_spec, phys_by_cbsa, on<span class="op">=</span><span class="st">'cbsa'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> phys_by_cbsa_spec.columns[<span class="op">~</span>phys_by_cbsa_spec.columns.<span class="bu">str</span>.startswith(<span class="st">'cbsa'</span>)]:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    phys_by_cbsa_spec[col <span class="op">+</span> <span class="st">" per 10k"</span>] <span class="op">=</span> (phys_by_cbsa_spec[col] <span class="op">/</span> (phys_by_cbsa_spec[<span class="st">'cbsa_pop'</span>] <span class="op">/</span> <span class="dv">10000</span>)).<span class="bu">round</span>()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa_spec.sort_values(by<span class="op">=</span><span class="st">'NPI per 10k'</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>phys_by_cbsa_spec.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>cbsa</th>
+      <th>cbsa_name</th>
+      <th>cbsa_pop</th>
+      <th>Hospital based</th>
+      <th>Medical specialty</th>
+      <th>OBGYN</th>
+      <th>Primary care</th>
+      <th>Psychiatry</th>
+      <th>Surgery specialty</th>
+      <th>NPI</th>
+      <th>Hospital based per 10k</th>
+      <th>Medical specialty per 10k</th>
+      <th>OBGYN per 10k</th>
+      <th>Primary care per 10k</th>
+      <th>Psychiatry per 10k</th>
+      <th>Surgery specialty per 10k</th>
+      <th>NPI per 10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>697</th>
+      <td>32860</td>
+      <td>Menomonie, WI</td>
+      <td>45452</td>
+      <td>266.0</td>
+      <td>195.0</td>
+      <td>35.0</td>
+      <td>213.0</td>
+      <td>18.0</td>
+      <td>168.0</td>
+      <td>895.0</td>
+      <td>59.0</td>
+      <td>43.0</td>
+      <td>8.0</td>
+      <td>47.0</td>
+      <td>4.0</td>
+      <td>37.0</td>
+      <td>197.0</td>
+    </tr>
+    <tr>
+      <th>455</th>
+      <td>15140</td>
+      <td>Brownsville, TN</td>
+      <td>17002</td>
+      <td>50.0</td>
+      <td>46.0</td>
+      <td>12.0</td>
+      <td>89.0</td>
+      <td>2.0</td>
+      <td>32.0</td>
+      <td>231.0</td>
+      <td>29.0</td>
+      <td>27.0</td>
+      <td>7.0</td>
+      <td>52.0</td>
+      <td>1.0</td>
+      <td>19.0</td>
+      <td>136.0</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>44900</td>
+      <td>Summerville, GA</td>
+      <td>24843</td>
+      <td>62.0</td>
+      <td>49.0</td>
+      <td>9.0</td>
+      <td>156.0</td>
+      <td>9.0</td>
+      <td>46.0</td>
+      <td>331.0</td>
+      <td>25.0</td>
+      <td>20.0</td>
+      <td>4.0</td>
+      <td>63.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+      <td>133.0</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>40340</td>
+      <td>Rochester, MN</td>
+      <td>223062</td>
+      <td>712.0</td>
+      <td>912.0</td>
+      <td>31.0</td>
+      <td>411.0</td>
+      <td>69.0</td>
+      <td>345.0</td>
+      <td>2480.0</td>
+      <td>32.0</td>
+      <td>41.0</td>
+      <td>1.0</td>
+      <td>18.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+      <td>111.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>14100</td>
+      <td>Bloomsburg-Berwick, PA</td>
+      <td>82884</td>
+      <td>239.0</td>
+      <td>170.0</td>
+      <td>30.0</td>
+      <td>249.0</td>
+      <td>19.0</td>
+      <td>164.0</td>
+      <td>871.0</td>
+      <td>29.0</td>
+      <td>21.0</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>2.0</td>
+      <td>20.0</td>
+      <td>105.0</td>
+    </tr>
+    <tr>
+      <th>390</th>
+      <td>10660</td>
+      <td>Albert Lea, MN</td>
+      <td>30364</td>
+      <td>82.0</td>
+      <td>69.0</td>
+      <td>16.0</td>
+      <td>96.0</td>
+      <td>10.0</td>
+      <td>43.0</td>
+      <td>316.0</td>
+      <td>27.0</td>
+      <td>23.0</td>
+      <td>5.0</td>
+      <td>32.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>104.0</td>
+    </tr>
+    <tr>
+      <th>526</th>
+      <td>20660</td>
+      <td>Easton, MD</td>
+      <td>36972</td>
+      <td>62.0</td>
+      <td>65.0</td>
+      <td>19.0</td>
+      <td>99.0</td>
+      <td>15.0</td>
+      <td>69.0</td>
+      <td>329.0</td>
+      <td>17.0</td>
+      <td>18.0</td>
+      <td>5.0</td>
+      <td>27.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+      <td>89.0</td>
+    </tr>
+    <tr>
+      <th>675</th>
+      <td>31680</td>
+      <td>Malvern, AR</td>
+      <td>33787</td>
+      <td>65.0</td>
+      <td>58.0</td>
+      <td>8.0</td>
+      <td>84.0</td>
+      <td>9.0</td>
+      <td>41.0</td>
+      <td>265.0</td>
+      <td>19.0</td>
+      <td>17.0</td>
+      <td>2.0</td>
+      <td>25.0</td>
+      <td>3.0</td>
+      <td>12.0</td>
+      <td>78.0</td>
+    </tr>
+    <tr>
+      <th>405</th>
+      <td>11740</td>
+      <td>Ashland, OH</td>
+      <td>53362</td>
+      <td>219.0</td>
+      <td>59.0</td>
+      <td>10.0</td>
+      <td>71.0</td>
+      <td>4.0</td>
+      <td>55.0</td>
+      <td>418.0</td>
+      <td>41.0</td>
+      <td>11.0</td>
+      <td>2.0</td>
+      <td>13.0</td>
+      <td>1.0</td>
+      <td>10.0</td>
+      <td>78.0</td>
+    </tr>
+    <tr>
+      <th>406</th>
+      <td>11780</td>
+      <td>Ashtabula, OH</td>
+      <td>96513</td>
+      <td>313.0</td>
+      <td>90.0</td>
+      <td>31.0</td>
+      <td>242.0</td>
+      <td>15.0</td>
+      <td>66.0</td>
+      <td>757.0</td>
+      <td>32.0</td>
+      <td>9.0</td>
+      <td>3.0</td>
+      <td>25.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>78.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q2-distribution-of-physicians-by-organization-type" class="level2">
+<h2 class="anchored" data-anchor-id="research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</h2>
+<p>Our work will provide insights on the institutional structures through which physicians provide care. These structures have changed dramatically over time as a consequence of intensive vertical integration in the healthcare industry.</p>
+<p>This research question is mostly centered on creating counts or percent breakdowns by state and/or metropolitan area.</p>
+<p>The main task is to translate business characteristics into distinct “types” by which to group physicians.</p>
+<p>Follow-up question of interest: Rural/urban split (note: need to obtain data)</p>
+<div class="cell" data-execution_count="103">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get establishment_type column, location, and identifier</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'establishment_type'</span>]].copy().drop_duplicates()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># find doctor's per state</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>phys_by_state <span class="op">=</span> phys_estab_state.groupby(<span class="st">'st'</span>).NPI.count().reset_index()</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># find doctor's per establishment type</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>est_type_crosstab <span class="op">=</span> pd.crosstab(phys_estab_state.st, phys_estab_state.establishment_type)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add state count to establishment type count</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>phys_by_est <span class="op">=</span> pd.merge(est_type_crosstab, phys_by_state, how<span class="op">=</span><span class="st">"left"</span>, on<span class="op">=</span><span class="st">"st"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># get list of establishment types</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>ests <span class="op">=</span> phys_estab_state[<span class="st">"establishment_type"</span>].unique()</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> est <span class="kw">in</span> ests:</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find the fraction of all physicians who are part of each type of establishment</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    phys_by_est[est <span class="op">+</span> <span class="st">"_fraction"</span>] <span class="op">=</span> phys_by_est[est] <span class="op">/</span> phys_by_est.NPI</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>phys_by_est</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="103">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>multi-unit</th>
+      <th>single-unit</th>
+      <th>NPI</th>
+      <th>multi-unit_fraction</th>
+      <th>single-unit_fraction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>949</td>
+      <td>689</td>
+      <td>1638</td>
+      <td>0.579365</td>
+      <td>0.420635</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL</td>
+      <td>4966</td>
+      <td>3059</td>
+      <td>8025</td>
+      <td>0.618816</td>
+      <td>0.381184</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AR</td>
+      <td>3456</td>
+      <td>1489</td>
+      <td>4945</td>
+      <td>0.698888</td>
+      <td>0.301112</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AZ</td>
+      <td>8097</td>
+      <td>3551</td>
+      <td>11648</td>
+      <td>0.695141</td>
+      <td>0.304859</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA</td>
+      <td>39501</td>
+      <td>19905</td>
+      <td>59406</td>
+      <td>0.664933</td>
+      <td>0.335067</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CO</td>
+      <td>6960</td>
+      <td>2612</td>
+      <td>9572</td>
+      <td>0.727121</td>
+      <td>0.272879</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CT</td>
+      <td>6905</td>
+      <td>1946</td>
+      <td>8851</td>
+      <td>0.780138</td>
+      <td>0.219862</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>DC</td>
+      <td>2611</td>
+      <td>423</td>
+      <td>3034</td>
+      <td>0.860580</td>
+      <td>0.139420</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>DE</td>
+      <td>1603</td>
+      <td>555</td>
+      <td>2158</td>
+      <td>0.742817</td>
+      <td>0.257183</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>FL</td>
+      <td>25439</td>
+      <td>11570</td>
+      <td>37009</td>
+      <td>0.687373</td>
+      <td>0.312627</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>GA</td>
+      <td>9973</td>
+      <td>5950</td>
+      <td>15923</td>
+      <td>0.626327</td>
+      <td>0.373673</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>GU</td>
+      <td>22</td>
+      <td>187</td>
+      <td>209</td>
+      <td>0.105263</td>
+      <td>0.894737</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>HI</td>
+      <td>1654</td>
+      <td>1014</td>
+      <td>2668</td>
+      <td>0.619940</td>
+      <td>0.380060</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>IA</td>
+      <td>5121</td>
+      <td>932</td>
+      <td>6053</td>
+      <td>0.846027</td>
+      <td>0.153973</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ID</td>
+      <td>2048</td>
+      <td>726</td>
+      <td>2774</td>
+      <td>0.738284</td>
+      <td>0.261716</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>IL</td>
+      <td>19368</td>
+      <td>5400</td>
+      <td>24768</td>
+      <td>0.781977</td>
+      <td>0.218023</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>IN</td>
+      <td>10454</td>
+      <td>2010</td>
+      <td>12464</td>
+      <td>0.838736</td>
+      <td>0.161264</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>KS</td>
+      <td>4378</td>
+      <td>1182</td>
+      <td>5560</td>
+      <td>0.787410</td>
+      <td>0.212590</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>KY</td>
+      <td>6670</td>
+      <td>1495</td>
+      <td>8165</td>
+      <td>0.816901</td>
+      <td>0.183099</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>LA</td>
+      <td>5352</td>
+      <td>3082</td>
+      <td>8434</td>
+      <td>0.634574</td>
+      <td>0.365426</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>MA</td>
+      <td>15509</td>
+      <td>4635</td>
+      <td>20144</td>
+      <td>0.769907</td>
+      <td>0.230093</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MD</td>
+      <td>10810</td>
+      <td>3356</td>
+      <td>14166</td>
+      <td>0.763095</td>
+      <td>0.236905</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ME</td>
+      <td>2650</td>
+      <td>585</td>
+      <td>3235</td>
+      <td>0.819165</td>
+      <td>0.180835</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MI</td>
+      <td>15094</td>
+      <td>5518</td>
+      <td>20612</td>
+      <td>0.732292</td>
+      <td>0.267708</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MN</td>
+      <td>12093</td>
+      <td>1235</td>
+      <td>13328</td>
+      <td>0.907338</td>
+      <td>0.092662</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MO</td>
+      <td>9919</td>
+      <td>2132</td>
+      <td>12051</td>
+      <td>0.823085</td>
+      <td>0.176915</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MP</td>
+      <td>2</td>
+      <td>31</td>
+      <td>33</td>
+      <td>0.060606</td>
+      <td>0.939394</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>MS</td>
+      <td>3211</td>
+      <td>1662</td>
+      <td>4873</td>
+      <td>0.658937</td>
+      <td>0.341063</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>MT</td>
+      <td>1712</td>
+      <td>483</td>
+      <td>2195</td>
+      <td>0.779954</td>
+      <td>0.220046</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NC</td>
+      <td>14980</td>
+      <td>3397</td>
+      <td>18377</td>
+      <td>0.815149</td>
+      <td>0.184851</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>ND</td>
+      <td>1456</td>
+      <td>207</td>
+      <td>1663</td>
+      <td>0.875526</td>
+      <td>0.124474</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NE</td>
+      <td>2795</td>
+      <td>869</td>
+      <td>3664</td>
+      <td>0.762828</td>
+      <td>0.237172</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>NH</td>
+      <td>2897</td>
+      <td>537</td>
+      <td>3434</td>
+      <td>0.843623</td>
+      <td>0.156377</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NJ</td>
+      <td>12525</td>
+      <td>7932</td>
+      <td>20457</td>
+      <td>0.612260</td>
+      <td>0.387740</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>NM</td>
+      <td>2548</td>
+      <td>971</td>
+      <td>3519</td>
+      <td>0.724069</td>
+      <td>0.275931</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NV</td>
+      <td>2678</td>
+      <td>1527</td>
+      <td>4205</td>
+      <td>0.636861</td>
+      <td>0.363139</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>NY</td>
+      <td>32045</td>
+      <td>13544</td>
+      <td>45589</td>
+      <td>0.702911</td>
+      <td>0.297089</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>OH</td>
+      <td>19348</td>
+      <td>4038</td>
+      <td>23386</td>
+      <td>0.827333</td>
+      <td>0.172667</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>OK</td>
+      <td>4267</td>
+      <td>2074</td>
+      <td>6341</td>
+      <td>0.672922</td>
+      <td>0.327078</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>OR</td>
+      <td>6204</td>
+      <td>1862</td>
+      <td>8066</td>
+      <td>0.769154</td>
+      <td>0.230846</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>PA</td>
+      <td>23908</td>
+      <td>5577</td>
+      <td>29485</td>
+      <td>0.810853</td>
+      <td>0.189147</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>PR</td>
+      <td>719</td>
+      <td>3216</td>
+      <td>3935</td>
+      <td>0.182719</td>
+      <td>0.817281</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>RI</td>
+      <td>1795</td>
+      <td>880</td>
+      <td>2675</td>
+      <td>0.671028</td>
+      <td>0.328972</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>SC</td>
+      <td>7009</td>
+      <td>1784</td>
+      <td>8793</td>
+      <td>0.797111</td>
+      <td>0.202889</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>SD</td>
+      <td>1493</td>
+      <td>297</td>
+      <td>1790</td>
+      <td>0.834078</td>
+      <td>0.165922</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>TN</td>
+      <td>8844</td>
+      <td>3021</td>
+      <td>11865</td>
+      <td>0.745386</td>
+      <td>0.254614</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>TX</td>
+      <td>27330</td>
+      <td>12889</td>
+      <td>40219</td>
+      <td>0.679530</td>
+      <td>0.320470</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>UT</td>
+      <td>3843</td>
+      <td>822</td>
+      <td>4665</td>
+      <td>0.823794</td>
+      <td>0.176206</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>VA</td>
+      <td>11752</td>
+      <td>3213</td>
+      <td>14965</td>
+      <td>0.785299</td>
+      <td>0.214701</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>VI</td>
+      <td>32</td>
+      <td>73</td>
+      <td>105</td>
+      <td>0.304762</td>
+      <td>0.695238</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>VT</td>
+      <td>1284</td>
+      <td>300</td>
+      <td>1584</td>
+      <td>0.810606</td>
+      <td>0.189394</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>WA</td>
+      <td>11825</td>
+      <td>2223</td>
+      <td>14048</td>
+      <td>0.841757</td>
+      <td>0.158243</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>WI</td>
+      <td>11337</td>
+      <td>1426</td>
+      <td>12763</td>
+      <td>0.888271</td>
+      <td>0.111729</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>WV</td>
+      <td>2873</td>
+      <td>817</td>
+      <td>3690</td>
+      <td>0.778591</td>
+      <td>0.221409</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>WY</td>
+      <td>870</td>
+      <td>358</td>
+      <td>1228</td>
+      <td>0.708469</td>
+      <td>0.291531</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># could also add per capita stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" class="level2">
+<h2 class="anchored" data-anchor-id="research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race">Research Q3: Community Representativeness: Age and Gender (as Stand-ins for Race)</h2>
+<p>With the growing interest in social determinants of health and community representation, our project has an opportunity to provide unique insights on how and whether physicians reflect the communities they serve. While our research will most likely focus on place of birth and race/ethnicity, we will instead use age and gender as a stand-in since these can be readily obtained from public data.</p>
+<p>Breakdown by Characteristics: Specialty Category, Organization Type</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use drop duplicates to ensure we only count a physician once per state</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'gndr'</span>, <span class="st">'age_imputed'</span>]].copy().drop_duplicates()</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># put ages into bins of 10 years</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>age_bins <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">110</span>, <span class="dv">10</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>idxs <span class="op">=</span> np.digitize(phys_estab_state[<span class="st">"age_imputed"</span>], age_bins)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add bin labels to dataset</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>phys_estab_state[<span class="st">"bin"</span>] <span class="op">=</span> idxs</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># group by state and bins and get total populations</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>phys_age_sex <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin"</span>]).agg({<span class="st">"NPI"</span>: <span class="st">"count"</span>, <span class="st">"age_imputed"</span>: <span class="st">"min"</span>}).reset_index()</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>phys_age_sex <span class="op">=</span> phys_age_sex.drop(columns<span class="op">=</span>[<span class="st">"bin"</span>])</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add state data</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop <span class="op">=</span> pd.merge(phys_age_sex, state_agesex, how<span class="op">=</span><span class="st">"left"</span>, left_on<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"age_imputed"</span>], right_on<span class="op">=</span>[<span class="st">"abr"</span>, <span class="st">"sex"</span>, <span class="st">"bin_min"</span>])</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># filter fields</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"NPI"</span>, <span class="st">"pop"</span>]]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># compute per 10k stat</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop[<span class="st">"phy_per_10k"</span>] <span class="op">=</span> phys_age_sex_pop[<span class="st">"NPI"</span>] <span class="op">/</span> (phys_age_sex_pop[<span class="st">"pop"</span>]<span class="op">/</span><span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="34">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="34">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>bin_min</th>
+      <th>NPI</th>
+      <th>pop</th>
+      <th>phy_per_10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>30.0</td>
+      <td>145</td>
+      <td>51272.0</td>
+      <td>28.280543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>40.0</td>
+      <td>168</td>
+      <td>40674.0</td>
+      <td>41.304027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>50.0</td>
+      <td>130</td>
+      <td>43451.0</td>
+      <td>29.918759</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>60.0</td>
+      <td>88</td>
+      <td>39819.0</td>
+      <td>22.100003</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>70.0</td>
+      <td>17</td>
+      <td>19719.0</td>
+      <td>8.621127</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>813</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>50.0</td>
+      <td>250</td>
+      <td>35040.0</td>
+      <td>71.347032</td>
+    </tr>
+    <tr>
+      <th>814</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>60.0</td>
+      <td>199</td>
+      <td>37838.0</td>
+      <td>52.592632</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>70.0</td>
+      <td>72</td>
+      <td>21138.0</td>
+      <td>34.061879</td>
+    </tr>
+    <tr>
+      <th>816</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>80.0</td>
+      <td>8</td>
+      <td>9006.0</td>
+      <td>8.882967</td>
+    </tr>
+    <tr>
+      <th>817</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>818 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">permutation tests</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">https://www.cs.cornell.edu/courses/cs1380/2018sp/textbook/chapters/16/1/two-categorical-distributions.html</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function to get proportion of a class in the data</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> proportions(array):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> array<span class="op">/</span>np.<span class="bu">sum</span>(array)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># total variation distance to measure how different categorical distributions are</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tvd(dist1, dist2):</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span><span class="op">*</span>(np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(dist1 <span class="op">-</span> dist2)))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># get the data associated with physicians</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>phys <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"NPI"</span>]].copy()</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># get the data associated with the general public</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"pop"</span>]].copy()</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column to flag whether the data is for phys or not</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>phys[<span class="st">"phy"</span>] <span class="op">=</span> <span class="st">"1"</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"phy"</span>] <span class="op">=</span> <span class="st">"0"</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two datasets</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.DataFrame(np.vstack([phys, population]), columns<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin"</span>, <span class="st">"pop"</span>, <span class="st">"phy"</span>]).fillna(<span class="dv">0</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co"># combine all categories into a single column</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">"cat"</span>] <span class="op">=</span> merged[<span class="st">"gndr"</span>] <span class="op">+</span> merged[<span class="st">"bin"</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>merged.drop(columns<span class="op">=</span>[<span class="st">"gndr"</span>, <span class="st">"bin"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># get a subset for testing</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> merged[merged[<span class="st">"st"</span>] <span class="op">==</span> <span class="st">"AK"</span>]</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>pop</th>
+      <th>phy</th>
+      <th>cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>145.0</td>
+      <td>1</td>
+      <td>F30.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>168.0</td>
+      <td>1</td>
+      <td>F40.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>130.0</td>
+      <td>1</td>
+      <td>F50.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>88.0</td>
+      <td>1</td>
+      <td>F60.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>17.0</td>
+      <td>1</td>
+      <td>F70.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AK</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AK</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AK</td>
+      <td>139.0</td>
+      <td>1</td>
+      <td>M30.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AK</td>
+      <td>273.0</td>
+      <td>1</td>
+      <td>M40.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AK</td>
+      <td>292.0</td>
+      <td>1</td>
+      <td>M50.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AK</td>
+      <td>196.0</td>
+      <td>1</td>
+      <td>M60.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AK</td>
+      <td>95.0</td>
+      <td>1</td>
+      <td>M70.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>AK</td>
+      <td>16.0</td>
+      <td>1</td>
+      <td>M80.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>AK</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>M0.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AK</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>M0.0</td>
+    </tr>
+    <tr>
+      <th>818</th>
+      <td>AK</td>
+      <td>51272.0</td>
+      <td>0</td>
+      <td>F30.0</td>
+    </tr>
+    <tr>
+      <th>819</th>
+      <td>AK</td>
+      <td>40674.0</td>
+      <td>0</td>
+      <td>F40.0</td>
+    </tr>
+    <tr>
+      <th>820</th>
+      <td>AK</td>
+      <td>43451.0</td>
+      <td>0</td>
+      <td>F50.0</td>
+    </tr>
+    <tr>
+      <th>821</th>
+      <td>AK</td>
+      <td>39819.0</td>
+      <td>0</td>
+      <td>F60.0</td>
+    </tr>
+    <tr>
+      <th>822</th>
+      <td>AK</td>
+      <td>19719.0</td>
+      <td>0</td>
+      <td>F70.0</td>
+    </tr>
+    <tr>
+      <th>823</th>
+      <td>AK</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>824</th>
+      <td>AK</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>825</th>
+      <td>AK</td>
+      <td>52633.0</td>
+      <td>0</td>
+      <td>M30.0</td>
+    </tr>
+    <tr>
+      <th>826</th>
+      <td>AK</td>
+      <td>43363.0</td>
+      <td>0</td>
+      <td>M40.0</td>
+    </tr>
+    <tr>
+      <th>827</th>
+      <td>AK</td>
+      <td>47407.0</td>
+      <td>0</td>
+      <td>M50.0</td>
+    </tr>
+    <tr>
+      <th>828</th>
+      <td>AK</td>
+      <td>41558.0</td>
+      <td>0</td>
+      <td>M60.0</td>
+    </tr>
+    <tr>
+      <th>829</th>
+      <td>AK</td>
+      <td>20398.0</td>
+      <td>0</td>
+      <td>M70.0</td>
+    </tr>
+    <tr>
+      <th>830</th>
+      <td>AK</td>
+      <td>6421.0</td>
+      <td>0</td>
+      <td>M80.0</td>
+    </tr>
+    <tr>
+      <th>831</th>
+      <td>AK</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>M0.0</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>AK</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>M0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> permutation_test(df, category, classes, repetitions):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a pivot table finding the number of phys/not in each category</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> pd.pivot_table(df, columns<span class="op">=</span>[classes], index<span class="op">=</span>category, aggfunc<span class="op">=</span>np.size)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># stop here if data is malformed</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"0"</span> <span class="kw">not</span> <span class="kw">in</span> counts.columns <span class="kw">or</span> <span class="st">"1"</span> <span class="kw">not</span> <span class="kw">in</span> counts.columns:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate tvd</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    observed_tvd <span class="op">=</span> tvd(proportions(counts[<span class="st">"0"</span>]), proportions(counts[<span class="st">"1"</span>]))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    tvds <span class="op">=</span> []</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shuffle data x times based on input</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(repetitions):</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># shuffle phys/not label</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        shuffled_var <span class="op">=</span> df[[classes]].sample(frac<span class="op">=</span><span class="dv">1</span>).to_numpy()</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add new label to df</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"shuffled"</span>] <span class="op">=</span> shuffled_var</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># recalculate pivot based on shuffled labels</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        shuffled_counts <span class="op">=</span> pd.pivot_table(df[[category, <span class="st">"shuffled"</span>]], columns<span class="op">=</span>[<span class="st">"shuffled"</span>], index<span class="op">=</span>category, aggfunc<span class="op">=</span>np.size)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate tvd based on shuffled counts</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        new_tvd <span class="op">=</span> tvd(proportions(shuffled_counts[<span class="st">"0"</span>]), proportions(shuffled_counts[<span class="st">"1"</span>]))</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># keep track of calculated values</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>        tvds.append(new_tvd)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate p-value</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    tvds <span class="op">=</span> np.array(tvds)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    emp_p <span class="op">=</span> np.count_nonzero(tvds <span class="op">&gt;=</span> observed_tvd)<span class="op">/</span>repetitions</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (observed_tvd, emp_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CAREFUL: takes forever (~hour for all 50 states)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> merged[<span class="st">"st"</span>].unique()</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, group <span class="kw">in</span> merged.groupby(<span class="st">"st"</span>):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># format the data so it is one row per person</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> group.loc[group.index.repeat(group[<span class="st">"pop"</span>])]</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># run function with relevant columns</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    vals <span class="op">=</span> permutation_test(group[[<span class="st">"phy"</span>, <span class="st">"cat"</span>]], <span class="st">"cat"</span>, <span class="st">"phy"</span>, <span class="dv">50</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    results.append([name, vals[<span class="dv">0</span>], vals[<span class="dv">1</span>]])</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>([name, vals[<span class="dv">0</span>], vals[<span class="dv">1</span>]])</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.9/site-packages/pandas/core/frame.py:3607: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._set_item(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['AK', 0.18021522997958397, 0.0]
+['AL', 0.2932136955124203, 0.0]
+['AR', 0.2937022718135871, 0.0]
+['AZ', 0.2606198561672938, 0.0]
+['CA', 0.2347407528633154, 0.0]
+['CO', 0.2288251123980192, 0.0]
+['CT', 0.23527136107987995, 0.0]
+['DC', 0, 0]
+['DE', 0.25029933860194475, 0.0]
+['FL', 0.3029553778100085, 0.0]
+['GA', 0.27281678989061126, 0.0]
+['GU', 0, 0]
+['HI', 0.19974944091922722, 0.0]
+['IA', 0.23998560753313636, 0.0]
+['ID', 0.24630874345728387, 0.0]
+['IL', 0.23441423101332284, 0.0]
+['IN', 0.2697486816663744, 0.0]
+['KS', 0.26336729446962004, 0.0]
+['KY', 0.2722768267897496, 0.0]
+['LA', 0.27347980078737105, 0.0]
+['MA', 0.1978436360546689, 0.0]
+['MD', 0.2289315610239334, 0.0]
+['ME', 0.21749939235094626, 0.0]
+['MI', 0.21914869692714858, 0.0]
+['MN', 0.21875506804397793, 0.0]
+['MO', 0.2580233284315929, 0.0]
+['MP', 0, 0]
+['MS', 0.3189530580657671, 0.0]
+['MT', 0.2821870597873727, 0.0]
+['NC', 0.25963133381598574, 0.0]
+['ND', 0.21149760129583914, 0.0]
+['NE', 0.2530966429205866, 0.0]
+['NH', 0.21119041454015075, 0.0]
+['NJ', 0.24876949889183236, 0.0]
+['NM', 0.2186982696570639, 0.0]
+['NV', 0.2855833315796024, 0.0]
+['NY', 0.24237199347297012, 0.0]
+['OH', 0.2520410830889507, 0.0]
+['OK', 0.2840563221741394, 0.0]
+['OR', 0.24334216904386435, 0.0]
+['PA', 0.25059056617991216, 0.0]
+['PR', 0, 0]
+['RI', 0.18583370830677687, 0.0]
+['SC', 0.27903244780381925, 0.0]
+['SD', 0.23387317242589084, 0.0]
+['TN', 0.2920888997854446, 0.0]
+['TX', 0.2648182719557806, 0.0]
+['UT', 0.30165251189624265, 0.0]
+['VA', 0.25963604454610856, 0.0]
+['VI', 0, 0]
+['VT', 0.17382601049143895, 0.0]
+['WA', 0.2198138521463306, 0.0]
+['WI', 0.2408151134735927, 0.0]
+['WV', 0.25620053560926886, 0.0]
+['WY', 0.29211924877081863, 0.0]
+[['AK', 0.18021522997958397, 0.0], ['AL', 0.2932136955124203, 0.0], ['AR', 0.2937022718135871, 0.0], ['AZ', 0.2606198561672938, 0.0], ['CA', 0.2347407528633154, 0.0], ['CO', 0.2288251123980192, 0.0], ['CT', 0.23527136107987995, 0.0], ['DC', 0, 0], ['DE', 0.25029933860194475, 0.0], ['FL', 0.3029553778100085, 0.0], ['GA', 0.27281678989061126, 0.0], ['GU', 0, 0], ['HI', 0.19974944091922722, 0.0], ['IA', 0.23998560753313636, 0.0], ['ID', 0.24630874345728387, 0.0], ['IL', 0.23441423101332284, 0.0], ['IN', 0.2697486816663744, 0.0], ['KS', 0.26336729446962004, 0.0], ['KY', 0.2722768267897496, 0.0], ['LA', 0.27347980078737105, 0.0], ['MA', 0.1978436360546689, 0.0], ['MD', 0.2289315610239334, 0.0], ['ME', 0.21749939235094626, 0.0], ['MI', 0.21914869692714858, 0.0], ['MN', 0.21875506804397793, 0.0], ['MO', 0.2580233284315929, 0.0], ['MP', 0, 0], ['MS', 0.3189530580657671, 0.0], ['MT', 0.2821870597873727, 0.0], ['NC', 0.25963133381598574, 0.0], ['ND', 0.21149760129583914, 0.0], ['NE', 0.2530966429205866, 0.0], ['NH', 0.21119041454015075, 0.0], ['NJ', 0.24876949889183236, 0.0], ['NM', 0.2186982696570639, 0.0], ['NV', 0.2855833315796024, 0.0], ['NY', 0.24237199347297012, 0.0], ['OH', 0.2520410830889507, 0.0], ['OK', 0.2840563221741394, 0.0], ['OR', 0.24334216904386435, 0.0], ['PA', 0.25059056617991216, 0.0], ['PR', 0, 0], ['RI', 0.18583370830677687, 0.0], ['SC', 0.27903244780381925, 0.0], ['SD', 0.23387317242589084, 0.0], ['TN', 0.2920888997854446, 0.0], ['TX', 0.2648182719557806, 0.0], ['UT', 0.30165251189624265, 0.0], ['VA', 0.25963604454610856, 0.0], ['VI', 0, 0], ['VT', 0.17382601049143895, 0.0], ['WA', 0.2198138521463306, 0.0], ['WI', 0.2408151134735927, 0.0], ['WV', 0.25620053560926886, 0.0], ['WY', 0.29211924877081863, 0.0]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load results into a pandas df</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tvd <span class="op">=</span> pd.DataFrame(results, columns <span class="op">=</span> [<span class="st">"st"</span>, <span class="st">"tvd"</span>, <span class="st">"pval"</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add it to the physician data by state</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>age_tvd <span class="op">=</span> pd.merge(phys_age_sex_pop, tvd, on<span class="op">=</span><span class="st">"st"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>age_tvd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>bin_min</th>
+      <th>NPI</th>
+      <th>pop</th>
+      <th>phy_per_10k</th>
+      <th>tvd</th>
+      <th>pval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>30.0</td>
+      <td>145</td>
+      <td>51272.0</td>
+      <td>28.280543</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>40.0</td>
+      <td>168</td>
+      <td>40674.0</td>
+      <td>41.304027</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>50.0</td>
+      <td>130</td>
+      <td>43451.0</td>
+      <td>29.918759</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>60.0</td>
+      <td>88</td>
+      <td>39819.0</td>
+      <td>22.100003</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>70.0</td>
+      <td>17</td>
+      <td>19719.0</td>
+      <td>8.621127</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>813</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>50.0</td>
+      <td>250</td>
+      <td>35040.0</td>
+      <td>71.347032</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>814</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>60.0</td>
+      <td>199</td>
+      <td>37838.0</td>
+      <td>52.592632</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>70.0</td>
+      <td>72</td>
+      <td>21138.0</td>
+      <td>34.061879</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>816</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>80.0</td>
+      <td>8</td>
+      <td>9006.0</td>
+      <td>8.882967</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>817</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>818 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q4-firm-market-concentration-by-geography" class="level2">
+<h2 class="anchored" data-anchor-id="research-q4-firm-market-concentration-by-geography">Research Q4: Firm Market Concentration by Geography</h2>
+<p>A key advantage of our data is that we can explicitly identify common ownership and individual places of work. Using data on common ownership – what are called firms, which are roughly equivalent to the concept of “health systems” in the health care arena – we can calculate the level of market concentration for specific geographies.</p>
+<p>Calculation: HHI (or consider CRn), using employed physicians as the measure of market power</p>
+<p>Breakdown by Geography: State, CBSA</p>
+<p>Follow-up question of interest: Market concentration of employeed physicians by certain specialties</p>
+<div class="cell" data-execution_count="73">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"org_pac_id"</span>]]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practice and then firm data</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_prac.merge(firms, on<span class="op">=</span><span class="st">"health_sys_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># get relevant columns for measuring market concentration</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_firm[[<span class="st">"NPI"</span>, <span class="st">"health_sys_name"</span>, <span class="st">"health_sys_state"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="89">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sdi(data):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> p(n, N):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">""" Relative abundance """</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">float</span>(n)<span class="op">/</span>N</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">sum</span>(data)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> (<span class="bu">sum</span>(p(n, N)<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> n <span class="kw">in</span> data <span class="cf">if</span> n <span class="op">!=</span> <span class="dv">0</span>))</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># get count of physicians per health system and state</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>phys_firm_cts <span class="op">=</span> phys_firm.groupby([<span class="st">"health_sys_name"</span>, <span class="st">"health_sys_state"</span>]).NPI.count().reset_index()</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate diversity of state based on Simpson's Index</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>phy_diversity <span class="op">=</span> phys_firm_cts.groupby(<span class="st">"health_sys_state"</span>)[<span class="st">"NPI"</span>].<span class="bu">apply</span>(<span class="bu">list</span>).<span class="bu">apply</span>(sdi).reset_index(name<span class="op">=</span><span class="st">"sdi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>phy_diversity</p>
+</section>
+<section id="from-this-point-on-my-answers-are-mostly-incomplete" class="level2">
+<h2 class="anchored" data-anchor-id="from-this-point-on-my-answers-are-mostly-incomplete">From this point on my answers are mostly incomplete</h2>
+</section>
+<section id="research-q5-business-ownershipintegration-across-states" class="level2">
+<h2 class="anchored" data-anchor-id="research-q5-business-ownershipintegration-across-states">Research Q5: Business Ownership/Integration Across States</h2>
+<p>Our data positions us to contribute new insights on industry consolidation. In this research question, we look at whether there are patterns in business consolidation across states and whether there are certain pairings of states that seem to be particularly well integrated.</p>
+<p>Breakdown by Geography: State, possibly CBSA</p>
+<p>Main challenge is to identify a proper metric (for instance, having a certain minimum number of physicians in another state before that other state is counted, possibly factoring in state size, etc.). May also want to consider ways to explicitly account for geographic proximity (such as neighboring states), including to assist with data presentation.</p>
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># find pairings of states based on whether physicians work in both states</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wordclouds?</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation?</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop_duplicates()</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>phys_sts <span class="op">=</span> phys_estab[[<span class="st">"NPI"</span>, <span class="st">"st"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="23">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>phys_sts_uniq <span class="op">=</span> phys_sts.groupby(<span class="st">"NPI"</span>).st.unique().reset_index(name<span class="op">=</span><span class="st">"states"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>phys_sts_uniq[<span class="st">"multi"</span>] <span class="op">=</span> np.where(<span class="bu">len</span>(phys_sts_uniq[<span class="st">"states"</span>]) <span class="op">&gt;</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>phys_sts_uniq[phys_sts_uniq[<span class="st">"multi"</span>] <span class="op">&gt;</span> <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="23">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>states</th>
+      <th>multi</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q6-secondary-sources-of-work-for-physicians" class="level2">
+<h2 class="anchored" data-anchor-id="research-q6-secondary-sources-of-work-for-physicians">Research Q6: Secondary Sources of Work for Physicians</h2>
+<p>Our data provides unique insights on the multiple sources of income received by physicians. From the public data, we do not have access to earnings information, to information on business activities outside of clinical care, and are not able to break down any metrics of business activity (like Medicare charges) by source of work. Instead, we will need to focus on the mix of organization types with whom the physician is affiliated.</p>
+<p>In effect, this becomes a table showing the share of physicians that work for one type of organization that also work for another type of organization.</p>
+<p>Breakdown by Characteristics: Age (young/old), Specialty Category</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop_duplicates()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practice information</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get relevant columns</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>phys_base <span class="op">=</span> phys_prac[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"org_pac_id"</span>, <span class="st">"practice_scope"</span>, <span class="st">"health_sys_id"</span>]].copy().drop_duplicates()</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># make a column for whether practice is linked to health system</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>phys_base[<span class="st">"health_sys"</span>] <span class="op">=</span> np.where(phys_base[<span class="st">"health_sys_id"</span>].isnull(), <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>phys_base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>st</th>
+      <th>org_pac_id</th>
+      <th>practice_scope</th>
+      <th>health_sys_id</th>
+      <th>health_sys</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1003000126</td>
+      <td>VA</td>
+      <td>4587979323</td>
+      <td>multi-unit, single-state</td>
+      <td>HSI00000492</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1003000134</td>
+      <td>IL</td>
+      <td>2163334699</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>HSI00000756</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1003000142</td>
+      <td>OH</td>
+      <td>2668522400</td>
+      <td>multi-unit, multi-state</td>
+      <td>HSI00000661</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1003000407</td>
+      <td>PA</td>
+      <td>3072579598</td>
+      <td>single-unit</td>
+      <td>HSI00000819</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1003000423</td>
+      <td>OH</td>
+      <td>5799794350</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1203604</th>
+      <td>1992998736</td>
+      <td>FL</td>
+      <td>9032361274</td>
+      <td>single-unit</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1203605</th>
+      <td>1992999031</td>
+      <td>CA</td>
+      <td>8325934482</td>
+      <td>multi-unit, single-state</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1203606</th>
+      <td>1992999122</td>
+      <td>FL</td>
+      <td>91992999122</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1203608</th>
+      <td>1992999551</td>
+      <td>CA</td>
+      <td>9335050517</td>
+      <td>multi-unit, single-state</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1203609</th>
+      <td>1992999825</td>
+      <td>WA</td>
+      <td>9830002617</td>
+      <td>multi-unit, single-state</td>
+      <td>HSI00001232</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>678976 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>grp_df <span class="op">=</span> phys_base.groupby([<span class="st">"NPI"</span>, <span class="st">"st"</span>]).agg(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    orgs_uniq <span class="op">=</span> (<span class="st">"org_pac_id"</span>, <span class="st">"nunique"</span>),</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    scopes_uniq <span class="op">=</span> (<span class="st">"practice_scope"</span>, <span class="st">"nunique"</span>),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    health_sys_uniq <span class="op">=</span> (<span class="st">"health_sys_id"</span>, <span class="st">"nunique"</span>)).reset_index()</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>phys_char <span class="op">=</span> pd.merge(phys_estab[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"age_imputed"</span>]].drop_duplicates(), grp_df, on<span class="op">=</span>[<span class="st">"NPI"</span>, <span class="st">"st"</span>], how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a column for old/young</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># cutoff based on average age: https://www.definitivehc.com/resources/healthcare-insights/average-provider-age-medical-specialty</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>phys_char[<span class="st">"old"</span>] <span class="op">=</span> np.where(phys_char[<span class="st">"age_imputed"</span>] <span class="op">&gt;</span> <span class="dv">53</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># topcode num orgs and scopes</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>phys_char[<span class="st">"scopes_uniq_top"</span>] <span class="op">=</span> np.where(phys_char[<span class="st">"scopes_uniq"</span>] <span class="op">&gt;</span> <span class="dv">3</span>, <span class="dv">3</span>, phys_char[<span class="st">"scopes_uniq"</span>])</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>phys_char[<span class="st">"orgs_uniq_top"</span>] <span class="op">=</span> np.where(phys_char[<span class="st">"orgs_uniq"</span>] <span class="op">&gt;</span> <span class="dv">3</span>, <span class="dv">3</span>, phys_char[<span class="st">"orgs_uniq"</span>])</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>phys_char <span class="op">=</span> phys_char[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"orgs_uniq_top"</span>, <span class="st">"scopes_uniq_top"</span>, <span class="st">"health_sys_uniq"</span>, <span class="st">"old"</span>]]</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>phys_char</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>st</th>
+      <th>orgs_uniq_top</th>
+      <th>scopes_uniq_top</th>
+      <th>health_sys_uniq</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1003000126</td>
+      <td>VA</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1003000134</td>
+      <td>IL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1003000142</td>
+      <td>OH</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1003000407</td>
+      <td>PA</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003000423</td>
+      <td>OH</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>587391</th>
+      <td>1992998736</td>
+      <td>FL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>587392</th>
+      <td>1992999031</td>
+      <td>CA</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>587393</th>
+      <td>1992999122</td>
+      <td>FL</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>587394</th>
+      <td>1992999551</td>
+      <td>CA</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>587395</th>
+      <td>1992999825</td>
+      <td>WA</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>587396 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for each state, look at how many physicians work 1, 2, or 3+ work scopes, broken down by age</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>pd.pivot_table(phys_char, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>               index<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"old"</span>], </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>               columns<span class="op">=</span>[<span class="st">"scopes_uniq_top"</span>], </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>               values<span class="op">=</span><span class="st">"NPI"</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>               aggfunc<span class="op">=</span>np.size).<span class="bu">apply</span>(<span class="kw">lambda</span> r: r<span class="op">/</span>r.<span class="bu">sum</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>scopes_uniq_top</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th>old</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">AK</th>
+      <th>0</th>
+      <td>0.072043</td>
+      <td>0.874194</td>
+      <td>0.050538</td>
+      <td>0.003226</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.206250</td>
+      <td>0.746875</td>
+      <td>0.040625</td>
+      <td>0.006250</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">AL</th>
+      <th>0</th>
+      <td>0.106004</td>
+      <td>0.837141</td>
+      <td>0.053932</td>
+      <td>0.002922</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.228238</td>
+      <td>0.733161</td>
+      <td>0.037047</td>
+      <td>0.001554</td>
+    </tr>
+    <tr>
+      <th>AR</th>
+      <th>0</th>
+      <td>0.083493</td>
+      <td>0.851015</td>
+      <td>0.062428</td>
+      <td>0.003064</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>WI</th>
+      <th>1</th>
+      <td>0.053662</td>
+      <td>0.851252</td>
+      <td>0.086989</td>
+      <td>0.008096</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">WV</th>
+      <th>0</th>
+      <td>0.075717</td>
+      <td>0.869659</td>
+      <td>0.047593</td>
+      <td>0.007031</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.230314</td>
+      <td>0.728242</td>
+      <td>0.034932</td>
+      <td>0.006513</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">WY</th>
+      <th>0</th>
+      <td>0.076023</td>
+      <td>0.875731</td>
+      <td>0.048246</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.183071</td>
+      <td>0.791339</td>
+      <td>0.025591</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>110 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do the same but for orgs</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>pd.pivot_table(phys_char, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               index<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"old"</span>], </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               columns<span class="op">=</span>[<span class="st">"orgs_uniq_top"</span>], </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>               values<span class="op">=</span><span class="st">"NPI"</span>, </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>               aggfunc<span class="op">=</span>np.size).<span class="bu">apply</span>(<span class="kw">lambda</span> r: r<span class="op">/</span>r.<span class="bu">sum</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>orgs_uniq_top</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th>old</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">AK</th>
+      <th>0</th>
+      <td>0.880645</td>
+      <td>0.096774</td>
+      <td>0.022581</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.882812</td>
+      <td>0.087500</td>
+      <td>0.029687</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">AL</th>
+      <th>0</th>
+      <td>0.875399</td>
+      <td>0.100425</td>
+      <td>0.024176</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.888860</td>
+      <td>0.091969</td>
+      <td>0.019171</td>
+    </tr>
+    <tr>
+      <th>AR</th>
+      <th>0</th>
+      <td>0.893910</td>
+      <td>0.098430</td>
+      <td>0.007660</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>WI</th>
+      <th>1</th>
+      <td>0.811523</td>
+      <td>0.148936</td>
+      <td>0.039541</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">WV</th>
+      <th>0</th>
+      <td>0.909681</td>
+      <td>0.077880</td>
+      <td>0.012439</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.907046</td>
+      <td>0.079337</td>
+      <td>0.013618</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">WY</th>
+      <th>0</th>
+      <td>0.907895</td>
+      <td>0.084795</td>
+      <td>0.007310</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.925197</td>
+      <td>0.061024</td>
+      <td>0.013780</td>
+    </tr>
+  </tbody>
+</table>
+<p>110 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q7-determinants-of-medicare-charges-as-stand-in-for-income" class="level2">
+<h2 class="anchored" data-anchor-id="research-q7-determinants-of-medicare-charges-as-stand-in-for-income">Research Q7: Determinants of Medicare Charges (as Stand-in for Income)</h2>
+<p>Our data provides unique insights on the incomes (and sources of income) of physicians. While we cannot measure income in public datasets, we can use Medicare Charges as a stand-in. The goal of this research question is to show which factors are associated with higher or lower incomes.</p>
+<p>Breakdown by Characteristics: Age, Specialty Category, Gender, Organization Type, Geography(State)</p>
+<div class="cell" data-execution_count="30">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"age_imputed"</span>, <span class="st">"medicare_charges"</span>, <span class="st">"org_pac_id"</span>]]</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practice and then firm data</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>phys_inc <span class="op">=</span> phys_prac[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"age_imputed"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>, <span class="st">"medicare_charges"</span>]].drop_duplicates()</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>phys_inc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>pri_spec_category</th>
+      <th>age_imputed</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1003000126</td>
+      <td>VA</td>
+      <td>M</td>
+      <td>Primary care</td>
+      <td>54.0</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>692640.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1003000134</td>
+      <td>IL</td>
+      <td>M</td>
+      <td>Hospital based</td>
+      <td>45.0</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>1143597.00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1003000142</td>
+      <td>OH</td>
+      <td>M</td>
+      <td>Hospital based</td>
+      <td>49.0</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>261064.00</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1003000407</td>
+      <td>PA</td>
+      <td>M</td>
+      <td>Primary care</td>
+      <td>45.0</td>
+      <td>single-unit</td>
+      <td>medium (6-19)</td>
+      <td>91196.00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1003000423</td>
+      <td>OH</td>
+      <td>F</td>
+      <td>OBGYN</td>
+      <td>41.0</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>16773.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1203604</th>
+      <td>1992998736</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>Primary care</td>
+      <td>41.0</td>
+      <td>single-unit</td>
+      <td>small (2-5)</td>
+      <td>124013.80</td>
+    </tr>
+    <tr>
+      <th>1203605</th>
+      <td>1992999031</td>
+      <td>CA</td>
+      <td>M</td>
+      <td>Medical specialty</td>
+      <td>42.0</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>38362.21</td>
+    </tr>
+    <tr>
+      <th>1203606</th>
+      <td>1992999122</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>Primary care</td>
+      <td>65.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>853391.00</td>
+    </tr>
+    <tr>
+      <th>1203608</th>
+      <td>1992999551</td>
+      <td>CA</td>
+      <td>F</td>
+      <td>Primary care</td>
+      <td>44.0</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>181414.40</td>
+    </tr>
+    <tr>
+      <th>1203609</th>
+      <td>1992999825</td>
+      <td>WA</td>
+      <td>M</td>
+      <td>Surgery specialty</td>
+      <td>43.0</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>310475.50</td>
+    </tr>
+  </tbody>
+</table>
+<p>650181 rows × 8 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="63">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> RFECV</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> phys_inc[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"age_imputed"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>]]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> phys_inc[<span class="st">"medicare_charges"</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.get_dummies(X, columns<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>]).fillna(<span class="dv">0</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>reg <span class="op">=</span> LinearRegression()</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> RFECV(reg, step<span class="op">=</span><span class="dv">1</span>, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> selector.fit(X, y)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>selector.score(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.9/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RFECV was fitted with feature names
+  warnings.warn(</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>0.07898071714042043</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="69">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> f_regression</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>fstat, pval <span class="op">=</span> f_regression(X, y)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>idxs <span class="op">=</span> np.argsort(fstat)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>top_preds <span class="op">=</span> X.columns[idxs]</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>top_preds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>Index(['practice_scope_multi-unit, single-cbsa', 'st_NC', 'st_IN',
+       'practice_size_sole practitioner', 'st_CA', 'st_AK', 'st_NH', 'st_NY',
+       'st_IA', 'st_VI', 'st_KY', 'st_NE', 'st_LA', 'st_MP', 'st_OK', 'st_AL',
+       'st_SD', 'st_WY', 'st_MO', 'st_WI', 'st_GU', 'st_WV', 'st_MD',
+       'practice_scope_multi-unit, multi-state', 'st_NM', 'st_ND', 'st_MT',
+       'st_KS', 'st_DC', 'st_CT', 'st_TN', 'st_VA', 'st_ID', 'st_AZ', 'st_GA',
+       'st_VT', 'st_IL', 'st_DE', 'st_AR', 'st_RI', 'st_CO',
+       'practice_scope_single-unit', 'st_UT', 'st_ME', 'st_HI', 'st_OR',
+       'st_NV', 'age_imputed', 'st_SC', 'st_MA',
+       'practice_scope_multi-unit, single-state', 'st_MS', 'st_WA', 'st_TX',
+       'st_OH', 'st_PA', 'st_MI', 'practice_size_small (2-5)', 'st_NJ',
+       'st_PR', 'st_MN', 'st_FL', 'pri_spec_category_Hospital based',
+       'practice_size_medium (6-19)', 'practice_size_large (20-99)',
+       'pri_spec_category_Psychiatry', 'pri_spec_category_OBGYN',
+       'pri_spec_category_Surgery specialty', 'gndr_F', 'gndr_M',
+       'pri_spec_category_Medical specialty',
+       'pri_spec_category_Primary care'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="research-q8-care-coordination-number-and-specialty-diversity-of-colleagues-by-organization-type" class="level2">
+<h2 class="anchored" data-anchor-id="research-q8-care-coordination-number-and-specialty-diversity-of-colleagues-by-organization-type">Research Q8: Care Coordination: Number and Specialty Diversity of Colleagues by Organization Type</h2>
+<p>Proponents of business consolidation often argue that larger firms can provide greater care coordination. While care coordination is difficult to measure directly, we can look at simple proxies like the number of colleagues a physician has and the diversity of the specialties held by those colleagues.</p>
+<p>Breakdown by Characteristics: Specialty Category, Firm vs.&nbsp;Practice</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"org_pac_id"</span>]]</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># collect physicians who work for each org</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>phys_org <span class="op">=</span> phys_estab.groupby([<span class="st">"org_pac_id"</span>, <span class="st">"st"</span>]).agg(</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    phys <span class="op">=</span> (<span class="st">"NPI"</span>, <span class="st">"nunique"</span>),</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    spec_ct <span class="op">=</span> (<span class="st">"pri_spec_category"</span>, <span class="st">"nunique"</span>),</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    specs <span class="op">=</span> (<span class="st">"pri_spec_category"</span>, <span class="st">"unique"</span>)).reset_index()</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># # self join to find physicians who work with eachother</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># phys_pairs = pd.merge(phys_estab, phys_org, on="org_pac_id", suffixes=("_prim", "_sec"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bin the number of physicians at each org</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>phys_org[<span class="st">"phys_bins"</span>] <span class="op">=</span> pd.cut(phys_org[<span class="st">"phys"</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="bu">float</span>(<span class="st">"inf"</span>)], right<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find the number of organizations with a certain number of physicians in each state</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>pd.crosstab(phys_org.st, phys_org.phys_bins).<span class="bu">apply</span>(<span class="kw">lambda</span> r: r<span class="op">/</span>r.<span class="bu">sum</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>phys_bins</th>
+      <th>[1.0, 2.0)</th>
+      <th>[2.0, 3.0)</th>
+      <th>[3.0, 4.0)</th>
+      <th>[4.0, 5.0)</th>
+      <th>[5.0, 10.0)</th>
+      <th>[10.0, inf)</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AK</th>
+      <td>0.583569</td>
+      <td>0.101983</td>
+      <td>0.079320</td>
+      <td>0.050992</td>
+      <td>0.087819</td>
+      <td>0.096317</td>
+    </tr>
+    <tr>
+      <th>AL</th>
+      <td>0.586597</td>
+      <td>0.144038</td>
+      <td>0.063969</td>
+      <td>0.052654</td>
+      <td>0.092689</td>
+      <td>0.060052</td>
+    </tr>
+    <tr>
+      <th>AR</th>
+      <td>0.622782</td>
+      <td>0.113912</td>
+      <td>0.046685</td>
+      <td>0.042017</td>
+      <td>0.096172</td>
+      <td>0.078431</td>
+    </tr>
+    <tr>
+      <th>AZ</th>
+      <td>0.667422</td>
+      <td>0.105700</td>
+      <td>0.048698</td>
+      <td>0.040015</td>
+      <td>0.058890</td>
+      <td>0.079275</td>
+    </tr>
+    <tr>
+      <th>CA</th>
+      <td>0.765214</td>
+      <td>0.083118</td>
+      <td>0.038153</td>
+      <td>0.024532</td>
+      <td>0.045154</td>
+      <td>0.043829</td>
+    </tr>
+    <tr>
+      <th>CO</th>
+      <td>0.559729</td>
+      <td>0.118842</td>
+      <td>0.068966</td>
+      <td>0.044335</td>
+      <td>0.096059</td>
+      <td>0.112069</td>
+    </tr>
+    <tr>
+      <th>CT</th>
+      <td>0.634097</td>
+      <td>0.111860</td>
+      <td>0.047170</td>
+      <td>0.047844</td>
+      <td>0.077493</td>
+      <td>0.081536</td>
+    </tr>
+    <tr>
+      <th>DC</th>
+      <td>0.662162</td>
+      <td>0.102703</td>
+      <td>0.056757</td>
+      <td>0.027027</td>
+      <td>0.048649</td>
+      <td>0.102703</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>0.623853</td>
+      <td>0.148624</td>
+      <td>0.044037</td>
+      <td>0.027523</td>
+      <td>0.097248</td>
+      <td>0.058716</td>
+    </tr>
+    <tr>
+      <th>FL</th>
+      <td>0.694813</td>
+      <td>0.109497</td>
+      <td>0.045729</td>
+      <td>0.028764</td>
+      <td>0.060940</td>
+      <td>0.060257</td>
+    </tr>
+    <tr>
+      <th>GA</th>
+      <td>0.607378</td>
+      <td>0.121247</td>
+      <td>0.064055</td>
+      <td>0.044038</td>
+      <td>0.087790</td>
+      <td>0.075493</td>
+    </tr>
+    <tr>
+      <th>GU</th>
+      <td>0.673469</td>
+      <td>0.122449</td>
+      <td>0.020408</td>
+      <td>0.020408</td>
+      <td>0.040816</td>
+      <td>0.122449</td>
+    </tr>
+    <tr>
+      <th>HI</th>
+      <td>0.779167</td>
+      <td>0.084375</td>
+      <td>0.040625</td>
+      <td>0.019792</td>
+      <td>0.035417</td>
+      <td>0.040625</td>
+    </tr>
+    <tr>
+      <th>IA</th>
+      <td>0.440459</td>
+      <td>0.120516</td>
+      <td>0.064562</td>
+      <td>0.050215</td>
+      <td>0.149211</td>
+      <td>0.175036</td>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <td>0.588737</td>
+      <td>0.122867</td>
+      <td>0.063140</td>
+      <td>0.037543</td>
+      <td>0.104096</td>
+      <td>0.083618</td>
+    </tr>
+    <tr>
+      <th>IL</th>
+      <td>0.637460</td>
+      <td>0.116469</td>
+      <td>0.054898</td>
+      <td>0.041981</td>
+      <td>0.070183</td>
+      <td>0.079010</td>
+    </tr>
+    <tr>
+      <th>IN</th>
+      <td>0.592801</td>
+      <td>0.097300</td>
+      <td>0.066367</td>
+      <td>0.030934</td>
+      <td>0.085489</td>
+      <td>0.127109</td>
+    </tr>
+    <tr>
+      <th>KS</th>
+      <td>0.534286</td>
+      <td>0.133333</td>
+      <td>0.063810</td>
+      <td>0.059048</td>
+      <td>0.100952</td>
+      <td>0.108571</td>
+    </tr>
+    <tr>
+      <th>KY</th>
+      <td>0.594558</td>
+      <td>0.125850</td>
+      <td>0.068027</td>
+      <td>0.036054</td>
+      <td>0.081633</td>
+      <td>0.093878</td>
+    </tr>
+    <tr>
+      <th>LA</th>
+      <td>0.644749</td>
+      <td>0.110502</td>
+      <td>0.052511</td>
+      <td>0.042466</td>
+      <td>0.089041</td>
+      <td>0.060731</td>
+    </tr>
+    <tr>
+      <th>MA</th>
+      <td>0.621420</td>
+      <td>0.094155</td>
+      <td>0.053747</td>
+      <td>0.036877</td>
+      <td>0.096116</td>
+      <td>0.097685</td>
+    </tr>
+    <tr>
+      <th>MD</th>
+      <td>0.665023</td>
+      <td>0.117647</td>
+      <td>0.052836</td>
+      <td>0.034167</td>
+      <td>0.058471</td>
+      <td>0.071856</td>
+    </tr>
+    <tr>
+      <th>ME</th>
+      <td>0.591837</td>
+      <td>0.104592</td>
+      <td>0.061224</td>
+      <td>0.028061</td>
+      <td>0.076531</td>
+      <td>0.137755</td>
+    </tr>
+    <tr>
+      <th>MI</th>
+      <td>0.635350</td>
+      <td>0.120564</td>
+      <td>0.059600</td>
+      <td>0.035032</td>
+      <td>0.076206</td>
+      <td>0.073248</td>
+    </tr>
+    <tr>
+      <th>MN</th>
+      <td>0.409091</td>
+      <td>0.126959</td>
+      <td>0.065831</td>
+      <td>0.048589</td>
+      <td>0.122257</td>
+      <td>0.227273</td>
+    </tr>
+    <tr>
+      <th>MO</th>
+      <td>0.569022</td>
+      <td>0.107065</td>
+      <td>0.061413</td>
+      <td>0.047826</td>
+      <td>0.104891</td>
+      <td>0.109783</td>
+    </tr>
+    <tr>
+      <th>MP</th>
+      <td>0.428571</td>
+      <td>0.285714</td>
+      <td>0.142857</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <th>MS</th>
+      <td>0.556424</td>
+      <td>0.138889</td>
+      <td>0.074653</td>
+      <td>0.049479</td>
+      <td>0.093750</td>
+      <td>0.086806</td>
+    </tr>
+    <tr>
+      <th>MT</th>
+      <td>0.573620</td>
+      <td>0.107362</td>
+      <td>0.030675</td>
+      <td>0.027607</td>
+      <td>0.113497</td>
+      <td>0.147239</td>
+    </tr>
+    <tr>
+      <th>NC</th>
+      <td>0.586871</td>
+      <td>0.138365</td>
+      <td>0.059355</td>
+      <td>0.036164</td>
+      <td>0.077437</td>
+      <td>0.101808</td>
+    </tr>
+    <tr>
+      <th>ND</th>
+      <td>0.482993</td>
+      <td>0.176871</td>
+      <td>0.081633</td>
+      <td>0.061224</td>
+      <td>0.108844</td>
+      <td>0.088435</td>
+    </tr>
+    <tr>
+      <th>NE</th>
+      <td>0.460133</td>
+      <td>0.171096</td>
+      <td>0.064784</td>
+      <td>0.073090</td>
+      <td>0.129568</td>
+      <td>0.101329</td>
+    </tr>
+    <tr>
+      <th>NH</th>
+      <td>0.473973</td>
+      <td>0.104110</td>
+      <td>0.054795</td>
+      <td>0.060274</td>
+      <td>0.131507</td>
+      <td>0.175342</td>
+    </tr>
+    <tr>
+      <th>NJ</th>
+      <td>0.680589</td>
+      <td>0.113660</td>
+      <td>0.052208</td>
+      <td>0.030469</td>
+      <td>0.065046</td>
+      <td>0.058028</td>
+    </tr>
+    <tr>
+      <th>NM</th>
+      <td>0.601942</td>
+      <td>0.129450</td>
+      <td>0.055016</td>
+      <td>0.048544</td>
+      <td>0.076052</td>
+      <td>0.088997</td>
+    </tr>
+    <tr>
+      <th>NV</th>
+      <td>0.672844</td>
+      <td>0.114424</td>
+      <td>0.049960</td>
+      <td>0.029815</td>
+      <td>0.066076</td>
+      <td>0.066882</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>0.726885</td>
+      <td>0.091162</td>
+      <td>0.044607</td>
+      <td>0.028656</td>
+      <td>0.053510</td>
+      <td>0.055179</td>
+    </tr>
+    <tr>
+      <th>OH</th>
+      <td>0.594944</td>
+      <td>0.121693</td>
+      <td>0.064668</td>
+      <td>0.036449</td>
+      <td>0.089359</td>
+      <td>0.092887</td>
+    </tr>
+    <tr>
+      <th>OK</th>
+      <td>0.674691</td>
+      <td>0.097662</td>
+      <td>0.051582</td>
+      <td>0.026823</td>
+      <td>0.074278</td>
+      <td>0.074966</td>
+    </tr>
+    <tr>
+      <th>OR</th>
+      <td>0.555352</td>
+      <td>0.114364</td>
+      <td>0.060384</td>
+      <td>0.050320</td>
+      <td>0.089661</td>
+      <td>0.129918</td>
+    </tr>
+    <tr>
+      <th>PA</th>
+      <td>0.610251</td>
+      <td>0.118679</td>
+      <td>0.064692</td>
+      <td>0.044191</td>
+      <td>0.087472</td>
+      <td>0.074715</td>
+    </tr>
+    <tr>
+      <th>PR</th>
+      <td>0.928856</td>
+      <td>0.032199</td>
+      <td>0.012879</td>
+      <td>0.008280</td>
+      <td>0.013186</td>
+      <td>0.004600</td>
+    </tr>
+    <tr>
+      <th>RI</th>
+      <td>0.660118</td>
+      <td>0.090373</td>
+      <td>0.051081</td>
+      <td>0.035363</td>
+      <td>0.072692</td>
+      <td>0.090373</td>
+    </tr>
+    <tr>
+      <th>SC</th>
+      <td>0.572656</td>
+      <td>0.109520</td>
+      <td>0.068003</td>
+      <td>0.050823</td>
+      <td>0.095920</td>
+      <td>0.103078</td>
+    </tr>
+    <tr>
+      <th>SD</th>
+      <td>0.476684</td>
+      <td>0.124352</td>
+      <td>0.051813</td>
+      <td>0.067358</td>
+      <td>0.088083</td>
+      <td>0.191710</td>
+    </tr>
+    <tr>
+      <th>TN</th>
+      <td>0.639421</td>
+      <td>0.110260</td>
+      <td>0.050660</td>
+      <td>0.038314</td>
+      <td>0.068114</td>
+      <td>0.093231</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>0.716031</td>
+      <td>0.101145</td>
+      <td>0.042939</td>
+      <td>0.029103</td>
+      <td>0.059160</td>
+      <td>0.051622</td>
+    </tr>
+    <tr>
+      <th>UT</th>
+      <td>0.594761</td>
+      <td>0.141757</td>
+      <td>0.063174</td>
+      <td>0.046225</td>
+      <td>0.070878</td>
+      <td>0.083205</td>
+    </tr>
+    <tr>
+      <th>VA</th>
+      <td>0.597701</td>
+      <td>0.118391</td>
+      <td>0.061303</td>
+      <td>0.043295</td>
+      <td>0.088506</td>
+      <td>0.090805</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>0.813333</td>
+      <td>0.080000</td>
+      <td>0.026667</td>
+      <td>0.040000</td>
+      <td>0.040000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>VT</th>
+      <td>0.628821</td>
+      <td>0.096070</td>
+      <td>0.052402</td>
+      <td>0.052402</td>
+      <td>0.078603</td>
+      <td>0.091703</td>
+    </tr>
+    <tr>
+      <th>WA</th>
+      <td>0.588682</td>
+      <td>0.102830</td>
+      <td>0.060732</td>
+      <td>0.039337</td>
+      <td>0.084196</td>
+      <td>0.124224</td>
+    </tr>
+    <tr>
+      <th>WI</th>
+      <td>0.471316</td>
+      <td>0.113611</td>
+      <td>0.055118</td>
+      <td>0.065242</td>
+      <td>0.107987</td>
+      <td>0.186727</td>
+    </tr>
+    <tr>
+      <th>WV</th>
+      <td>0.685012</td>
+      <td>0.103044</td>
+      <td>0.051522</td>
+      <td>0.025761</td>
+      <td>0.063232</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>WY</th>
+      <td>0.544554</td>
+      <td>0.135314</td>
+      <td>0.069307</td>
+      <td>0.049505</td>
+      <td>0.108911</td>
+      <td>0.092409</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bin the number of specialties</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># probably unnecessary since there are only 6 possibilities</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>phys_org[<span class="st">"spec_bins"</span>] <span class="op">=</span> pd.cut(phys_org[<span class="st">"spec_ct"</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], right<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># find the number of organizations with each number of specialties</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>pd.crosstab(phys_org.st, phys_org.spec_bins).<span class="bu">apply</span>(<span class="kw">lambda</span> r: r<span class="op">/</span>r.<span class="bu">sum</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>spec_bins</th>
+      <th>[1, 2)</th>
+      <th>[2, 3)</th>
+      <th>[3, 4)</th>
+      <th>[4, 5)</th>
+      <th>[5, 6)</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AK</th>
+      <td>0.860000</td>
+      <td>0.085714</td>
+      <td>0.025714</td>
+      <td>0.008571</td>
+      <td>0.020000</td>
+    </tr>
+    <tr>
+      <th>AL</th>
+      <td>0.871895</td>
+      <td>0.088017</td>
+      <td>0.021351</td>
+      <td>0.014379</td>
+      <td>0.004357</td>
+    </tr>
+    <tr>
+      <th>AR</th>
+      <td>0.881020</td>
+      <td>0.074599</td>
+      <td>0.024551</td>
+      <td>0.011331</td>
+      <td>0.008499</td>
+    </tr>
+    <tr>
+      <th>AZ</th>
+      <td>0.908849</td>
+      <td>0.061527</td>
+      <td>0.017850</td>
+      <td>0.006457</td>
+      <td>0.005317</td>
+    </tr>
+    <tr>
+      <th>CA</th>
+      <td>0.935370</td>
+      <td>0.047366</td>
+      <td>0.010940</td>
+      <td>0.003352</td>
+      <td>0.002972</td>
+    </tr>
+    <tr>
+      <th>CO</th>
+      <td>0.890199</td>
+      <td>0.071960</td>
+      <td>0.022953</td>
+      <td>0.006824</td>
+      <td>0.008065</td>
+    </tr>
+    <tr>
+      <th>CT</th>
+      <td>0.905506</td>
+      <td>0.065942</td>
+      <td>0.014956</td>
+      <td>0.006118</td>
+      <td>0.007478</td>
+    </tr>
+    <tr>
+      <th>DC</th>
+      <td>0.901099</td>
+      <td>0.057692</td>
+      <td>0.013736</td>
+      <td>0.016484</td>
+      <td>0.010989</td>
+    </tr>
+    <tr>
+      <th>DE</th>
+      <td>0.924494</td>
+      <td>0.049724</td>
+      <td>0.018416</td>
+      <td>0.003683</td>
+      <td>0.003683</td>
+    </tr>
+    <tr>
+      <th>FL</th>
+      <td>0.909899</td>
+      <td>0.067038</td>
+      <td>0.013193</td>
+      <td>0.006450</td>
+      <td>0.003420</td>
+    </tr>
+    <tr>
+      <th>GA</th>
+      <td>0.883467</td>
+      <td>0.086682</td>
+      <td>0.018083</td>
+      <td>0.006602</td>
+      <td>0.005166</td>
+    </tr>
+    <tr>
+      <th>GU</th>
+      <td>0.836735</td>
+      <td>0.061224</td>
+      <td>0.040816</td>
+      <td>0.020408</td>
+      <td>0.040816</td>
+    </tr>
+    <tr>
+      <th>HI</th>
+      <td>0.952929</td>
+      <td>0.031381</td>
+      <td>0.007322</td>
+      <td>0.005230</td>
+      <td>0.003138</td>
+    </tr>
+    <tr>
+      <th>IA</th>
+      <td>0.780523</td>
+      <td>0.100291</td>
+      <td>0.049419</td>
+      <td>0.045058</td>
+      <td>0.024709</td>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <td>0.879518</td>
+      <td>0.068847</td>
+      <td>0.022375</td>
+      <td>0.020654</td>
+      <td>0.008606</td>
+    </tr>
+    <tr>
+      <th>IL</th>
+      <td>0.894051</td>
+      <td>0.067955</td>
+      <td>0.021059</td>
+      <td>0.009553</td>
+      <td>0.007382</td>
+    </tr>
+    <tr>
+      <th>IN</th>
+      <td>0.867689</td>
+      <td>0.070415</td>
+      <td>0.030097</td>
+      <td>0.015900</td>
+      <td>0.015900</td>
+    </tr>
+    <tr>
+      <th>KS</th>
+      <td>0.862069</td>
+      <td>0.088123</td>
+      <td>0.020115</td>
+      <td>0.015326</td>
+      <td>0.014368</td>
+    </tr>
+    <tr>
+      <th>KY</th>
+      <td>0.871742</td>
+      <td>0.086420</td>
+      <td>0.016461</td>
+      <td>0.015089</td>
+      <td>0.010288</td>
+    </tr>
+    <tr>
+      <th>LA</th>
+      <td>0.889093</td>
+      <td>0.070119</td>
+      <td>0.021998</td>
+      <td>0.011457</td>
+      <td>0.007333</td>
+    </tr>
+    <tr>
+      <th>MA</th>
+      <td>0.885408</td>
+      <td>0.071372</td>
+      <td>0.022205</td>
+      <td>0.009913</td>
+      <td>0.011102</td>
+    </tr>
+    <tr>
+      <th>MD</th>
+      <td>0.902086</td>
+      <td>0.065394</td>
+      <td>0.018735</td>
+      <td>0.004949</td>
+      <td>0.008837</td>
+    </tr>
+    <tr>
+      <th>ME</th>
+      <td>0.859008</td>
+      <td>0.060052</td>
+      <td>0.033943</td>
+      <td>0.023499</td>
+      <td>0.023499</td>
+    </tr>
+    <tr>
+      <th>MI</th>
+      <td>0.888253</td>
+      <td>0.070758</td>
+      <td>0.023357</td>
+      <td>0.009847</td>
+      <td>0.007786</td>
+    </tr>
+    <tr>
+      <th>MN</th>
+      <td>0.772876</td>
+      <td>0.122549</td>
+      <td>0.044118</td>
+      <td>0.034314</td>
+      <td>0.026144</td>
+    </tr>
+    <tr>
+      <th>MO</th>
+      <td>0.857930</td>
+      <td>0.082048</td>
+      <td>0.029185</td>
+      <td>0.015969</td>
+      <td>0.014868</td>
+    </tr>
+    <tr>
+      <th>MP</th>
+      <td>0.714286</td>
+      <td>0.142857</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <th>MS</th>
+      <td>0.860017</td>
+      <td>0.089239</td>
+      <td>0.029746</td>
+      <td>0.013123</td>
+      <td>0.007874</td>
+    </tr>
+    <tr>
+      <th>MT</th>
+      <td>0.853125</td>
+      <td>0.062500</td>
+      <td>0.043750</td>
+      <td>0.021875</td>
+      <td>0.018750</td>
+    </tr>
+    <tr>
+      <th>NC</th>
+      <td>0.884478</td>
+      <td>0.071854</td>
+      <td>0.022628</td>
+      <td>0.011116</td>
+      <td>0.009925</td>
+    </tr>
+    <tr>
+      <th>ND</th>
+      <td>0.751773</td>
+      <td>0.163121</td>
+      <td>0.049645</td>
+      <td>0.014184</td>
+      <td>0.021277</td>
+    </tr>
+    <tr>
+      <th>NE</th>
+      <td>0.855946</td>
+      <td>0.090452</td>
+      <td>0.030151</td>
+      <td>0.011725</td>
+      <td>0.011725</td>
+    </tr>
+    <tr>
+      <th>NH</th>
+      <td>0.845506</td>
+      <td>0.075843</td>
+      <td>0.036517</td>
+      <td>0.030899</td>
+      <td>0.011236</td>
+    </tr>
+    <tr>
+      <th>NJ</th>
+      <td>0.900429</td>
+      <td>0.077597</td>
+      <td>0.012876</td>
+      <td>0.004807</td>
+      <td>0.004292</td>
+    </tr>
+    <tr>
+      <th>NM</th>
+      <td>0.844517</td>
+      <td>0.103110</td>
+      <td>0.022913</td>
+      <td>0.018003</td>
+      <td>0.011457</td>
+    </tr>
+    <tr>
+      <th>NV</th>
+      <td>0.909605</td>
+      <td>0.062954</td>
+      <td>0.016949</td>
+      <td>0.009685</td>
+      <td>0.000807</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>0.901690</td>
+      <td>0.066194</td>
+      <td>0.017832</td>
+      <td>0.007376</td>
+      <td>0.006909</td>
+    </tr>
+    <tr>
+      <th>OH</th>
+      <td>0.873850</td>
+      <td>0.077471</td>
+      <td>0.025824</td>
+      <td>0.011873</td>
+      <td>0.010982</td>
+    </tr>
+    <tr>
+      <th>OK</th>
+      <td>0.886806</td>
+      <td>0.070139</td>
+      <td>0.021528</td>
+      <td>0.008333</td>
+      <td>0.013194</td>
+    </tr>
+    <tr>
+      <th>OR</th>
+      <td>0.865438</td>
+      <td>0.061751</td>
+      <td>0.034101</td>
+      <td>0.023963</td>
+      <td>0.014747</td>
+    </tr>
+    <tr>
+      <th>PA</th>
+      <td>0.897218</td>
+      <td>0.070591</td>
+      <td>0.017015</td>
+      <td>0.008048</td>
+      <td>0.007128</td>
+    </tr>
+    <tr>
+      <th>PR</th>
+      <td>0.981288</td>
+      <td>0.014724</td>
+      <td>0.001840</td>
+      <td>0.001227</td>
+      <td>0.000920</td>
+    </tr>
+    <tr>
+      <th>RI</th>
+      <td>0.906375</td>
+      <td>0.049801</td>
+      <td>0.031873</td>
+      <td>0.009960</td>
+      <td>0.001992</td>
+    </tr>
+    <tr>
+      <th>SC</th>
+      <td>0.862518</td>
+      <td>0.087554</td>
+      <td>0.031114</td>
+      <td>0.013025</td>
+      <td>0.005789</td>
+    </tr>
+    <tr>
+      <th>SD</th>
+      <td>0.835979</td>
+      <td>0.068783</td>
+      <td>0.037037</td>
+      <td>0.026455</td>
+      <td>0.031746</td>
+    </tr>
+    <tr>
+      <th>TN</th>
+      <td>0.886510</td>
+      <td>0.074946</td>
+      <td>0.022270</td>
+      <td>0.008565</td>
+      <td>0.007709</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>0.925653</td>
+      <td>0.051574</td>
+      <td>0.013683</td>
+      <td>0.004880</td>
+      <td>0.004210</td>
+    </tr>
+    <tr>
+      <th>UT</th>
+      <td>0.879257</td>
+      <td>0.082043</td>
+      <td>0.021672</td>
+      <td>0.006192</td>
+      <td>0.010836</td>
+    </tr>
+    <tr>
+      <th>VA</th>
+      <td>0.894981</td>
+      <td>0.075676</td>
+      <td>0.017375</td>
+      <td>0.005405</td>
+      <td>0.006564</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>0.946667</td>
+      <td>0.026667</td>
+      <td>0.013333</td>
+      <td>0.013333</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>VT</th>
+      <td>0.858407</td>
+      <td>0.070796</td>
+      <td>0.026549</td>
+      <td>0.017699</td>
+      <td>0.026549</td>
+    </tr>
+    <tr>
+      <th>WA</th>
+      <td>0.896697</td>
+      <td>0.057625</td>
+      <td>0.021082</td>
+      <td>0.017569</td>
+      <td>0.007027</td>
+    </tr>
+    <tr>
+      <th>WI</th>
+      <td>0.832558</td>
+      <td>0.082558</td>
+      <td>0.038372</td>
+      <td>0.017442</td>
+      <td>0.029070</td>
+    </tr>
+    <tr>
+      <th>WV</th>
+      <td>0.863905</td>
+      <td>0.086391</td>
+      <td>0.026036</td>
+      <td>0.011834</td>
+      <td>0.011834</td>
+    </tr>
+    <tr>
+      <th>WY</th>
+      <td>0.834437</td>
+      <td>0.076159</td>
+      <td>0.039735</td>
+      <td>0.033113</td>
+      <td>0.016556</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for orgs with more than one specialty</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>spec_groups <span class="op">=</span> phys_org[phys_org[<span class="st">"specs"</span>].<span class="bu">str</span>.<span class="bu">len</span>() <span class="op">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get each combination of specialties seen in the data</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>combs <span class="op">=</span> spec_groups[<span class="st">"specs"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">list</span>(itertools.combinations(<span class="bu">sorted</span>(x), <span class="dv">2</span>)))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># find the combinations that occur most often</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>combs.explode().value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(Medical specialty, Primary care)         6271
+(Hospital based, Primary care)            5601
+(Hospital based, Medical specialty)       4440
+(Primary care, Surgery specialty)         3954
+(Hospital based, Surgery specialty)       3812
+(Medical specialty, Surgery specialty)    3546
+(OBGYN, Primary care)                     2319
+(OBGYN, Surgery specialty)                1929
+(Medical specialty, OBGYN)                1885
+(Primary care, Psychiatry)                1744
+(Hospital based, OBGYN)                   1705
+(Medical specialty, Psychiatry)           1373
+(Hospital based, Psychiatry)              1228
+(Psychiatry, Surgery specialty)           1180
+(OBGYN, Psychiatry)                        933
+Name: specs, dtype: int64</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

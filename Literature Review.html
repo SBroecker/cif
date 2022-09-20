@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – literature-review</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Privacy Models for EHealth - Intro and Scope.html">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Literature Review.html" aria-current="page">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./E-Health DP Guide.html">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples.html">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - DP.html">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - Synthetic Data.html">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#references-privacy-models" id="toc-references-privacy-models" class="nav-link active" data-scroll-target="#references-privacy-models">References: Privacy Models</a>
+  <ul class="collapse">
+  <li><a href="#recommended-readings-for-discussion-group" id="toc-recommended-readings-for-discussion-group" class="nav-link" data-scroll-target="#recommended-readings-for-discussion-group">Recommended Readings for Discussion Group</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
+  <ul class="collapse">
+  <li><a href="#introductory" id="toc-introductory" class="nav-link" data-scroll-target="#introductory">Introductory</a></li>
+  <li><a href="#technical" id="toc-technical" class="nav-link" data-scroll-target="#technical">Technical</a></li>
+  <li><a href="#the-deep-end" id="toc-the-deep-end" class="nav-link" data-scroll-target="#the-deep-end">“The Deep End”</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#literature-review-privacy-models" id="toc-literature-review-privacy-models" class="nav-link" data-scroll-target="#literature-review-privacy-models">Literature Review: Privacy Models</a>
+  <ul class="collapse">
+  <li><a href="#summary-1a-main-concepts---disclosure-avoidance" id="toc-summary-1a-main-concepts---disclosure-avoidance" class="nav-link" data-scroll-target="#summary-1a-main-concepts---disclosure-avoidance">Summary 1a: Main Concepts - Disclosure Avoidance</a>
+  <ul class="collapse">
+  <li><a href="#background-disclosure-avoidance" id="toc-background-disclosure-avoidance" class="nav-link" data-scroll-target="#background-disclosure-avoidance">Background: Disclosure Avoidance</a></li>
+  <li><a href="#background-traditional-techniques" id="toc-background-traditional-techniques" class="nav-link" data-scroll-target="#background-traditional-techniques">Background: Traditional Techniques</a></li>
+  <li><a href="#background-data-disclosure-risks" id="toc-background-data-disclosure-risks" class="nav-link" data-scroll-target="#background-data-disclosure-risks">Background: Data Disclosure Risks</a></li>
+  </ul></li>
+  <li><a href="#summary-1b-main-concepts---differential-privacy" id="toc-summary-1b-main-concepts---differential-privacy" class="nav-link" data-scroll-target="#summary-1b-main-concepts---differential-privacy">Summary 1b: Main Concepts - Differential Privacy</a>
+  <ul class="collapse">
+  <li><a href="#differential-privacy-what-is-it" id="toc-differential-privacy-what-is-it" class="nav-link" data-scroll-target="#differential-privacy-what-is-it">Differential Privacy: What is it?</a></li>
+  <li><a href="#differential-privacy-real-world-use" id="toc-differential-privacy-real-world-use" class="nav-link" data-scroll-target="#differential-privacy-real-world-use">Differential Privacy: Real-world use</a></li>
+  <li><a href="#differential-privacy-how-it-works" id="toc-differential-privacy-how-it-works" class="nav-link" data-scroll-target="#differential-privacy-how-it-works">Differential Privacy: How it works</a></li>
+  <li><a href="#privacy-accuracy-tradeoff" id="toc-privacy-accuracy-tradeoff" class="nav-link" data-scroll-target="#privacy-accuracy-tradeoff">Privacy-Accuracy Tradeoff</a></li>
+  <li><a href="#other-key-concepts-governing-dp" id="toc-other-key-concepts-governing-dp" class="nav-link" data-scroll-target="#other-key-concepts-governing-dp">Other Key Concepts Governing DP</a></li>
+  <li><a href="#two-approaches-to-dp-noisy-statistics-vs.-synthetic-data" id="toc-two-approaches-to-dp-noisy-statistics-vs.-synthetic-data" class="nav-link" data-scroll-target="#two-approaches-to-dp-noisy-statistics-vs.-synthetic-data">Two approaches to DP: Noisy statistics vs.&nbsp;Synthetic data</a></li>
+  </ul></li>
+  <li><a href="#summary-2-technical-and-business-challenges-in-census-2020-implementation" id="toc-summary-2-technical-and-business-challenges-in-census-2020-implementation" class="nav-link" data-scroll-target="#summary-2-technical-and-business-challenges-in-census-2020-implementation">Summary 2: Technical and Business Challenges in Census 2020 Implementation</a>
+  <ul class="collapse">
+  <li><a href="#scientific-issues-encountered-deploying-differential-privacy" id="toc-scientific-issues-encountered-deploying-differential-privacy" class="nav-link" data-scroll-target="#scientific-issues-encountered-deploying-differential-privacy">Scientific Issues Encountered Deploying Differential Privacy</a></li>
+  <li><a href="#operational-issues-encountered-deploying-differential-privacy" id="toc-operational-issues-encountered-deploying-differential-privacy" class="nav-link" data-scroll-target="#operational-issues-encountered-deploying-differential-privacy">Operational Issues Encountered Deploying Differential Privacy</a></li>
+  <li><a href="#devils-advocate" id="toc-devils-advocate" class="nav-link" data-scroll-target="#devils-advocate">“Devil’s Advocate”</a></li>
+  </ul></li>
+  <li><a href="#summary-3-implementation---opportunity-atlas-example" id="toc-summary-3-implementation---opportunity-atlas-example" class="nav-link" data-scroll-target="#summary-3-implementation---opportunity-atlas-example">Summary 3: Implementation - Opportunity Atlas Example</a>
+  <ul class="collapse">
+  <li><a href="#summary-a-practical-method-to-reduce-privacy-loss-when-disclosing-statistics-based-on-small-samples" id="toc-summary-a-practical-method-to-reduce-privacy-loss-when-disclosing-statistics-based-on-small-samples" class="nav-link" data-scroll-target="#summary-a-practical-method-to-reduce-privacy-loss-when-disclosing-statistics-based-on-small-samples">Summary: A Practical Method to Reduce Privacy Loss When Disclosing Statistics Based on Small Samples</a></li>
+  <li><a href="#key-concepts-from-paper-and-method" id="toc-key-concepts-from-paper-and-method" class="nav-link" data-scroll-target="#key-concepts-from-paper-and-method">Key Concepts from Paper and Method</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<section id="references-privacy-models" class="level1">
+<h1>References: Privacy Models</h1>
+<section id="recommended-readings-for-discussion-group" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-readings-for-discussion-group">Recommended Readings for Discussion Group</h2>
+<p>On August 3, 2022, the EHealth Team convened a knowledge sharing session to review and discuss introductory videos and readings on the topic of differential privacy, including:</p>
+<ul>
+<li><strong>Lay Audience:</strong> Minute Physics’ <strong><a href="https://youtu.be/pT19VwBAqKA">Protecting Privacy with Math</a></strong> (video: 10m)
+<ul>
+<li><em>This short but excellent video produced in partnership with the US Census Bureau provides a high-level overview of the promise of Differential Privacy, intended for a general audience.</em></li>
+</ul></li>
+<li><strong>Non-Technical Overview:</strong> MIT Press’ <strong><a href="https://youtu.be/cOu-sTV8J2M">Designing Access with Differential Privacy</a></strong> (webinar video: 25m) (alternative: <strong><a href="https://admindatahandbook.mit.edu/book/v1.0/diffpriv.html">book chapter</a></strong>)
+<ul>
+<li><em>In this video, Alexandra Wood of Harvard University and the Berkman Center presents her chapter from the new <strong><a href="https://admindatahandbook.mit.edu/">Handbook on Using Administrative Data for Research and Evidence-Based Policy</a></strong> from MIT Press. She explains how administrative data containing personal information can be collected, analyzed, and published in a way that ensures the individuals in the data will be afforded the strong protections of differential privacy.</em></li>
+<li><em>For those interested, the Handbook is a fantastic resource that is well worth a bookmark. Each chapter is available as a webpage, PDF, and short video webinar. If you prefer reading over viewing videos, you can browse her chapter for free. The appendix includes useful additional content, including links to tools and guidelines for operationalizing differential privacy.</em></li>
+</ul></li>
+<li><strong>Business Challenges:</strong> Abowd’s <strong><a href="https://arxiv.org/pdf/1809.02201">Issues Encountered Deploying Differential Privacy</a></strong> (article: 4p)
+<ul>
+<li><em>In this short article, Abowd and team discuss the unanticipated challenges encountered in implementing differential privacy in practice within a statistics agency. This included challenges with: obtaining qualified personnel and computing infrastructure, accounting for and balancing a diverse range of users and needs, generating micro data to meet established expectations, and determining a proper value for the privacy-loss parameter. For those interested in more, Michael Hawes describes <strong><a href="https://hdsr.mitpress.mit.edu/pub/dgg03vo6/release/4">7 lessons learned</a></strong> in Harvard Data Science Review.</em></li>
+</ul></li>
+<li><strong>Technical Implementation:</strong> Chetty and Friedman’s <strong><a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/pandp.20191109">A Practical Method to Reduce Privacy Loss when Disclosing Statistics based on Small Samples</a></strong> (article: 7p)
+<ul>
+<li><em>In this paper, Raj Chetty (Harvard Univ.) and John Friedman (Brown Univ.) discuss their implementation of a differential privacy-inspired mechanism for releasing protected statistics at small geographic levels for the groundbreaking and influential <strong><a href="https://www.opportunityatlas.org/">Opportunity Atlas</a></strong> that uses Census data to identify the social mobility of all neighborhoods in the United States. Not only did this mechanism make it possible to release such granular statistics, it also reduced bias relative to traditional disclosure methods.</em></li>
+<li><em>For those interested, a <strong><a href="https://www.nber.org/system/files/working_papers/w25626/w25626.pdf">longer version of the paper</a></strong> with more detail on their Opportunity Atlas use case and implementation is available from NBER.</em></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/readings.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">readings.png</figcaption><p></p>
+</figure>
+</div>
+<p>Please see the summary sections below for the main ideas discussed and taken from these readings.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<p>The readings below proved helpful for this project.</p>
+<section id="introductory" class="level3">
+<h3 class="anchored" data-anchor-id="introductory">Introductory</h3>
+<ul>
+<li><p>US Census: Differential Privacy 101 Webinar. (first 20min). <a href="https://youtu.be/Hsh1R1WA0kU">https://youtu.be/Hsh1R1WA0kU</a></p></li>
+<li><p>Wood et al.&nbsp;(2020). Differential Privacy: A Primer for Non-Technical Audiences. <a href="https://scholarship.law.vanderbilt.edu/jetlaw/vol21/iss1/4/">https://scholarship.law.vanderbilt.edu/jetlaw/vol21/iss1/4/</a></p></li>
+<li><p>McKay Bowen, C. (Aug 2021). Personal Privacy and the Public Good. Urban Institute Research Report. <a href="https://www.urban.org/sites/default/files/publication/104694/privacy-and-the-public-good_0_0.pdf">https://www.urban.org/sites/default/files/publication/104694/privacy-and-the-public-good_0_0.pdf</a></p></li>
+<li><p>Drechsler, J. (Feb 2021). Differential privacy for government agencies: Are we there yet? <a href="https://privacytools.seas.harvard.edu/files/privacytools/files/are_we_there_yet_-_2102.08847.pdf">https://privacytools.seas.harvard.edu/files/privacytools/files/are_we_there_yet_-_2102.08847.pdf</a></p></li>
+<li><p>Science (Jan 2019). Can a set of equations keep US census data private? (magazine article). <a href="https://www.science.org/content/article/can-set-equations-keep-us-census-data-private">https://www.science.org/content/article/can-set-equations-keep-us-census-data-private</a></p></li>
+<li><p>New York Times (April 2022). The 2020 Census suggests that people live underwater. There’s a reason. (newspaper article). <a href="https://www.nytimes.com/2022/04/21/us/census-data-privacy-concerns.html">https://www.nytimes.com/2022/04/21/us/census-data-privacy-concerns.html</a></p></li>
+</ul>
+</section>
+<section id="technical" class="level3">
+<h3 class="anchored" data-anchor-id="technical">Technical</h3>
+<ul>
+<li><p>NBER (2020). Summer Institute Methods Lectures: Differential Privacy for Economists. <a href="https://www.nber.org/lecture/summer-institute-2020-methods-lectures-differential-privacy-economists">https://www.nber.org/lecture/summer-institute-2020-methods-lectures-differential-privacy-economists</a></p></li>
+<li><p>Desfontaines, D. of Google (2020). Lowering the cost of anonymization (thesis and blog). <a href="http://desfontain.es/thesis/index.html">http://desfontain.es/thesis/index.html</a></p></li>
+<li><p>Foote et al.&nbsp;(Apr 2019). Releasing Earnings Distributions using Differential Privacy: Disclosure Avoidance System for Post-Secondary Employment Outcomes (PSEO). <a href="https://www2.census.gov/ces/wp/2019/CES-WP-19-13.pdf">https://www2.census.gov/ces/wp/2019/CES-WP-19-13.pdf</a></p></li>
+<li><p>US Census (2021). 2020 Decennial Census: Disclosure Avoidance Modernization. (website). <a href="https://www.census.gov/programs-surveys/decennial-census/decade/2020/planning-management/process/disclosure-avoidance.html">https://www.census.gov/programs-surveys/decennial-census/decade/2020/planning-management/process/disclosure-avoidance.html</a></p>
+<ul>
+<li>Github repo with implementation information: <a href="https://github.com/uscensusbureau/DAS_2020_Redistricting_Production_Code/wiki/Background">https://github.com/uscensusbureau/DAS_2020_Redistricting_Production_Code/wiki/Background</a></li>
+</ul></li>
+<li><p>US Census (May 2021). Differential Privacy 201 and the TopDown Algorithm Webinar. <a href="https://youtu.be/bRIoE0rqwAw">https://youtu.be/bRIoE0rqwAw</a></p></li>
+</ul>
+</section>
+<section id="the-deep-end" class="level3">
+<h3 class="anchored" data-anchor-id="the-deep-end">“The Deep End”</h3>
+<ul>
+<li><p>Algorithm that won NIST’s synthetic data competition: <a href="https://arxiv.org/pdf/2108.04978.pdf">https://arxiv.org/pdf/2108.04978.pdf</a></p>
+<ul>
+<li>Mechanism behind that algorithm: <a href="https://arxiv.org/pdf/1901.09136.pdf">https://arxiv.org/pdf/1901.09136.pdf</a></li>
+</ul></li>
+<li><p>MWEM, a popular approach for synthetic data: <a href="https://www.cs.huji.ac.il/~katrina//papers/mwem-nips.pdf">https://www.cs.huji.ac.il/~katrina//papers/mwem-nips.pdf</a></p></li>
+<li><p>Choosing epsilon: <a href="https://par.nsf.gov/servlets/purl/10217360">https://par.nsf.gov/servlets/purl/10217360</a></p></li>
+<li><p>Impact of DP on redistricting: <a href="https://www.science.org/doi/10.1126/sciadv.abk3283">https://www.science.org/doi/10.1126/sciadv.abk3283</a></p></li>
+<li><p>Continuous Data Release: <a href="https://arxiv.org/pdf/1711.11436.pdf">https://arxiv.org/pdf/1711.11436.pdf</a></p></li>
+<li><p>HDMM, an algorithm used in the 2020 Census: <a href="http://www.vldb.org/pvldb/vol11/p1206-mckenna.pdf">http://www.vldb.org/pvldb/vol11/p1206-mckenna.pdf</a></p></li>
+<li><p>An extension of k-anonymity: l-diversity: <a href="https://personal.utdallas.edu/~mxk055100/courses/privacy08f_files/ldiversity.pdf">https://personal.utdallas.edu/~mxk055100/courses/privacy08f_files/ldiversity.pdf</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="literature-review-privacy-models" class="level1">
+<h1>Literature Review: Privacy Models</h1>
+<section id="summary-1a-main-concepts---disclosure-avoidance" class="level2">
+<h2 class="anchored" data-anchor-id="summary-1a-main-concepts---disclosure-avoidance">Summary 1a: Main Concepts - Disclosure Avoidance</h2>
+<section id="background-disclosure-avoidance" class="level3">
+<h3 class="anchored" data-anchor-id="background-disclosure-avoidance">Background: Disclosure Avoidance</h3>
+<ul>
+<li><p>The purpose of employing disclosure avoidance methods is to prevent, or at least make it more difficult, to reconstruct the underlying data and re-identify the people or businesses described by the released data products.</p></li>
+<li><p>This is done by:</p>
+<ul>
+<li><strong>Reducing precision</strong> (ex: rounding to 2 significant digits)</li>
+<li><strong>Removing vulnerable records</strong> (ex: only 2 families with 8+ members in a tract)</li>
+<li><strong>Adding uncertainty</strong> (ex: noise injection)</li>
+</ul></li>
+</ul>
+</section>
+<section id="background-traditional-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="background-traditional-techniques">Background: Traditional Techniques</h3>
+<p>Traditional disclosure avoidance techniques often have the benefit of being:</p>
+<ul>
+<li><p><strong>Simple to understand</strong></p></li>
+<li><p><strong>Universally applicable</strong></p></li>
+</ul>
+<p>But less appealing features include that they…</p>
+<ul>
+<li><p>Can be <strong>blunt instruments</strong>;</p></li>
+<li><p>Traditionally <strong>lack the ability to clearly estimate the privacy risk</strong> / level of protection offered beyond basic assumptions and rules of thumb;</p></li>
+<li><p><strong>Often require secrecy</strong> of the precise methods/calibration used and its consequences which can impact research by preventing researchers from counteracting or managing the unknown biases and uncertainty introduced.</p></li>
+</ul>
+<p>Examples of traditional techniques include:</p>
+<ul>
+<li><strong>Rounding</strong></li>
+<li><strong>Suppression rules</strong></li>
+<li><strong>Coarsening and top/bottom coding</strong></li>
+<li><strong>Record swapping</strong></li>
+<li><strong>Sampling</strong></li>
+<li><strong>Noise infusion</strong></li>
+<li><strong>Synthetic Data and multiple imputation</strong></li>
+</ul>
+</section>
+<section id="background-data-disclosure-risks" class="level3">
+<h3 class="anchored" data-anchor-id="background-data-disclosure-risks">Background: Data Disclosure Risks</h3>
+<ul>
+<li><strong>Identity:</strong> Linking a particular record to an individual</li>
+<li><strong>Attribute:</strong> The data reveals an attribute of an individual</li>
+<li><strong>Inferential:</strong> The data reveals an attribute with high certainty</li>
+</ul>
+<p>(Note: Non-sensitive attributes can be used to identify records, too)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/lr_table1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lr_table1.png</figcaption><p></p>
+</figure>
+</div>
+<p>Traditional techniques include:</p>
+<ul>
+<li><strong>De-identification:</strong> remove direct identifiers.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/lr_table2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lr_table2.png</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><strong>Suppression:</strong> remove values that hava high risk for disclosure.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/lr_table3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lr_table3.png</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><strong>Coursening:</strong> grouping values into categories or top/bottom coding.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/lr_table4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lr_table4.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="summary-1b-main-concepts---differential-privacy" class="level2">
+<h2 class="anchored" data-anchor-id="summary-1b-main-concepts---differential-privacy">Summary 1b: Main Concepts - Differential Privacy</h2>
+<section id="differential-privacy-what-is-it" class="level3">
+<h3 class="anchored" data-anchor-id="differential-privacy-what-is-it">Differential Privacy: What is it?</h3>
+<ul>
+<li><p>Over the past two decades, we have come to see that traditional de-anonymization techniques often fail to protect the privacy of individuals in sensitive datasets.</p></li>
+<li><p>To address this problem, computer scientists introduced <strong>differential privacy</strong>, a strong statistical notion of privacy that bounds the amount of information a statistical release leaks about any individual.</p></li>
+<li><p>Differential Privacy is a formal mathematical <strong>framework</strong> for quantifying and managing privacy risks. Its key feature is that it provides a <strong>quantifiable guarantee of privacy</strong>.</p></li>
+<li><p>Note that this is not a substitute for disclosure avoidance algorithms and techniques (like noise infusion, data swapping, etc.); instead, it offers a method for <strong>measuring and thereby controlling risk</strong>.</p></li>
+</ul>
+</section>
+<section id="differential-privacy-real-world-use" class="level3">
+<h3 class="anchored" data-anchor-id="differential-privacy-real-world-use">Differential Privacy: Real-world use</h3>
+<ul>
+<li><p>Used widely by tech companies, including Google, Apple, Facebook, and Microsoft to protect the data they collect from users – everything from emoji usage to self-reported personal health metrics. (Typically using the “local” model where the device applies differential privacy before collection by the tech company).</p></li>
+<li><p>More recently, considered an emerging option for releasing statistical products and microdata using the “curator” model where a trusted party like the US Census collects data and then applies differential privacy in a secure environment before releasing the differentially private dataset or statistics.</p></li>
+<li><p>First use at Census was the LODES On The Map application in 2009. Most prominent use is the 2020 Census. Experimental products also often use DP, including the post secondary education outcomes products.</p></li>
+<li><p>MIT Technology Review named DP as one of the top ten technologies expected to have “widespread consequences for human life.”</p></li>
+</ul>
+</section>
+<section id="differential-privacy-how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="differential-privacy-how-it-works">Differential Privacy: How it works</h3>
+<ul>
+<li>An analysis satisfied differential privacy if the information it yields about someone doesn’t depend on whether that person is in the database. Put another way, “even if the participant removed her data from the dataset, no outputs … would become significantly more or less likely.”</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/dp_flow.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dp_flow.png</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>This definition has the advantage that formalization yields a metric summarizing an algorithm’s level of “privacy” in a single number (ϵ). Data owners can finely “tune” this to meet precise confidentiality (or accuracy) needs
+<ul>
+<li>What is the maximum privacy loss that is acceptable and what is the minimum utility required? These considerations can be tricky to balance since they are not in the same unit—and there is not yet agreement on what makes for a “proper” epsilon.</li>
+</ul></li>
+</ul>
+</section>
+<section id="privacy-accuracy-tradeoff" class="level3">
+<h3 class="anchored" data-anchor-id="privacy-accuracy-tradeoff">Privacy-Accuracy Tradeoff</h3>
+<p>Choosing an appropriate epsilon is about finding a balance between accuracy and privacy. Probably the most common method of finding that balance is running a repeated calculation with varying epsilon values and measuring the resulting error. The following graph is one such example. In it, epsilon is incremented by 0.1 between a starting value of 0.1 and a final value of 2, and each corresponding error value is plotted.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/tradeoff.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tradeoff.png</figcaption><p></p>
+</figure>
+</div>
+<p>The “optimal” epsilon can then be chosen in several ways. One would be to choose epsilon based on a maximum allowable error, either in absolute or percentage terms. In this method, you would choose the smallest epsilon that still falls below the maximum allowed error. Another method would be by choosing an epsilon at the “elbow” of the epsilon/error graph. The idea behind this method is to choose an epsilon just before you start seeing the improvement in marginal accuracy start to level off.</p>
+</section>
+<section id="other-key-concepts-governing-dp" class="level3">
+<h3 class="anchored" data-anchor-id="other-key-concepts-governing-dp">Other Key Concepts Governing DP</h3>
+<p><strong>Composition:</strong></p>
+<ul>
+<li>DP’s rule of composition means that the ε applied by different applications can simply be summed to obtain the collective risk.</li>
+</ul>
+<p><strong>Privacy Budget:</strong></p>
+<ul>
+<li>DP moves away from the binary notion of “is the individual’s private information exposed or not” to a matter of accumulative risk.</li>
+<li>Privacy loss that accumulates over multiple computations must therefore be “calculated, tracked, and limited” by an established “privacy budget.”<br>
+</li>
+<li>Just as with a household budget, it is “easy to waste privacy loss budget without ‘financial’ planning.” One common practice is to preserve some privacy budget for unanticipated and future uses.</li>
+</ul>
+<p><strong>Sensitivity:</strong></p>
+<ul>
+<li>Accuracy is a function of ϵ and the sensitivity of the data (i.e.&nbsp;how much impact a single record can have when added or removed).</li>
+<li>Example: Adding a billionaire to a Census tract has a sensitivity of +/- 1 in terms of population count, but will have a much more dramatic impact on mean income.</li>
+</ul>
+<p><strong>Transparency:</strong></p>
+<ul>
+<li>DP allows for full transparency of methods, code, and calibration (just need to protect randomization). This allows researchers to potentially counteract resulting biases and better manage the uncertainty introduced into the data.</li>
+<li>Moving away from “security through obscurity.”</li>
+</ul>
+</section>
+<section id="two-approaches-to-dp-noisy-statistics-vs.-synthetic-data" class="level3">
+<h3 class="anchored" data-anchor-id="two-approaches-to-dp-noisy-statistics-vs.-synthetic-data">Two approaches to DP: Noisy statistics vs.&nbsp;Synthetic data</h3>
+<p>There are two main flavors of differential privacy. The first is the application of random noise to pre-calculated statistics. In this version of differential privacy, an analysis is run on the original dataset and then some form of 0-centered noise (Laplace, Gaussian, etc.) is added to create a differentially private analysis.</p>
+<p>The second form of differential privacy is synthetic data generation. In this form, you create a model of the original dataset, use that model to create a new dataset, and then run your analysis on the new dataset. If your new dataset was generated correctly, it won’t include records from the original dataset, but an analysis run on both datasets should give you the same answer, with some margin of error.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/models.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">models.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="summary-2-technical-and-business-challenges-in-census-2020-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="summary-2-technical-and-business-challenges-in-census-2020-implementation">Summary 2: Technical and Business Challenges in Census 2020 Implementation</h2>
+<section id="scientific-issues-encountered-deploying-differential-privacy" class="level3">
+<h3 class="anchored" data-anchor-id="scientific-issues-encountered-deploying-differential-privacy">Scientific Issues Encountered Deploying Differential Privacy</h3>
+<ul>
+<li><p><strong>Invariants</strong>: characteristics that cannot be changed or for which no noise can be introduced (ex: maintaining the actual state-level population counts for Census 2020)</p></li>
+<li><p><strong>Metrics</strong>: quantifying the tradeoff between privacy and accuracy</p></li>
+<li><p><strong>Equity</strong>: how is the privacy budget allocated?</p></li>
+<li><p><strong>Choosing Epsilon</strong>: policy decision based on societal values</p>
+<ul>
+<li>Maintaining flexibility for future data</li>
+</ul></li>
+<li><p><strong>Iterative data releases</strong> and correlative statistics</p></li>
+</ul>
+</section>
+<section id="operational-issues-encountered-deploying-differential-privacy" class="level3">
+<h3 class="anchored" data-anchor-id="operational-issues-encountered-deploying-differential-privacy">Operational Issues Encountered Deploying Differential Privacy</h3>
+<ul>
+<li><p><strong>Tools and personnel</strong></p></li>
+<li><p><strong>Choosing low-sensitivity queries:</strong> Children per household vs Total children</p></li>
+<li><p><strong>Structural vs Sampling Zero:</strong> is it 0 because it can’t exist or because it doesn’t exist in this context?</p></li>
+<li><p><strong>Computational Power</strong></p></li>
+<li><p><strong>Final Specifications:</strong> how is the data going to be used?</p></li>
+<li><p><strong>User Expectations:</strong> requirements for internal consistency and non-negative counts (correcting for this can introduce more error than DP itself)</p></li>
+</ul>
+</section>
+<section id="devils-advocate" class="level3">
+<h3 class="anchored" data-anchor-id="devils-advocate">“Devil’s Advocate”</h3>
+<ul>
+<li>A recent critique in Communications of the ACM argues that “fundamental misunderstandings and blatantly flawed implementations pervade the application of DP”.</li>
+<li>Critics argue that the ε &lt;= 1 recommended by the founders of DP as necessary to “obtain a meaningful privacy guarantee” often leads to “very poor” analytical utility—and, as a result, most real-world implementations use an “unreasonably large ε.” (Apple iOS=14, Google=9, Census person file=17.14). Such high values “are pointless in terms of privacy”, as the privacy guarantee “completely fades away.”</li>
+<li>Also problematic: too often, data collectors and providers do not release the value of ε. Others employ sophisticated relaxations of DP to allow for a nominally lower value but without necessarily a true reduction in risk.</li>
+<li>Big limitation: “it is impossible to collect DP-protected data from a community of respondents an indefinite number of times with a meaningful privacy guarantee” (ex: Apple only protects over a single day).</li>
+</ul>
+</section>
+</section>
+<section id="summary-3-implementation---opportunity-atlas-example" class="level2">
+<h2 class="anchored" data-anchor-id="summary-3-implementation---opportunity-atlas-example">Summary 3: Implementation - Opportunity Atlas Example</h2>
+<section id="summary-a-practical-method-to-reduce-privacy-loss-when-disclosing-statistics-based-on-small-samples" class="level3">
+<h3 class="anchored" data-anchor-id="summary-a-practical-method-to-reduce-privacy-loss-when-disclosing-statistics-based-on-small-samples">Summary: A Practical Method to Reduce Privacy Loss When Disclosing Statistics Based on Small Samples</h3>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Unusually rich detail on individual outcomes at a very high geographic resolution.</li>
+<li>Almost certainly would not be publishable under conventional disclosure rules—and actually improves over cell suppression and other traditional techniques in terms of preserving accuracy.</li>
+</ul>
+<p><strong>Required a few pragmatic compromises:</strong></p>
+<ul>
+<li>Adopted slight relaxations that technically break differential privacy, but which abide by traditional assumptions of disclosure avoidance. (Note: newer methods allow for this while continuing to offer formal privacy guarantee).</li>
+<li>Allowing a relatively high value of ε to ensure the data meets public policy needs: i.e.&nbsp;that housing authorities could use the data to identify tracts in the top and bottom tail of the distribution (“moving to opportunity”).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/opportunityatlas.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">opportunityatlas.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="key-concepts-from-paper-and-method" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts-from-paper-and-method">Key Concepts from Paper and Method</h3>
+<p><strong>Marginals:</strong></p>
+<ul>
+<li>Distinct sets of attributes</li>
+</ul>
+<p><strong>Cells:</strong></p>
+<ul>
+<li>Stratifying attributes (Ac) and metric attributes (Am)&nbsp;</li>
+<li>Each unique combination of stratifying attributes is called a cell&nbsp;</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Literature%20Review_files/figure-html/chetty_sample.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">chetty_sample.png</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Query sensitivity:</strong></p>
+<ul>
+<li>The maximum difference between outcome of a marginal query when run on D and D’ (databases differing by one record)</li>
+<li>More sensitivity calls for more noise</li>
+</ul>
+<p><strong>Local/global sensitivity:</strong></p>
+<ul>
+<li>Global – sensitivity across the entire dataset</li>
+<li>Local – sensitivity within a cell</li>
+</ul>
+<p><strong>Maximum observed sensitivity:</strong></p>
+<ul>
+<li>Disclosing sensitivity within each cell releases information</li>
+<li>Use the largest local sensitivity for every cell’s noise infusion</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

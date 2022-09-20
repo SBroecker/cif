@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – examples---synthetic-data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Privacy Models for EHealth - Intro and Scope.html">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Literature Review.html">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./E-Health DP Guide.html">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples.html">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - DP.html">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Examples - Synthetic Data.html" aria-current="page">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#differential-privacy-examples" id="toc-differential-privacy-examples" class="nav-link active" data-scroll-target="#differential-privacy-examples">Differential Privacy: Examples</a>
+  <ul class="collapse">
+  <li><a href="#prep-load-libraries-and-datasets" id="toc-prep-load-libraries-and-datasets" class="nav-link" data-scroll-target="#prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</a>
+  <ul class="collapse">
+  <li><a href="#install-redacted" id="toc-install-redacted" class="nav-link" data-scroll-target="#install-redacted">Install Redacted</a>
+  <ul class="collapse">
+  <li><a href="#update-pip" id="toc-update-pip" class="nav-link" data-scroll-target="#update-pip">Update pip</a></li>
+  <li><a href="#install-from-wheel-file" id="toc-install-from-wheel-file" class="nav-link" data-scroll-target="#install-from-wheel-file">Install from wheel file</a></li>
+  </ul></li>
+  <li><a href="#install-mst" id="toc-install-mst" class="nav-link" data-scroll-target="#install-mst">Install MST</a>
+  <ul class="collapse">
+  <li><a href="#private-pgm" id="toc-private-pgm" class="nav-link" data-scroll-target="#private-pgm">private-pgm</a></li>
+  <li><a href="#ibm-functions" id="toc-ibm-functions" class="nav-link" data-scroll-target="#ibm-functions">IBM functions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#format-data" id="toc-format-data" class="nav-link" data-scroll-target="#format-data">Format Data</a></li>
+  <li><a href="#decode-synthetic-data" id="toc-decode-synthetic-data" class="nav-link" data-scroll-target="#decode-synthetic-data">Decode Synthetic Data</a></li>
+  <li><a href="#research-q1-ratio-of-physicians-to-population-by-geography" id="toc-research-q1-ratio-of-physicians-to-population-by-geography" class="nav-link" data-scroll-target="#research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</a>
+  <ul class="collapse">
+  <li><a href="#calculate-physicians-per-specialty-from-true-data-true-data-with-noise-and-synthetic-data" id="toc-calculate-physicians-per-specialty-from-true-data-true-data-with-noise-and-synthetic-data" class="nav-link" data-scroll-target="#calculate-physicians-per-specialty-from-true-data-true-data-with-noise-and-synthetic-data">Calculate physicians per specialty from true data, true data with noise, and synthetic data</a></li>
+  <li><a href="#calculate-physicians-per-specialty-per-state-from-true-data-true-data-with-noise-and-synthetic-data" id="toc-calculate-physicians-per-specialty-per-state-from-true-data-true-data-with-noise-and-synthetic-data" class="nav-link" data-scroll-target="#calculate-physicians-per-specialty-per-state-from-true-data-true-data-with-noise-and-synthetic-data">Calculate physicians per specialty per state from true data, true data with noise, and synthetic data</a></li>
+  </ul></li>
+  <li><a href="#research-q2-distribution-of-physicians-by-organization-type" id="toc-research-q2-distribution-of-physicians-by-organization-type" class="nav-link" data-scroll-target="#research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</a></li>
+  <li><a href="#and-so-on" id="toc-and-so-on" class="nav-link" data-scroll-target="#and-so-on">And so on…</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<section id="differential-privacy-examples" class="level1">
+<h1>Differential Privacy: Examples</h1>
+<p><i>CDF Summer Project 2022</i></p>
+<section id="prep-load-libraries-and-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</h2>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data science libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-scrolled="true" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>physicians <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"physicians.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>establishments <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"establishments.csv"</span>, dtype<span class="op">=</span>{<span class="st">'zip'</span>: <span class="bu">str</span>, <span class="st">'zip9'</span>: <span class="bu">str</span>, <span class="st">'zip3'</span>: <span class="bu">str</span>})</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>practices <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"practices.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>firms <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"firms.csv"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>phys2estab <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2estab.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>phys2prac <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2prac.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="install-redacted" class="level3">
+<h3 class="anchored" data-anchor-id="install-redacted">Install Redacted</h3>
+<p>This portion of the notebook is meant to be run from your console/command prompt.</p>
+<section id="update-pip" class="level4">
+<h4 class="anchored" data-anchor-id="update-pip">Update pip</h4>
+<p>I had issues with an SSL error the first time I tried installing Redacted, and I solved that by updating pip:</p>
+<pre><code>python -m pip install --upgrade --force-reinstall pip</code></pre>
+</section>
+<section id="install-from-wheel-file" class="level4">
+<h4 class="anchored" data-anchor-id="install-from-wheel-file">Install from wheel file</h4>
+<p>From the directory with the Redacted wheel file, run:</p>
+<pre><code>pip install redacted-0.7.0-py3-none-any.whl</code></pre>
+</section>
+</section>
+<section id="install-mst" class="level3">
+<h3 class="anchored" data-anchor-id="install-mst">Install MST</h3>
+<section id="private-pgm" class="level4">
+<h4 class="anchored" data-anchor-id="private-pgm">private-pgm</h4>
+<p>The core functions used in MST are from a github repo called private-pgm. They can be installed with:</p>
+<pre><code>pip install git+https://github.com/ryan112358/private-pgm.git</code></pre>
+</section>
+<section id="ibm-functions" class="level4">
+<h4 class="anchored" data-anchor-id="ibm-functions">IBM functions</h4>
+<p>MST uses a function called cdp2adp that comes from a github repo published by IBM. You can get them with:</p>
+<pre><code>git clone https://github.com/IBM/discrete-gaussian-differential-privacy.git
+mv discrete-gaussian-differential-privacy ibm</code></pre>
+<p>This will put the files needed for the function in a directory called ibm.</p>
+<p>You’ll need to add this to your python file to actually use cdp2adp:</p>
+<pre><code>import sys
+import os
+sys.path.append(os.getcwd() + "/ibm")</code></pre>
+</section>
+</section>
+</section>
+<section id="format-data" class="level2">
+<h2 class="anchored" data-anchor-id="format-data">Format Data</h2>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practices and firms</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_prac.merge(firms, on<span class="op">=</span><span class="st">"health_sys_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># define the columns we want to keep</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"age_imputed"</span>, <span class="st">"tin_name"</span>, <span class="st">"practice_type_random"</span>, <span class="st">"health_sys_state"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>, <span class="st">"medicare_charges"</span>]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all other columns</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> phys_firm[columns].drop_duplicates()</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># clean a few values</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> dataset[<span class="st">"age_imputed"</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> np.where(dataset[<span class="st">"age_imputed"</span>] <span class="op">&gt;</span> <span class="dv">85</span>, <span class="dv">85</span>, dataset[<span class="st">"age_imputed"</span>].astype(<span class="bu">int</span>))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># bin the medicare charges</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"</span><span class="sc">{0}</span><span class="st"> - </span><span class="sc">{1}</span><span class="st">"</span>.<span class="bu">format</span>(i, i <span class="op">+</span> <span class="dv">999999</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">55000000</span>, <span class="dv">1000000</span>)]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"medicare_charges"</span>] <span class="op">=</span> dataset[<span class="st">"medicare_charges"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"medicare_charges"</span>] <span class="op">=</span> pd.cut(dataset.medicare_charges, bins<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="dv">56000000</span>, <span class="dv">1000000</span>), right<span class="op">=</span><span class="va">False</span>, labels<span class="op">=</span>labels)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># get rid of nulls in non-numeric columns</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>string_cols <span class="op">=</span> dataset.select_dtypes(include<span class="op">=</span>[np.<span class="bu">object</span>]).columns</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> string_cols:</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    dataset[col] <span class="op">=</span> dataset[col].fillna(<span class="st">"nan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>tin_name</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1003000126</td>
+      <td>VA</td>
+      <td>M</td>
+      <td>54</td>
+      <td>Commonwealth Hospitalist Group Llc</td>
+      <td>type-4</td>
+      <td>TN</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1003000134</td>
+      <td>IL</td>
+      <td>M</td>
+      <td>45</td>
+      <td>Northshore University Healthsystem Faculty Pra...</td>
+      <td>type-2</td>
+      <td>IL</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>1000000 - 1999999</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1003000142</td>
+      <td>OH</td>
+      <td>M</td>
+      <td>49</td>
+      <td>Mercy Health Physicians - North, Llc.</td>
+      <td>type-2</td>
+      <td>OH</td>
+      <td>Hospital based</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1003000407</td>
+      <td>PA</td>
+      <td>M</td>
+      <td>45</td>
+      <td>Brookville Hospital</td>
+      <td>type-3</td>
+      <td>PA</td>
+      <td>Primary care</td>
+      <td>single-unit</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1003000423</td>
+      <td>OH</td>
+      <td>F</td>
+      <td>41</td>
+      <td>Lake Obstetrics &amp; Gynecology, Inc.</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>OBGYN</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1203604</th>
+      <td>1992998736</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>41</td>
+      <td>Premier Family &amp; Sports Medicine, Llc</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>single-unit</td>
+      <td>small (2-5)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203605</th>
+      <td>1992999031</td>
+      <td>CA</td>
+      <td>M</td>
+      <td>42</td>
+      <td>Austin J Ma Md A Professional Corporation</td>
+      <td>type-8</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203606</th>
+      <td>1992999122</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>65</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203608</th>
+      <td>1992999551</td>
+      <td>CA</td>
+      <td>F</td>
+      <td>44</td>
+      <td>Graybill Medical Group Inc</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203609</th>
+      <td>1992999825</td>
+      <td>WA</td>
+      <td>M</td>
+      <td>43</td>
+      <td>Virginia Mason Medical Center</td>
+      <td>type-9</td>
+      <td>WA</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672614 rows × 11 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="decode-synthetic-data" class="level2">
+<h2 class="anchored" data-anchor-id="decode-synthetic-data">Decode Synthetic Data</h2>
+<p>The remaining steps in the synthesis process can be seen in the <em>E-Health DP Guide</em> notebook. I’m going to assume you’ve run those steps and have synthetic datasets saved in the appropriate locations</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># drop identifiers</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>dataset_presyn <span class="op">=</span> dataset.drop(columns<span class="op">=</span>[<span class="st">"NPI"</span>, <span class="st">"tin_name"</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get a list of the columns in the dataset</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> dataset_presyn.columns</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dict to store the mappings</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> cols:</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a mapping between the dataset's values and numbers</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    le <span class="op">=</span> preprocessing.LabelEncoder()</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    le.fit(dataset_presyn[col])</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep track of the mapping</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    mapping[col] <span class="op">=</span> [le, le.classes_]</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># read MST data from csv</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>mst_synth <span class="op">=</span> pd.read_csv(<span class="st">"synth-data.csv"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># read Redacted data from parquet</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>cen_synth <span class="op">=</span> pd.read_parquet(<span class="st">"syn_data/syn.parquet"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># create empty DFs for decoded data</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>synth_df_mst <span class="op">=</span> pd.DataFrame(index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(mst_synth)), columns<span class="op">=</span>cols)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>synth_df_cen <span class="op">=</span> pd.DataFrame(index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(cen_synth)), columns<span class="op">=</span>cols)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># decode MST data using mappings</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    synth_df_mst[key] <span class="op">=</span> value[<span class="dv">0</span>].inverse_transform(mst_synth[key].astype(<span class="bu">int</span>))</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># decode Redacted data with the mappings</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    synth_df_cen[key] <span class="op">=</span> value[<span class="dv">0</span>].inverse_transform(cen_synth[key].astype(<span class="bu">int</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>synth_df_mst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FL</td>
+      <td>F</td>
+      <td>36</td>
+      <td>type-2</td>
+      <td>FL</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>36</td>
+      <td>type-3</td>
+      <td>nan</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NJ</td>
+      <td>F</td>
+      <td>38</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>OBGYN</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-8</td>
+      <td>NY</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DC</td>
+      <td>F</td>
+      <td>51</td>
+      <td>type-4</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>672629</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>63</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672630</th>
+      <td>NJ</td>
+      <td>M</td>
+      <td>55</td>
+      <td>type-2</td>
+      <td>nan</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672631</th>
+      <td>CT</td>
+      <td>M</td>
+      <td>40</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672632</th>
+      <td>IN</td>
+      <td>F</td>
+      <td>45</td>
+      <td>type-0</td>
+      <td>IN</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672633</th>
+      <td>LA</td>
+      <td>M</td>
+      <td>48</td>
+      <td>type-1</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>single-unit</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672634 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>synth_df_cen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>60</td>
+      <td>type-0</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>single-unit</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>85</td>
+      <td>type-7</td>
+      <td>TX</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GA</td>
+      <td>M</td>
+      <td>38</td>
+      <td>type-6</td>
+      <td>GA</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>56</td>
+      <td>type-4</td>
+      <td>NY</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NY</td>
+      <td>F</td>
+      <td>44</td>
+      <td>type-8</td>
+      <td>MI</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>672609</th>
+      <td>AK</td>
+      <td>M</td>
+      <td>70</td>
+      <td>type-3</td>
+      <td>nan</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>small (2-5)</td>
+      <td>1000000 - 1999999</td>
+    </tr>
+    <tr>
+      <th>672610</th>
+      <td>PA</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-5</td>
+      <td>PA</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672611</th>
+      <td>PR</td>
+      <td>M</td>
+      <td>69</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672612</th>
+      <td>SC</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-8</td>
+      <td>SC</td>
+      <td>Surgery specialty</td>
+      <td>single-unit</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672613</th>
+      <td>MA</td>
+      <td>M</td>
+      <td>42</td>
+      <td>type-2</td>
+      <td>MA</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672614 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q1-ratio-of-physicians-to-population-by-geography" class="level2">
+<h2 class="anchored" data-anchor-id="research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</h2>
+<p>While this research question can be answered using existing public data (including Census ACS), it’s included here as an example of a simple aggregate table that can be generated at different geographic levels. Note that the data above already loads population counts for cbsa and state-level statistics.</p>
+<p>Breakdown by Characteristics: Specialty Category</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<section id="calculate-physicians-per-specialty-from-true-data-true-data-with-noise-and-synthetic-data" class="level3">
+<h3 class="anchored" data-anchor-id="calculate-physicians-per-specialty-from-true-data-true-data-with-noise-and-synthetic-data">Calculate physicians per specialty from true data, true data with noise, and synthetic data</h3>
+<div class="cell" data-execution_count="14">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get relevant columns from original and synth datasets</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> dataset[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>phys_estab_state_mst <span class="op">=</span> synth_df_mst[[<span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>phys_estab_state_cen <span class="op">=</span> synth_df_cen[[<span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># phys per specialty</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>phys_by_spec <span class="op">=</span> phys_estab_state.groupby(<span class="st">"pri_spec_category"</span>).NPI.count()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># phys per specialty from synth data</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>phys_by_spec_mst <span class="op">=</span> phys_estab_state_mst.groupby(<span class="st">"pri_spec_category"</span>).count()</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>phys_by_spec_cen <span class="op">=</span> phys_estab_state_cen.groupby(<span class="st">"pri_spec_category"</span>).count()</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.concat([phys_by_spec, phys_by_spec_mst, phys_by_spec_cen], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>merged.columns <span class="op">=</span> [<span class="st">"true"</span>, <span class="st">"mst"</span>, <span class="st">"cen"</span>]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="14">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>true</th>
+      <th>mst</th>
+      <th>cen</th>
+    </tr>
+    <tr>
+      <th>pri_spec_category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Hospital based</th>
+      <td>162826</td>
+      <td>162856</td>
+      <td>165826</td>
+    </tr>
+    <tr>
+      <th>Medical specialty</th>
+      <td>140489</td>
+      <td>140469</td>
+      <td>139313</td>
+    </tr>
+    <tr>
+      <th>OBGYN</th>
+      <td>29471</td>
+      <td>29497</td>
+      <td>29540</td>
+    </tr>
+    <tr>
+      <th>Primary care</th>
+      <td>202206</td>
+      <td>202194</td>
+      <td>201603</td>
+    </tr>
+    <tr>
+      <th>Psychiatry</th>
+      <td>23062</td>
+      <td>23037</td>
+      <td>23072</td>
+    </tr>
+    <tr>
+      <th>Surgery specialty</th>
+      <td>114560</td>
+      <td>114581</td>
+      <td>113260</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x_len <span class="op">=</span> np.arange(<span class="bu">len</span>(merged))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">-</span> <span class="fl">0.2</span>, merged[<span class="st">"true"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"True Count"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len, merged[<span class="st">"mst"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"MST Count"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">+</span> <span class="fl">0.2</span>, merged[<span class="st">"cen"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"Redacted Count"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(x_len, <span class="bu">list</span>(merged.index))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Specialties"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20Synthetic%20Data_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"mst"</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MST RMSE: "</span>, rmse)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"cen"</span>])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Redacted RMSE: "</span>, rmse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>MST RMSE:  531.0
+Redacted RMSE:  2073574.3333333333</code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-physicians-per-specialty-per-state-from-true-data-true-data-with-noise-and-synthetic-data" class="level3">
+<h3 class="anchored" data-anchor-id="calculate-physicians-per-specialty-per-state-from-true-data-true-data-with-noise-and-synthetic-data">Calculate physicians per specialty per state from true data, true data with noise, and synthetic data</h3>
+<div class="cell" data-execution_count="24">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate specialty per state</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).NPI.count()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># replicate calculation with synth data</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_mst <span class="op">=</span> phys_estab_state_mst.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).size()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_cen <span class="op">=</span> phys_estab_state_cen.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).size()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># put the true and the synth data together</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.concat([phys_by_state_spec, phys_by_state_spec_mst, phys_by_state_spec_cen], axis<span class="op">=</span><span class="dv">1</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>merged.columns <span class="op">=</span> [<span class="st">"true"</span>, <span class="st">"mst"</span>, <span class="st">"cen"</span>]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="24">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>true</th>
+      <th>mst</th>
+      <th>cen</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th>pri_spec_category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AK</th>
+      <th>Hospital based</th>
+      <td>503.0</td>
+      <td>477</td>
+      <td>422</td>
+    </tr>
+    <tr>
+      <th>Medical specialty</th>
+      <td>259.0</td>
+      <td>340</td>
+      <td>317</td>
+    </tr>
+    <tr>
+      <th>OBGYN</th>
+      <td>78.0</td>
+      <td>77</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>Primary care</th>
+      <td>583.0</td>
+      <td>495</td>
+      <td>570</td>
+    </tr>
+    <tr>
+      <th>Psychiatry</th>
+      <td>52.0</td>
+      <td>63</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">WY</th>
+      <th>Medical specialty</th>
+      <td>228.0</td>
+      <td>267</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <th>OBGYN</th>
+      <td>53.0</td>
+      <td>52</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Primary care</th>
+      <td>361.0</td>
+      <td>379</td>
+      <td>342</td>
+    </tr>
+    <tr>
+      <th>Psychiatry</th>
+      <td>25.0</td>
+      <td>35</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>Surgery specialty</th>
+      <td>272.0</td>
+      <td>224</td>
+      <td>229</td>
+    </tr>
+  </tbody>
+</table>
+<p>330 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get subset to make graph manageable</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>merged_h <span class="op">=</span> merged.head(<span class="dv">20</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>x_len <span class="op">=</span> np.arange(<span class="bu">len</span>(merged_h))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">-</span> <span class="fl">0.2</span>, merged_h[<span class="st">"true"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"True Count"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len, merged_h[<span class="st">"mst"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"MST Count"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">+</span> <span class="fl">0.2</span>, merged_h[<span class="st">"cen"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"Redacted Count"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(x_len, <span class="bu">list</span>(merged_h.index))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Specialty + St"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20Synthetic%20Data_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"mst"</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MST RMSE: "</span>, rmse)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"cen"</span>])</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Redacted RMSE: "</span>, rmse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>MST RMSE:  71889.23636363636
+Redacted RMSE:  40125.24848484848</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents for each CBSA</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (this would be done the same way as the state data, but would need to resynthesize data with CBSA)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="research-q2-distribution-of-physicians-by-organization-type" class="level2">
+<h2 class="anchored" data-anchor-id="research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</h2>
+<p>Our work will provide insights on the institutional structures through which physicians provide care. These structures have changed dramatically over time as a consequence of intensive vertical integration in the healthcare industry.</p>
+<p>This research question is mostly centered on creating counts or percent breakdowns by state and/or metropolitan area.</p>
+<p>The main task is to translate business characteristics into distinct “types” by which to group physicians.</p>
+<p>Follow-up question of interest: Rural/urban split (note: need to obtain data)</p>
+<div class="cell" data-execution_count="27">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get practice_type column, location, and identifier</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>phys_prac_state <span class="op">=</span> dataset[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'practice_type_random'</span>]]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>phys_prac_state_mst <span class="op">=</span> synth_df_mst[[<span class="st">'st'</span>, <span class="st">'practice_type_random'</span>]]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>phys_prac_state_cen <span class="op">=</span> synth_df_cen[[<span class="st">'st'</span>, <span class="st">'practice_type_random'</span>]]</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate practice type per state</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>phys_by_state_prac <span class="op">=</span> phys_prac_state.groupby([<span class="st">"st"</span>, <span class="st">"practice_type_random"</span>]).NPI.count()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># replicate calculation with synth data</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>phys_by_state_prac_mst <span class="op">=</span> phys_prac_state_mst.groupby([<span class="st">"st"</span>, <span class="st">"practice_type_random"</span>]).size()</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>phys_by_state_prac_cen <span class="op">=</span> phys_prac_state_cen.groupby([<span class="st">"st"</span>, <span class="st">"practice_type_random"</span>]).size()</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># put the true and the synth data together</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.concat([phys_by_state_prac, phys_by_state_prac_mst, phys_by_state_prac_cen], axis<span class="op">=</span><span class="dv">1</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>merged.columns <span class="op">=</span> [<span class="st">"true"</span>, <span class="st">"mst"</span>, <span class="st">"cen"</span>]</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="27">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>true</th>
+      <th>mst</th>
+      <th>cen</th>
+    </tr>
+    <tr>
+      <th>st</th>
+      <th>practice_type_random</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AK</th>
+      <th>nan</th>
+      <td>255.0</td>
+      <td>460</td>
+      <td>218</td>
+    </tr>
+    <tr>
+      <th>type-0</th>
+      <td>97.0</td>
+      <td>133</td>
+      <td>107</td>
+    </tr>
+    <tr>
+      <th>type-1</th>
+      <td>156.0</td>
+      <td>127</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>type-2</th>
+      <td>221.0</td>
+      <td>131</td>
+      <td>199</td>
+    </tr>
+    <tr>
+      <th>type-3</th>
+      <td>27.0</td>
+      <td>147</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">WY</th>
+      <th>type-5</th>
+      <td>40.0</td>
+      <td>105</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>type-6</th>
+      <td>144.0</td>
+      <td>97</td>
+      <td>138</td>
+    </tr>
+    <tr>
+      <th>type-7</th>
+      <td>127.0</td>
+      <td>111</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <th>type-8</th>
+      <td>128.0</td>
+      <td>90</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>type-9</th>
+      <td>132.0</td>
+      <td>94</td>
+      <td>118</td>
+    </tr>
+  </tbody>
+</table>
+<p>605 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>merged_h <span class="op">=</span> merged.head(<span class="dv">20</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x_len <span class="op">=</span> np.arange(<span class="bu">len</span>(merged_h))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">-</span> <span class="fl">0.2</span>, merged_h[<span class="st">"true"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"True Count"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len, merged_h[<span class="st">"mst"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"MST Count"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">+</span> <span class="fl">0.2</span>, merged_h[<span class="st">"cen"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"Redacted Count"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(x_len, <span class="bu">list</span>(merged_h.index))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Practice Type + St"</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20Synthetic%20Data_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"mst"</span>])</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MST RMSE: "</span>, rmse)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"cen"</span>])</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Redacted RMSE: "</span>, rmse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>MST RMSE:  275849.94049586775
+Redacted RMSE:  10311.61652892562</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># could also add per capita stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="and-so-on" class="level2">
+<h2 class="anchored" data-anchor-id="and-so-on">And so on…</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

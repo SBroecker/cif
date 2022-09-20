@@ -1,0 +1,4121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – examples---dp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Privacy Models for EHealth - Intro and Scope.html">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Literature Review.html">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./E-Health DP Guide.html">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples.html">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Examples - DP.html" aria-current="page">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - Synthetic Data.html">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#differential-privacy-examples" id="toc-differential-privacy-examples" class="nav-link active" data-scroll-target="#differential-privacy-examples">Differential Privacy: Examples</a>
+  <ul class="collapse">
+  <li><a href="#prep-load-libraries-and-datasets" id="toc-prep-load-libraries-and-datasets" class="nav-link" data-scroll-target="#prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</a></li>
+  <li><a href="#dp-background" id="toc-dp-background" class="nav-link" data-scroll-target="#dp-background">DP Background</a>
+  <ul class="collapse">
+  <li><a href="#geometric-mechanism" id="toc-geometric-mechanism" class="nav-link" data-scroll-target="#geometric-mechanism">Geometric Mechanism</a></li>
+  <li><a href="#statistics-based-on-small-samples-chetty-paper" id="toc-statistics-based-on-small-samples-chetty-paper" class="nav-link" data-scroll-target="#statistics-based-on-small-samples-chetty-paper">Statistics Based on Small Samples (<span>Chetty Paper</span>)</a></li>
+  </ul></li>
+  <li><a href="#create-dp-functions" id="toc-create-dp-functions" class="nav-link" data-scroll-target="#create-dp-functions">Create DP Functions</a>
+  <ul class="collapse">
+  <li><a href="#diff_count" id="toc-diff_count" class="nav-link" data-scroll-target="#diff_count">diff_count</a></li>
+  <li><a href="#dp_agg" id="toc-dp_agg" class="nav-link" data-scroll-target="#dp_agg">dp_agg</a></li>
+  </ul></li>
+  <li><a href="#research-q1-ratio-of-physicians-to-population-by-geography" id="toc-research-q1-ratio-of-physicians-to-population-by-geography" class="nav-link" data-scroll-target="#research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</a></li>
+  <li><a href="#research-q2-distribution-of-physicians-by-organization-type" id="toc-research-q2-distribution-of-physicians-by-organization-type" class="nav-link" data-scroll-target="#research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</a></li>
+  <li><a href="#research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" id="toc-research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" class="nav-link" data-scroll-target="#research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race">Research Q3: Community Representativeness: Age and Gender (as Stand-ins for Race)</a></li>
+  <li><a href="#research-q4-firm-market-concentration-by-geography" id="toc-research-q4-firm-market-concentration-by-geography" class="nav-link" data-scroll-target="#research-q4-firm-market-concentration-by-geography">Research Q4: Firm Market Concentration by Geography</a></li>
+  <li><a href="#calculating-noisy-percentiles" id="toc-calculating-noisy-percentiles" class="nav-link" data-scroll-target="#calculating-noisy-percentiles">Calculating Noisy Percentiles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<section id="differential-privacy-examples" class="level1">
+<h1>Differential Privacy: Examples</h1>
+<p><i>CDF Summer Project 2022</i></p>
+<section id="prep-load-libraries-and-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="prep-load-libraries-and-datasets">Prep: Load Libraries and Datasets</h2>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data science libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-scrolled="true" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>physicians <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"physicians.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>establishments <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"establishments.csv"</span>, dtype<span class="op">=</span>{<span class="st">'zip'</span>: <span class="bu">str</span>, <span class="st">'zip9'</span>: <span class="bu">str</span>, <span class="st">'zip3'</span>: <span class="bu">str</span>})</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>practices <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"practices.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>firms <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"firms.csv"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>phys2estab <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2estab.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>phys2prac <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2prac.csv"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cbsa <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_cbsas.csv"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_state.csv"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>state_agesex <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"geo_state_agesex.csv"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>state_abr <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"state_abr.csv"</span>, names<span class="op">=</span>[<span class="st">"name"</span>, <span class="st">"abr"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>state_agesex <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"state_agesex.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="dp-background" class="level2">
+<h2 class="anchored" data-anchor-id="dp-background">DP Background</h2>
+<p>Some notation and ideas needed for understanding the DP implementation, most of which come from <a href="https://journalprivacyconfidentiality.org/index.php/jpc/article/view/722/684">this paper</a>:</p>
+<p>D is a database with k variables (A<sub>1</sub>, …, A<sub>k</sub>)</p>
+<p>D’ is database D that differs from D by one record</p>
+<p>q<sub>v</sub>(D) is a marginal query that has the attributes v (certain values of A<sub>1</sub>, …, A<sub>k</sub>)</p>
+<p>Each unique combination of attributes is called a cell</p>
+<p>The sensitivity of a query (∆<sub>q</sub>) is the difference between q(D) and q(D’). The sensitivity of count queries is 1.</p>
+<p>Parallel composition: for a set of disjoint subsets of D, if each query on the subsets are ε-differentially private, then the results of the queries are also e-differentially private</p>
+<p>Sequential composition: Let M and B be ε<sub>1</sub>- and ε<sub>2</sub>-differentially private algorithms. Releasing the outputs of M(D) and B(D) on the same database D results in (ε<sub>1</sub> + ε<sub>2</sub>)-differential privacy</p>
+<p>Robustness to post-processing: For any deterministic or randomized function F defined over the image of the mechanism A, if A satisfies ε-differential privacy, so does F(A).</p>
+<section id="geometric-mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="geometric-mechanism">Geometric Mechanism</h3>
+<p>q(D) is a query on a database D</p>
+<p>η ∼ Geo(X, p) − Geo(Y, p) is a random variable drawn from the distribution generated from the difference of two random variables (X, Y)</p>
+<p>(X, Y) are distributed according to the geometric distribution, where p = 1 − e<sup>-ε</sup>.</p>
+<p>q*(D) = q(D) + η satisfies ε-differential privacy, where η<sup>d</sup> is a vector of d independently drawn Geometric random variables</p>
+</section>
+<section id="statistics-based-on-small-samples-chetty-paper" class="level3">
+<h3 class="anchored" data-anchor-id="statistics-based-on-small-samples-chetty-paper">Statistics Based on Small Samples (<a href="https://www.nber.org/system/files/working_papers/w25626/w25626.pdf">Chetty Paper</a>)</h3>
+<p>Local sensitivity = sensitivity of a single cell</p>
+<p>Global sensitivity = sensitivity from any theoretical change to the entire dataset</p>
+<p>Maximum observed sensitivity (MOS) = largest local sensitivity across all cells</p>
+<p>Using the local sensitvity of each cell in a DP calculation would be a privacy issue because the local sensitivity reveals information about the data contained in the cell</p>
+<p>Instead, every cell injects noise proportional to the MOS (as a parameter for a Laplace distribution)</p>
+</section>
+</section>
+<section id="create-dp-functions" class="level2">
+<h2 class="anchored" data-anchor-id="create-dp-functions">Create DP Functions</h2>
+<section id="diff_count" class="level3">
+<h3 class="anchored" data-anchor-id="diff_count">diff_count</h3>
+<p>Function used in place of groupby + count()</p>
+<p>Takes in the columns you want to group by and the column you want to count and returns a differentially private count based on the given epsilon.</p>
+<p>Also returns the RMSE between the true counts and the private counts</p>
+</section>
+<section id="dp_agg" class="level3">
+<h3 class="anchored" data-anchor-id="dp_agg">dp_agg</h3>
+<p><em>Probably redundant</em></p>
+<p>Can be used in the agg clause of a function.</p>
+<p>Takes in the epsilon and returns a differentially private count based on the epsilon</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> diff_count(data, grouping_columns, target_column, epsilon):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Create differentially private count of cells based on input columns"""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># copy input df so we can change it</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.copy()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get true group counts</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    group_counts <span class="op">=</span> df.groupby(grouping_columns)[target_column].count().reset_index(name<span class="op">=</span><span class="st">"true_count"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add discrete Laplacian noise to group counts to get noisy group counts</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># noise function from here: https://randorithms.com/2020/10/09/geometric-mechanism.html</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>epsilon)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> np.random.geometric(p, size<span class="op">=</span><span class="bu">len</span>(group_counts)) <span class="op">-</span> np.random.geometric(p, size<span class="op">=</span><span class="bu">len</span>(group_counts))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    group_counts[target_column] <span class="op">=</span> group_counts[<span class="st">"true_count"</span>] <span class="op">+</span> noise</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    err <span class="op">=</span> mean_squared_error(group_counts[<span class="st">"true_count"</span>], group_counts[target_column])</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    group_counts.drop(columns<span class="op">=</span>[<span class="st">"true_count"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group_counts, err</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dp_agg(data, epsilon):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add discrete Laplacian noise to group counts to get noisy group counts</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># noise function from here: https://randorithms.com/2020/10/09/geometric-mechanism.html</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>epsilon)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> np.random.geometric(p) <span class="op">-</span> np.random.geometric(p)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(data) <span class="op">+</span> noise</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="research-q1-ratio-of-physicians-to-population-by-geography" class="level2">
+<h2 class="anchored" data-anchor-id="research-q1-ratio-of-physicians-to-population-by-geography">Research Q1: Ratio of Physicians to Population by Geography</h2>
+<p>While this research question can be answered using existing public data (including Census ACS), it’s included here as an example of a simple aggregate table that can be generated at different geographic levels. Note that the data above already loads population counts for cbsa and state-level statistics.</p>
+<p>Breakdown by Characteristics: Specialty Category</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents in the United States</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>physicians.NPI.count() <span class="op">/</span> (states[<span class="st">'pop'</span>].<span class="bu">sum</span>() <span class="op">/</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>17.00683953715448</code></pre>
+</div>
+</div>
+<p>Iterate through different epsilon values and measure error to gauge what the tradeoff is between privacy and accuracy</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list to keep track of errors</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate between 0.1 and 2</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> np.arange(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># repeat the calculation five times</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate the noisy count</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        phys_by_spec_dp, rmse <span class="op">=</span> diff_count(physicians, [<span class="st">"pri_spec_category"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># save the error value</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        errors.append([epsilon, rmse])</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot error vs. epsilon</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Repeat the procedure, but this time breaking the data down by state and specialty</p>
+<div class="cell" data-execution_count="45">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use drop duplicates to ensure we only count a physician once per state</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]].copy().drop_duplicates()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lists to keep track of state and specialty/state calculations</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>state_errors <span class="op">=</span> []</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>specialty_errors <span class="op">=</span> []</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> np.arange(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>):</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate physicians per state with noise</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        phys_by_state_dp, rmse <span class="op">=</span> diff_count(phys_estab_state, [<span class="st">"st"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate physicians per specialty per state with and without noise</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># had to use groupby instead of cross_tab so I could pass the epsilon parameter to the agg function</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># this calculation could be done with diff_count</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        phys_by_state_spec <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).count()</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        phys_by_state_spec_dp <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).agg({</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"NPI"</span>: <span class="kw">lambda</span> x: dp_agg(x, epsilon)})</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># find the difference between the true and the noisy counts</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        err <span class="op">=</span> mean_squared_error(phys_by_state_spec.to_numpy(), phys_by_state_spec_dp.to_numpy())</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        state_errors.append([epsilon, rmse])</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        specialty_errors.append([epsilon, err])</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># plot state error</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(state_errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># plot specialty error</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(specialty_errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="74">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"pri_spec_category"</span>]).agg({</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"NPI"</span>: <span class="kw">lambda</span> x: dp_agg(x, epsilon)})</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="73">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>states.rename(columns<span class="op">=</span>{<span class="st">'state'</span>: <span class="st">'st'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reformat the specialty/state table so it conforms to what it looks like in the original notebook</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp <span class="op">=</span> phys_by_state_spec_dp.unstack(<span class="st">"pri_spec_category"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp.columns <span class="op">=</span> phys_by_state_spec_dp.columns.droplevel(<span class="dv">0</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp <span class="op">=</span> pd.merge(states[[<span class="st">'st'</span>, <span class="st">'pop'</span>]], phys_by_state_spec_dp, on<span class="op">=</span><span class="st">'st'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp <span class="op">=</span> pd.merge(phys_by_state_spec_dp, phys_by_state_dp, on<span class="op">=</span><span class="st">'st'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add "per 10k" columns</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> phys_by_state_spec_dp.columns[<span class="op">~</span>phys_by_state_spec_dp.columns.isin(states.columns)]:</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    phys_by_state_spec_dp[col <span class="op">+</span> <span class="st">" per 10k"</span>] <span class="op">=</span> (phys_by_state_spec_dp[col] <span class="op">/</span> (phys_by_state_spec_dp[<span class="st">'pop'</span>] <span class="op">/</span> <span class="dv">10000</span>)).<span class="bu">round</span>()</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># sort</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp.sort_values(by<span class="op">=</span><span class="st">'NPI per 10k'</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>phys_by_state_spec_dp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="73">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>pop</th>
+      <th>Hospital based</th>
+      <th>Medical specialty</th>
+      <th>OBGYN</th>
+      <th>Primary care</th>
+      <th>Psychiatry</th>
+      <th>Surgery specialty</th>
+      <th>NPI</th>
+      <th>Hospital based per 10k</th>
+      <th>Medical specialty per 10k</th>
+      <th>OBGYN per 10k</th>
+      <th>Primary care per 10k</th>
+      <th>Psychiatry per 10k</th>
+      <th>Surgery specialty per 10k</th>
+      <th>NPI per 10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>DC</td>
+      <td>701974</td>
+      <td>663.0</td>
+      <td>711.0</td>
+      <td>191.0</td>
+      <td>805.0</td>
+      <td>106.0</td>
+      <td>516.0</td>
+      <td>2994.0</td>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>11.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MA</td>
+      <td>6873003</td>
+      <td>4356.0</td>
+      <td>4290.0</td>
+      <td>825.0</td>
+      <td>5592.0</td>
+      <td>1045.0</td>
+      <td>2865.0</td>
+      <td>18973.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>VT</td>
+      <td>624340</td>
+      <td>328.0</td>
+      <td>236.0</td>
+      <td>70.0</td>
+      <td>552.0</td>
+      <td>107.0</td>
+      <td>266.0</td>
+      <td>1558.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>9.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>RI</td>
+      <td>1057798</td>
+      <td>508.0</td>
+      <td>502.0</td>
+      <td>133.0</td>
+      <td>860.0</td>
+      <td>158.0</td>
+      <td>406.0</td>
+      <td>2567.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CT</td>
+      <td>3570549</td>
+      <td>1773.0</td>
+      <td>1903.0</td>
+      <td>496.0</td>
+      <td>2344.0</td>
+      <td>459.0</td>
+      <td>1487.0</td>
+      <td>8459.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ME</td>
+      <td>1340825</td>
+      <td>694.0</td>
+      <td>527.0</td>
+      <td>120.0</td>
+      <td>1113.0</td>
+      <td>136.0</td>
+      <td>562.0</td>
+      <td>3148.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MN</td>
+      <td>5600166</td>
+      <td>2590.0</td>
+      <td>2637.0</td>
+      <td>501.0</td>
+      <td>4447.0</td>
+      <td>442.0</td>
+      <td>2049.0</td>
+      <td>12667.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>MD</td>
+      <td>6037624</td>
+      <td>2976.0</td>
+      <td>2917.0</td>
+      <td>621.0</td>
+      <td>4035.0</td>
+      <td>573.0</td>
+      <td>2459.0</td>
+      <td>13581.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>NJ</td>
+      <td>8885418</td>
+      <td>4303.0</td>
+      <td>4474.0</td>
+      <td>965.0</td>
+      <td>5176.0</td>
+      <td>705.0</td>
+      <td>3481.0</td>
+      <td>19107.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>PA</td>
+      <td>12794885</td>
+      <td>6453.0</td>
+      <td>6143.0</td>
+      <td>1359.0</td>
+      <td>8421.0</td>
+      <td>1074.0</td>
+      <td>5092.0</td>
+      <td>28542.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>NY</td>
+      <td>19514849</td>
+      <td>9980.0</td>
+      <td>10052.0</td>
+      <td>1990.0</td>
+      <td>11500.0</td>
+      <td>1991.0</td>
+      <td>7507.0</td>
+      <td>43019.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>ND</td>
+      <td>760394</td>
+      <td>366.0</td>
+      <td>316.0</td>
+      <td>71.0</td>
+      <td>467.0</td>
+      <td>67.0</td>
+      <td>329.0</td>
+      <td>1617.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>DE</td>
+      <td>967679</td>
+      <td>415.0</td>
+      <td>405.0</td>
+      <td>114.0</td>
+      <td>680.0</td>
+      <td>62.0</td>
+      <td>372.0</td>
+      <td>2049.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>736990</td>
+      <td>440.0</td>
+      <td>201.0</td>
+      <td>67.0</td>
+      <td>533.0</td>
+      <td>50.0</td>
+      <td>280.0</td>
+      <td>1570.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>WI</td>
+      <td>5806975</td>
+      <td>3164.0</td>
+      <td>2240.0</td>
+      <td>526.0</td>
+      <td>3826.0</td>
+      <td>425.0</td>
+      <td>2095.0</td>
+      <td>12277.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>WY</td>
+      <td>581348</td>
+      <td>317.0</td>
+      <td>216.0</td>
+      <td>52.0</td>
+      <td>328.0</td>
+      <td>22.0</td>
+      <td>257.0</td>
+      <td>1192.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>MI</td>
+      <td>9973907</td>
+      <td>4143.0</td>
+      <td>3702.0</td>
+      <td>1032.0</td>
+      <td>6552.0</td>
+      <td>706.0</td>
+      <td>3356.0</td>
+      <td>19492.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>SD</td>
+      <td>879336</td>
+      <td>374.0</td>
+      <td>319.0</td>
+      <td>88.0</td>
+      <td>574.0</td>
+      <td>45.0</td>
+      <td>366.0</td>
+      <td>1765.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MT</td>
+      <td>1061705</td>
+      <td>564.0</td>
+      <td>357.0</td>
+      <td>77.0</td>
+      <td>660.0</td>
+      <td>53.0</td>
+      <td>411.0</td>
+      <td>2121.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>WV</td>
+      <td>1807426</td>
+      <td>755.0</td>
+      <td>628.0</td>
+      <td>153.0</td>
+      <td>1188.0</td>
+      <td>122.0</td>
+      <td>694.0</td>
+      <td>3538.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>OH</td>
+      <td>11675275</td>
+      <td>4999.0</td>
+      <td>4609.0</td>
+      <td>1157.0</td>
+      <td>7041.0</td>
+      <td>743.0</td>
+      <td>4107.0</td>
+      <td>22653.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>OR</td>
+      <td>4176346</td>
+      <td>1813.0</td>
+      <td>1419.0</td>
+      <td>332.0</td>
+      <td>2570.0</td>
+      <td>207.0</td>
+      <td>1397.0</td>
+      <td>7738.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MO</td>
+      <td>6124160</td>
+      <td>2712.0</td>
+      <td>2464.0</td>
+      <td>578.0</td>
+      <td>3225.0</td>
+      <td>440.0</td>
+      <td>2145.0</td>
+      <td>11565.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>IA</td>
+      <td>3150011</td>
+      <td>1409.0</td>
+      <td>1138.0</td>
+      <td>249.0</td>
+      <td>1766.0</td>
+      <td>193.0</td>
+      <td>1105.0</td>
+      <td>5859.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>IL</td>
+      <td>12716164</td>
+      <td>5324.0</td>
+      <td>4936.0</td>
+      <td>1197.0</td>
+      <td>7517.0</td>
+      <td>759.0</td>
+      <td>3935.0</td>
+      <td>23668.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>KY</td>
+      <td>4461952</td>
+      <td>1752.0</td>
+      <td>1639.0</td>
+      <td>413.0</td>
+      <td>2408.0</td>
+      <td>231.0</td>
+      <td>1525.0</td>
+      <td>7967.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>KS</td>
+      <td>2912619</td>
+      <td>1213.0</td>
+      <td>1062.0</td>
+      <td>241.0</td>
+      <td>1659.0</td>
+      <td>158.0</td>
+      <td>1032.0</td>
+      <td>5366.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>NE</td>
+      <td>1923826</td>
+      <td>870.0</td>
+      <td>681.0</td>
+      <td>174.0</td>
+      <td>1021.0</td>
+      <td>91.0</td>
+      <td>716.0</td>
+      <td>3550.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>IN</td>
+      <td>6696893</td>
+      <td>2951.0</td>
+      <td>2327.0</td>
+      <td>599.0</td>
+      <td>3721.0</td>
+      <td>350.0</td>
+      <td>2157.0</td>
+      <td>12102.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>HI</td>
+      <td>1420074</td>
+      <td>687.0</td>
+      <td>408.0</td>
+      <td>118.0</td>
+      <td>917.0</td>
+      <td>78.0</td>
+      <td>396.0</td>
+      <td>2604.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>WA</td>
+      <td>7512465</td>
+      <td>3290.0</td>
+      <td>2672.0</td>
+      <td>474.0</td>
+      <td>4586.0</td>
+      <td>338.0</td>
+      <td>2268.0</td>
+      <td>13631.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>TN</td>
+      <td>6772268</td>
+      <td>2354.0</td>
+      <td>2372.0</td>
+      <td>619.0</td>
+      <td>3581.0</td>
+      <td>271.0</td>
+      <td>2123.0</td>
+      <td>11319.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NC</td>
+      <td>10386227</td>
+      <td>3938.0</td>
+      <td>3642.0</td>
+      <td>983.0</td>
+      <td>5268.0</td>
+      <td>678.0</td>
+      <td>3194.0</td>
+      <td>17706.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>VA</td>
+      <td>8509358</td>
+      <td>3036.0</td>
+      <td>2919.0</td>
+      <td>739.0</td>
+      <td>4646.0</td>
+      <td>532.0</td>
+      <td>2544.0</td>
+      <td>14419.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>FL</td>
+      <td>21216924</td>
+      <td>7438.0</td>
+      <td>7974.0</td>
+      <td>1537.0</td>
+      <td>11185.0</td>
+      <td>980.0</td>
+      <td>6283.0</td>
+      <td>35397.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>SC</td>
+      <td>5091517</td>
+      <td>1763.0</td>
+      <td>1527.0</td>
+      <td>483.0</td>
+      <td>2843.0</td>
+      <td>281.0</td>
+      <td>1595.0</td>
+      <td>8491.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>LA</td>
+      <td>4664616</td>
+      <td>1635.0</td>
+      <td>1637.0</td>
+      <td>497.0</td>
+      <td>2298.0</td>
+      <td>213.0</td>
+      <td>1620.0</td>
+      <td>7898.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>AL</td>
+      <td>4893186</td>
+      <td>1456.0</td>
+      <td>1523.0</td>
+      <td>424.0</td>
+      <td>2521.0</td>
+      <td>213.0</td>
+      <td>1489.0</td>
+      <td>7625.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NM</td>
+      <td>2097021</td>
+      <td>825.0</td>
+      <td>558.0</td>
+      <td>166.0</td>
+      <td>1203.0</td>
+      <td>113.0</td>
+      <td>549.0</td>
+      <td>3417.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CO</td>
+      <td>5684926</td>
+      <td>2413.0</td>
+      <td>1783.0</td>
+      <td>386.0</td>
+      <td>2668.0</td>
+      <td>234.0</td>
+      <td>1687.0</td>
+      <td>9170.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AR</td>
+      <td>3011873</td>
+      <td>999.0</td>
+      <td>822.0</td>
+      <td>262.0</td>
+      <td>1713.0</td>
+      <td>135.0</td>
+      <td>812.0</td>
+      <td>4743.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AZ</td>
+      <td>7174064</td>
+      <td>2695.0</td>
+      <td>2338.0</td>
+      <td>400.0</td>
+      <td>3461.0</td>
+      <td>332.0</td>
+      <td>1905.0</td>
+      <td>11129.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>OK</td>
+      <td>3949342</td>
+      <td>1322.0</td>
+      <td>1063.0</td>
+      <td>314.0</td>
+      <td>2034.0</td>
+      <td>187.0</td>
+      <td>1069.0</td>
+      <td>5991.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MS</td>
+      <td>2981835</td>
+      <td>1094.0</td>
+      <td>911.0</td>
+      <td>274.0</td>
+      <td>1293.0</td>
+      <td>103.0</td>
+      <td>944.0</td>
+      <td>4618.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID</td>
+      <td>1754367</td>
+      <td>529.0</td>
+      <td>462.0</td>
+      <td>125.0</td>
+      <td>908.0</td>
+      <td>68.0</td>
+      <td>549.0</td>
+      <td>2641.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>UT</td>
+      <td>3151239</td>
+      <td>1210.0</td>
+      <td>815.0</td>
+      <td>187.0</td>
+      <td>1311.0</td>
+      <td>123.0</td>
+      <td>892.0</td>
+      <td>4538.0</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>GA</td>
+      <td>10516579</td>
+      <td>3278.0</td>
+      <td>3042.0</td>
+      <td>756.0</td>
+      <td>4609.0</td>
+      <td>414.0</td>
+      <td>2854.0</td>
+      <td>14954.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA</td>
+      <td>39346023</td>
+      <td>13534.0</td>
+      <td>11307.0</td>
+      <td>1955.0</td>
+      <td>18319.0</td>
+      <td>1850.0</td>
+      <td>9537.0</td>
+      <td>56502.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>TX</td>
+      <td>28635442</td>
+      <td>8845.0</td>
+      <td>8004.0</td>
+      <td>1902.0</td>
+      <td>11883.0</td>
+      <td>980.0</td>
+      <td>6915.0</td>
+      <td>38529.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>PR</td>
+      <td>3255642</td>
+      <td>531.0</td>
+      <td>948.0</td>
+      <td>151.0</td>
+      <td>1370.0</td>
+      <td>110.0</td>
+      <td>596.0</td>
+      <td>3707.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>MV</td>
+      <td>3030281</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>MH</td>
+      <td>1355244</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="76">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of physicians per 10,000 residents for each CBSA</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (this would be done the same way as the state data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="research-q2-distribution-of-physicians-by-organization-type" class="level2">
+<h2 class="anchored" data-anchor-id="research-q2-distribution-of-physicians-by-organization-type">Research Q2: Distribution of Physicians by Organization Type</h2>
+<p>Our work will provide insights on the institutional structures through which physicians provide care. These structures have changed dramatically over time as a consequence of intensive vertical integration in the healthcare industry.</p>
+<p>This research question is mostly centered on creating counts or percent breakdowns by state and/or metropolitan area.</p>
+<p>The main task is to translate business characteristics into distinct “types” by which to group physicians.</p>
+<p>Follow-up question of interest: Rural/urban split (note: need to obtain data)</p>
+<div class="cell" data-execution_count="96">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practices</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get practice_type column, location, and identifier</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>phys_prac_state <span class="op">=</span> phys_prac[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'practice_type_random'</span>]].copy().drop_duplicates()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>phys_prac_state <span class="op">=</span> phys_prac_state[phys_prac_state[<span class="st">"practice_type_random"</span>].notnull()]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>state_errors <span class="op">=</span> []</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>practice_errors <span class="op">=</span> []</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> np.arange(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>):</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># find doctor's per state</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        phys_by_state_dp, rmse_s <span class="op">=</span> diff_count(phys_prac_state, [<span class="st">"st"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># find doctor's per practice type and state</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        est_type_crosstab_dp, rmse_p <span class="op">=</span> diff_count(phys_prac_state, [<span class="st">"st"</span>, <span class="st">"practice_type_random"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        state_errors.append([epsilon, rmse_s])</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        practice_errors.append([epsilon, rmse_p])</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># plot state error</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(state_errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot specialty error</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(practice_errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="97">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reformat the "crosstab" table to actually be in crosstab format</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>est_type_pv_dp <span class="op">=</span> est_type_crosstab_dp.pivot(index<span class="op">=</span><span class="st">"st"</span>, columns<span class="op">=</span><span class="st">"practice_type_random"</span>, values<span class="op">=</span><span class="st">"NPI"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add state count to establishment type count</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>phys_by_est <span class="op">=</span> pd.merge(est_type_pv_dp, phys_by_state_dp, how<span class="op">=</span><span class="st">"left"</span>, on<span class="op">=</span><span class="st">"st"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># get list of establishment types</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>ests <span class="op">=</span> phys_prac_state[<span class="st">"practice_type_random"</span>].unique()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> est <span class="kw">in</span> ests:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find the fraction of all physicians who are part of each type of establishment</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    phys_by_est[est <span class="op">+</span> <span class="st">"_fraction"</span>] <span class="op">=</span> phys_by_est[est] <span class="op">/</span> phys_by_est.NPI</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>phys_by_est</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="97">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>type-0</th>
+      <th>type-1</th>
+      <th>type-2</th>
+      <th>type-3</th>
+      <th>type-4</th>
+      <th>type-5</th>
+      <th>type-6</th>
+      <th>type-7</th>
+      <th>type-8</th>
+      <th>...</th>
+      <th>type-4_fraction</th>
+      <th>type-2_fraction</th>
+      <th>type-3_fraction</th>
+      <th>type-5_fraction</th>
+      <th>type-0_fraction</th>
+      <th>type-6_fraction</th>
+      <th>type-9_fraction</th>
+      <th>type-1_fraction</th>
+      <th>type-8_fraction</th>
+      <th>type-7_fraction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>97.0</td>
+      <td>151.0</td>
+      <td>199.0</td>
+      <td>27.0</td>
+      <td>54.0</td>
+      <td>296.0</td>
+      <td>367.0</td>
+      <td>81.0</td>
+      <td>74.0</td>
+      <td>...</td>
+      <td>0.036315</td>
+      <td>0.133826</td>
+      <td>0.018157</td>
+      <td>0.199059</td>
+      <td>0.065232</td>
+      <td>0.246806</td>
+      <td>0.094822</td>
+      <td>0.101547</td>
+      <td>0.049765</td>
+      <td>0.054472</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL</td>
+      <td>571.0</td>
+      <td>1648.0</td>
+      <td>507.0</td>
+      <td>838.0</td>
+      <td>351.0</td>
+      <td>476.0</td>
+      <td>741.0</td>
+      <td>384.0</td>
+      <td>592.0</td>
+      <td>...</td>
+      <td>0.051121</td>
+      <td>0.073842</td>
+      <td>0.122051</td>
+      <td>0.069327</td>
+      <td>0.083163</td>
+      <td>0.107923</td>
+      <td>0.110690</td>
+      <td>0.240023</td>
+      <td>0.086222</td>
+      <td>0.055928</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AR</td>
+      <td>624.0</td>
+      <td>220.0</td>
+      <td>290.0</td>
+      <td>529.0</td>
+      <td>900.0</td>
+      <td>379.0</td>
+      <td>211.0</td>
+      <td>503.0</td>
+      <td>460.0</td>
+      <td>...</td>
+      <td>0.203943</td>
+      <td>0.065715</td>
+      <td>0.119873</td>
+      <td>0.085883</td>
+      <td>0.141400</td>
+      <td>0.047813</td>
+      <td>0.067754</td>
+      <td>0.049853</td>
+      <td>0.104237</td>
+      <td>0.113981</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AZ</td>
+      <td>1039.0</td>
+      <td>1042.0</td>
+      <td>694.0</td>
+      <td>933.0</td>
+      <td>1491.0</td>
+      <td>916.0</td>
+      <td>1245.0</td>
+      <td>1845.0</td>
+      <td>805.0</td>
+      <td>...</td>
+      <td>0.141273</td>
+      <td>0.065757</td>
+      <td>0.088403</td>
+      <td>0.086792</td>
+      <td>0.098446</td>
+      <td>0.117965</td>
+      <td>0.051544</td>
+      <td>0.098730</td>
+      <td>0.076274</td>
+      <td>0.174815</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA</td>
+      <td>4389.0</td>
+      <td>4365.0</td>
+      <td>2883.0</td>
+      <td>6017.0</td>
+      <td>5247.0</td>
+      <td>3312.0</td>
+      <td>7537.0</td>
+      <td>4247.0</td>
+      <td>6770.0</td>
+      <td>...</td>
+      <td>0.104105</td>
+      <td>0.057201</td>
+      <td>0.119383</td>
+      <td>0.065713</td>
+      <td>0.087082</td>
+      <td>0.149541</td>
+      <td>0.111724</td>
+      <td>0.086605</td>
+      <td>0.134323</td>
+      <td>0.084264</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CO</td>
+      <td>950.0</td>
+      <td>749.0</td>
+      <td>788.0</td>
+      <td>1552.0</td>
+      <td>1231.0</td>
+      <td>510.0</td>
+      <td>885.0</td>
+      <td>756.0</td>
+      <td>998.0</td>
+      <td>...</td>
+      <td>0.130999</td>
+      <td>0.083857</td>
+      <td>0.165159</td>
+      <td>0.054273</td>
+      <td>0.101096</td>
+      <td>0.094179</td>
+      <td>0.104182</td>
+      <td>0.079706</td>
+      <td>0.106204</td>
+      <td>0.080451</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CT</td>
+      <td>675.0</td>
+      <td>1532.0</td>
+      <td>603.0</td>
+      <td>821.0</td>
+      <td>741.0</td>
+      <td>480.0</td>
+      <td>845.0</td>
+      <td>668.0</td>
+      <td>544.0</td>
+      <td>...</td>
+      <td>0.087300</td>
+      <td>0.071041</td>
+      <td>0.096725</td>
+      <td>0.056550</td>
+      <td>0.079524</td>
+      <td>0.099552</td>
+      <td>0.186027</td>
+      <td>0.180490</td>
+      <td>0.064090</td>
+      <td>0.078699</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>DC</td>
+      <td>297.0</td>
+      <td>247.0</td>
+      <td>119.0</td>
+      <td>259.0</td>
+      <td>760.0</td>
+      <td>219.0</td>
+      <td>311.0</td>
+      <td>49.0</td>
+      <td>108.0</td>
+      <td>...</td>
+      <td>0.268836</td>
+      <td>0.042094</td>
+      <td>0.091617</td>
+      <td>0.077467</td>
+      <td>0.105058</td>
+      <td>0.110011</td>
+      <td>0.162717</td>
+      <td>0.087372</td>
+      <td>0.038203</td>
+      <td>0.017333</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>DE</td>
+      <td>104.0</td>
+      <td>142.0</td>
+      <td>82.0</td>
+      <td>118.0</td>
+      <td>94.0</td>
+      <td>196.0</td>
+      <td>165.0</td>
+      <td>101.0</td>
+      <td>81.0</td>
+      <td>...</td>
+      <td>0.049604</td>
+      <td>0.043272</td>
+      <td>0.062269</td>
+      <td>0.103430</td>
+      <td>0.054881</td>
+      <td>0.087071</td>
+      <td>0.427968</td>
+      <td>0.074934</td>
+      <td>0.042744</td>
+      <td>0.053298</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>FL</td>
+      <td>3809.0</td>
+      <td>2894.0</td>
+      <td>3251.0</td>
+      <td>3181.0</td>
+      <td>2327.0</td>
+      <td>2957.0</td>
+      <td>3158.0</td>
+      <td>2878.0</td>
+      <td>2529.0</td>
+      <td>...</td>
+      <td>0.074409</td>
+      <td>0.103955</td>
+      <td>0.101717</td>
+      <td>0.094554</td>
+      <td>0.121798</td>
+      <td>0.100982</td>
+      <td>0.137243</td>
+      <td>0.092540</td>
+      <td>0.080868</td>
+      <td>0.092028</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>GA</td>
+      <td>1345.0</td>
+      <td>1029.0</td>
+      <td>851.0</td>
+      <td>968.0</td>
+      <td>1713.0</td>
+      <td>1017.0</td>
+      <td>2118.0</td>
+      <td>1185.0</td>
+      <td>2477.0</td>
+      <td>...</td>
+      <td>0.119008</td>
+      <td>0.059122</td>
+      <td>0.067250</td>
+      <td>0.070654</td>
+      <td>0.093442</td>
+      <td>0.147145</td>
+      <td>0.117480</td>
+      <td>0.071488</td>
+      <td>0.172086</td>
+      <td>0.082326</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>GU</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>46.0</td>
+      <td>12.0</td>
+      <td>2.0</td>
+      <td>38.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.083770</td>
+      <td>0.240838</td>
+      <td>NaN</td>
+      <td>0.062827</td>
+      <td>0.324607</td>
+      <td>0.073298</td>
+      <td>0.198953</td>
+      <td>0.010471</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>HI</td>
+      <td>128.0</td>
+      <td>249.0</td>
+      <td>109.0</td>
+      <td>292.0</td>
+      <td>57.0</td>
+      <td>200.0</td>
+      <td>313.0</td>
+      <td>501.0</td>
+      <td>92.0</td>
+      <td>...</td>
+      <td>0.027550</td>
+      <td>0.052682</td>
+      <td>0.141131</td>
+      <td>0.096665</td>
+      <td>0.061866</td>
+      <td>0.151281</td>
+      <td>0.064282</td>
+      <td>0.120348</td>
+      <td>0.044466</td>
+      <td>0.242146</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>IA</td>
+      <td>430.0</td>
+      <td>637.0</td>
+      <td>481.0</td>
+      <td>527.0</td>
+      <td>594.0</td>
+      <td>313.0</td>
+      <td>353.0</td>
+      <td>1604.0</td>
+      <td>691.0</td>
+      <td>...</td>
+      <td>0.099132</td>
+      <td>0.080274</td>
+      <td>0.087951</td>
+      <td>0.052236</td>
+      <td>0.071762</td>
+      <td>0.058912</td>
+      <td>0.060080</td>
+      <td>0.106308</td>
+      <td>0.115320</td>
+      <td>0.267690</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ID</td>
+      <td>122.0</td>
+      <td>237.0</td>
+      <td>153.0</td>
+      <td>302.0</td>
+      <td>735.0</td>
+      <td>143.0</td>
+      <td>203.0</td>
+      <td>146.0</td>
+      <td>293.0</td>
+      <td>...</td>
+      <td>0.293062</td>
+      <td>0.061005</td>
+      <td>0.120415</td>
+      <td>0.057018</td>
+      <td>0.048644</td>
+      <td>0.080941</td>
+      <td>0.069378</td>
+      <td>0.094498</td>
+      <td>0.116826</td>
+      <td>0.058214</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>IL</td>
+      <td>1818.0</td>
+      <td>1108.0</td>
+      <td>3446.0</td>
+      <td>4130.0</td>
+      <td>2675.0</td>
+      <td>2771.0</td>
+      <td>1611.0</td>
+      <td>3314.0</td>
+      <td>939.0</td>
+      <td>...</td>
+      <td>0.115606</td>
+      <td>0.148926</td>
+      <td>0.178487</td>
+      <td>0.119755</td>
+      <td>0.078569</td>
+      <td>0.069623</td>
+      <td>0.057349</td>
+      <td>0.047885</td>
+      <td>0.040581</td>
+      <td>0.143221</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>IN</td>
+      <td>966.0</td>
+      <td>1627.0</td>
+      <td>1152.0</td>
+      <td>1937.0</td>
+      <td>910.0</td>
+      <td>907.0</td>
+      <td>922.0</td>
+      <td>1604.0</td>
+      <td>720.0</td>
+      <td>...</td>
+      <td>0.075563</td>
+      <td>0.095657</td>
+      <td>0.160840</td>
+      <td>0.075313</td>
+      <td>0.080213</td>
+      <td>0.076559</td>
+      <td>0.107780</td>
+      <td>0.135099</td>
+      <td>0.059786</td>
+      <td>0.133189</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>KS</td>
+      <td>344.0</td>
+      <td>527.0</td>
+      <td>442.0</td>
+      <td>606.0</td>
+      <td>320.0</td>
+      <td>839.0</td>
+      <td>294.0</td>
+      <td>478.0</td>
+      <td>923.0</td>
+      <td>...</td>
+      <td>0.060298</td>
+      <td>0.083286</td>
+      <td>0.114189</td>
+      <td>0.158093</td>
+      <td>0.064820</td>
+      <td>0.055399</td>
+      <td>0.100245</td>
+      <td>0.099303</td>
+      <td>0.173921</td>
+      <td>0.090070</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>KY</td>
+      <td>873.0</td>
+      <td>493.0</td>
+      <td>630.0</td>
+      <td>921.0</td>
+      <td>556.0</td>
+      <td>1525.0</td>
+      <td>563.0</td>
+      <td>845.0</td>
+      <td>713.0</td>
+      <td>...</td>
+      <td>0.073129</td>
+      <td>0.082862</td>
+      <td>0.121136</td>
+      <td>0.200579</td>
+      <td>0.114823</td>
+      <td>0.074050</td>
+      <td>0.064054</td>
+      <td>0.064843</td>
+      <td>0.093779</td>
+      <td>0.111140</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>LA</td>
+      <td>1465.0</td>
+      <td>512.0</td>
+      <td>459.0</td>
+      <td>516.0</td>
+      <td>1019.0</td>
+      <td>367.0</td>
+      <td>339.0</td>
+      <td>608.0</td>
+      <td>1598.0</td>
+      <td>...</td>
+      <td>0.137628</td>
+      <td>0.061994</td>
+      <td>0.069692</td>
+      <td>0.049568</td>
+      <td>0.197866</td>
+      <td>0.045786</td>
+      <td>0.070367</td>
+      <td>0.069152</td>
+      <td>0.215829</td>
+      <td>0.082118</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>MA</td>
+      <td>1277.0</td>
+      <td>923.0</td>
+      <td>4208.0</td>
+      <td>2903.0</td>
+      <td>3522.0</td>
+      <td>1574.0</td>
+      <td>1943.0</td>
+      <td>1074.0</td>
+      <td>1636.0</td>
+      <td>...</td>
+      <td>0.172774</td>
+      <td>0.206426</td>
+      <td>0.142409</td>
+      <td>0.077214</td>
+      <td>0.062644</td>
+      <td>0.095315</td>
+      <td>0.064901</td>
+      <td>0.045278</td>
+      <td>0.080255</td>
+      <td>0.052686</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MD</td>
+      <td>961.0</td>
+      <td>1438.0</td>
+      <td>978.0</td>
+      <td>1725.0</td>
+      <td>1449.0</td>
+      <td>542.0</td>
+      <td>719.0</td>
+      <td>846.0</td>
+      <td>1393.0</td>
+      <td>...</td>
+      <td>0.131084</td>
+      <td>0.088475</td>
+      <td>0.156052</td>
+      <td>0.049032</td>
+      <td>0.086937</td>
+      <td>0.065044</td>
+      <td>0.090465</td>
+      <td>0.130089</td>
+      <td>0.126018</td>
+      <td>0.076533</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ME</td>
+      <td>366.0</td>
+      <td>388.0</td>
+      <td>579.0</td>
+      <td>154.0</td>
+      <td>172.0</td>
+      <td>302.0</td>
+      <td>355.0</td>
+      <td>544.0</td>
+      <td>140.0</td>
+      <td>...</td>
+      <td>0.051343</td>
+      <td>0.172836</td>
+      <td>0.045970</td>
+      <td>0.090149</td>
+      <td>0.109254</td>
+      <td>0.105970</td>
+      <td>0.104776</td>
+      <td>0.115821</td>
+      <td>0.041791</td>
+      <td>0.162388</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MI</td>
+      <td>2933.0</td>
+      <td>1505.0</td>
+      <td>1926.0</td>
+      <td>3382.0</td>
+      <td>2148.0</td>
+      <td>1346.0</td>
+      <td>1346.0</td>
+      <td>1731.0</td>
+      <td>1712.0</td>
+      <td>...</td>
+      <td>0.112969</td>
+      <td>0.101294</td>
+      <td>0.177869</td>
+      <td>0.070790</td>
+      <td>0.154255</td>
+      <td>0.070790</td>
+      <td>0.052067</td>
+      <td>0.079152</td>
+      <td>0.090039</td>
+      <td>0.091038</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MN</td>
+      <td>900.0</td>
+      <td>2058.0</td>
+      <td>1111.0</td>
+      <td>674.0</td>
+      <td>2928.0</td>
+      <td>464.0</td>
+      <td>2612.0</td>
+      <td>1384.0</td>
+      <td>924.0</td>
+      <td>...</td>
+      <td>0.206313</td>
+      <td>0.078284</td>
+      <td>0.047492</td>
+      <td>0.032694</td>
+      <td>0.063416</td>
+      <td>0.184047</td>
+      <td>0.080045</td>
+      <td>0.145011</td>
+      <td>0.065107</td>
+      <td>0.097520</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MO</td>
+      <td>661.0</td>
+      <td>1295.0</td>
+      <td>464.0</td>
+      <td>1416.0</td>
+      <td>1132.0</td>
+      <td>684.0</td>
+      <td>1106.0</td>
+      <td>1445.0</td>
+      <td>1407.0</td>
+      <td>...</td>
+      <td>0.095786</td>
+      <td>0.039262</td>
+      <td>0.119817</td>
+      <td>0.057878</td>
+      <td>0.055932</td>
+      <td>0.093586</td>
+      <td>0.186749</td>
+      <td>0.109579</td>
+      <td>0.119056</td>
+      <td>0.122271</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MP</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.100000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.066667</td>
+      <td>NaN</td>
+      <td>0.800000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>MS</td>
+      <td>413.0</td>
+      <td>809.0</td>
+      <td>424.0</td>
+      <td>287.0</td>
+      <td>498.0</td>
+      <td>766.0</td>
+      <td>283.0</td>
+      <td>267.0</td>
+      <td>162.0</td>
+      <td>...</td>
+      <td>0.112466</td>
+      <td>0.095754</td>
+      <td>0.064815</td>
+      <td>0.172990</td>
+      <td>0.093270</td>
+      <td>0.063911</td>
+      <td>0.117209</td>
+      <td>0.182701</td>
+      <td>0.036585</td>
+      <td>0.060298</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>MT</td>
+      <td>59.0</td>
+      <td>280.0</td>
+      <td>100.0</td>
+      <td>114.0</td>
+      <td>243.0</td>
+      <td>346.0</td>
+      <td>505.0</td>
+      <td>205.0</td>
+      <td>163.0</td>
+      <td>...</td>
+      <td>0.112604</td>
+      <td>0.046339</td>
+      <td>0.052827</td>
+      <td>0.160334</td>
+      <td>0.027340</td>
+      <td>0.234013</td>
+      <td>0.065802</td>
+      <td>0.129750</td>
+      <td>0.075533</td>
+      <td>0.094995</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NC</td>
+      <td>3337.0</td>
+      <td>2987.0</td>
+      <td>1144.0</td>
+      <td>1844.0</td>
+      <td>2396.0</td>
+      <td>997.0</td>
+      <td>917.0</td>
+      <td>1382.0</td>
+      <td>823.0</td>
+      <td>...</td>
+      <td>0.138146</td>
+      <td>0.065959</td>
+      <td>0.106319</td>
+      <td>0.057484</td>
+      <td>0.192401</td>
+      <td>0.052871</td>
+      <td>0.087581</td>
+      <td>0.172221</td>
+      <td>0.047452</td>
+      <td>0.079682</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>ND</td>
+      <td>20.0</td>
+      <td>243.0</td>
+      <td>53.0</td>
+      <td>26.0</td>
+      <td>189.0</td>
+      <td>35.0</td>
+      <td>31.0</td>
+      <td>219.0</td>
+      <td>488.0</td>
+      <td>...</td>
+      <td>0.106659</td>
+      <td>0.029910</td>
+      <td>0.014673</td>
+      <td>0.019752</td>
+      <td>0.011287</td>
+      <td>0.017494</td>
+      <td>0.264108</td>
+      <td>0.137133</td>
+      <td>0.275395</td>
+      <td>0.123589</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NE</td>
+      <td>199.0</td>
+      <td>551.0</td>
+      <td>328.0</td>
+      <td>310.0</td>
+      <td>446.0</td>
+      <td>280.0</td>
+      <td>822.0</td>
+      <td>234.0</td>
+      <td>214.0</td>
+      <td>...</td>
+      <td>0.122730</td>
+      <td>0.090259</td>
+      <td>0.085305</td>
+      <td>0.077050</td>
+      <td>0.054761</td>
+      <td>0.226197</td>
+      <td>0.069070</td>
+      <td>0.151624</td>
+      <td>0.058888</td>
+      <td>0.064392</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>NH</td>
+      <td>102.0</td>
+      <td>120.0</td>
+      <td>409.0</td>
+      <td>192.0</td>
+      <td>1004.0</td>
+      <td>293.0</td>
+      <td>698.0</td>
+      <td>192.0</td>
+      <td>163.0</td>
+      <td>...</td>
+      <td>0.292030</td>
+      <td>0.118965</td>
+      <td>0.055846</td>
+      <td>0.085224</td>
+      <td>0.029668</td>
+      <td>0.203025</td>
+      <td>0.077661</td>
+      <td>0.034904</td>
+      <td>0.047411</td>
+      <td>0.055846</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NJ</td>
+      <td>1713.0</td>
+      <td>1855.0</td>
+      <td>2045.0</td>
+      <td>1654.0</td>
+      <td>1257.0</td>
+      <td>2387.0</td>
+      <td>1575.0</td>
+      <td>1073.0</td>
+      <td>1094.0</td>
+      <td>...</td>
+      <td>0.074489</td>
+      <td>0.121185</td>
+      <td>0.098015</td>
+      <td>0.141452</td>
+      <td>0.101511</td>
+      <td>0.093333</td>
+      <td>0.131793</td>
+      <td>0.109926</td>
+      <td>0.064830</td>
+      <td>0.063585</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>NM</td>
+      <td>165.0</td>
+      <td>180.0</td>
+      <td>155.0</td>
+      <td>308.0</td>
+      <td>903.0</td>
+      <td>164.0</td>
+      <td>250.0</td>
+      <td>277.0</td>
+      <td>164.0</td>
+      <td>...</td>
+      <td>0.273222</td>
+      <td>0.046899</td>
+      <td>0.093192</td>
+      <td>0.049622</td>
+      <td>0.049924</td>
+      <td>0.075643</td>
+      <td>0.223903</td>
+      <td>0.054463</td>
+      <td>0.049622</td>
+      <td>0.083812</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NV</td>
+      <td>287.0</td>
+      <td>653.0</td>
+      <td>245.0</td>
+      <td>151.0</td>
+      <td>453.0</td>
+      <td>500.0</td>
+      <td>449.0</td>
+      <td>406.0</td>
+      <td>179.0</td>
+      <td>...</td>
+      <td>0.127822</td>
+      <td>0.069131</td>
+      <td>0.042607</td>
+      <td>0.141084</td>
+      <td>0.080982</td>
+      <td>0.126693</td>
+      <td>0.062359</td>
+      <td>0.184255</td>
+      <td>0.050508</td>
+      <td>0.114560</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>NY</td>
+      <td>3585.0</td>
+      <td>4936.0</td>
+      <td>3706.0</td>
+      <td>6552.0</td>
+      <td>3442.0</td>
+      <td>4181.0</td>
+      <td>4869.0</td>
+      <td>2951.0</td>
+      <td>3202.0</td>
+      <td>...</td>
+      <td>0.083990</td>
+      <td>0.090432</td>
+      <td>0.159879</td>
+      <td>0.102023</td>
+      <td>0.087480</td>
+      <td>0.118811</td>
+      <td>0.086772</td>
+      <td>0.120446</td>
+      <td>0.078134</td>
+      <td>0.072009</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>OH</td>
+      <td>2430.0</td>
+      <td>3649.0</td>
+      <td>2993.0</td>
+      <td>2230.0</td>
+      <td>1841.0</td>
+      <td>2251.0</td>
+      <td>2583.0</td>
+      <td>1246.0</td>
+      <td>2229.0</td>
+      <td>...</td>
+      <td>0.079970</td>
+      <td>0.130012</td>
+      <td>0.096868</td>
+      <td>0.097780</td>
+      <td>0.105556</td>
+      <td>0.112202</td>
+      <td>0.068242</td>
+      <td>0.158507</td>
+      <td>0.096825</td>
+      <td>0.054124</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>OK</td>
+      <td>336.0</td>
+      <td>670.0</td>
+      <td>1255.0</td>
+      <td>469.0</td>
+      <td>456.0</td>
+      <td>550.0</td>
+      <td>412.0</td>
+      <td>391.0</td>
+      <td>662.0</td>
+      <td>...</td>
+      <td>0.078485</td>
+      <td>0.216007</td>
+      <td>0.080723</td>
+      <td>0.094664</td>
+      <td>0.057831</td>
+      <td>0.070912</td>
+      <td>0.104991</td>
+      <td>0.115318</td>
+      <td>0.113941</td>
+      <td>0.067298</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>OR</td>
+      <td>1331.0</td>
+      <td>648.0</td>
+      <td>589.0</td>
+      <td>681.0</td>
+      <td>1332.0</td>
+      <td>929.0</td>
+      <td>438.0</td>
+      <td>697.0</td>
+      <td>934.0</td>
+      <td>...</td>
+      <td>0.162142</td>
+      <td>0.071698</td>
+      <td>0.082897</td>
+      <td>0.113086</td>
+      <td>0.162021</td>
+      <td>0.053317</td>
+      <td>0.076811</td>
+      <td>0.078880</td>
+      <td>0.113694</td>
+      <td>0.084845</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>PA</td>
+      <td>1605.0</td>
+      <td>2503.0</td>
+      <td>2967.0</td>
+      <td>3275.0</td>
+      <td>1731.0</td>
+      <td>4294.0</td>
+      <td>3635.0</td>
+      <td>2951.0</td>
+      <td>3961.0</td>
+      <td>...</td>
+      <td>0.061437</td>
+      <td>0.105306</td>
+      <td>0.116238</td>
+      <td>0.152405</td>
+      <td>0.056965</td>
+      <td>0.129015</td>
+      <td>0.044508</td>
+      <td>0.088838</td>
+      <td>0.140586</td>
+      <td>0.104738</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>PR</td>
+      <td>26.0</td>
+      <td>69.0</td>
+      <td>46.0</td>
+      <td>234.0</td>
+      <td>127.0</td>
+      <td>39.0</td>
+      <td>99.0</td>
+      <td>93.0</td>
+      <td>74.0</td>
+      <td>...</td>
+      <td>0.131063</td>
+      <td>0.047472</td>
+      <td>0.241486</td>
+      <td>0.040248</td>
+      <td>0.026832</td>
+      <td>0.102167</td>
+      <td>0.166151</td>
+      <td>0.071207</td>
+      <td>0.076367</td>
+      <td>0.095975</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>RI</td>
+      <td>695.0</td>
+      <td>115.0</td>
+      <td>472.0</td>
+      <td>158.0</td>
+      <td>179.0</td>
+      <td>63.0</td>
+      <td>177.0</td>
+      <td>205.0</td>
+      <td>362.0</td>
+      <td>...</td>
+      <td>0.068321</td>
+      <td>0.180153</td>
+      <td>0.060305</td>
+      <td>0.024046</td>
+      <td>0.265267</td>
+      <td>0.067557</td>
+      <td>0.073282</td>
+      <td>0.043893</td>
+      <td>0.138168</td>
+      <td>0.078244</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>SC</td>
+      <td>440.0</td>
+      <td>585.0</td>
+      <td>417.0</td>
+      <td>783.0</td>
+      <td>614.0</td>
+      <td>914.0</td>
+      <td>1428.0</td>
+      <td>964.0</td>
+      <td>1625.0</td>
+      <td>...</td>
+      <td>0.073043</td>
+      <td>0.049607</td>
+      <td>0.093148</td>
+      <td>0.108732</td>
+      <td>0.052344</td>
+      <td>0.169879</td>
+      <td>0.075541</td>
+      <td>0.069593</td>
+      <td>0.193314</td>
+      <td>0.114680</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>SD</td>
+      <td>607.0</td>
+      <td>97.0</td>
+      <td>58.0</td>
+      <td>39.0</td>
+      <td>78.0</td>
+      <td>159.0</td>
+      <td>351.0</td>
+      <td>93.0</td>
+      <td>268.0</td>
+      <td>...</td>
+      <td>0.041890</td>
+      <td>0.031149</td>
+      <td>0.020945</td>
+      <td>0.085392</td>
+      <td>0.325994</td>
+      <td>0.188507</td>
+      <td>0.059076</td>
+      <td>0.052095</td>
+      <td>0.143931</td>
+      <td>0.049946</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>TN</td>
+      <td>865.0</td>
+      <td>1214.0</td>
+      <td>1255.0</td>
+      <td>914.0</td>
+      <td>821.0</td>
+      <td>2205.0</td>
+      <td>570.0</td>
+      <td>990.0</td>
+      <td>811.0</td>
+      <td>...</td>
+      <td>0.076564</td>
+      <td>0.117038</td>
+      <td>0.085237</td>
+      <td>0.205633</td>
+      <td>0.080668</td>
+      <td>0.053157</td>
+      <td>0.100532</td>
+      <td>0.113215</td>
+      <td>0.075632</td>
+      <td>0.092325</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>TX</td>
+      <td>3827.0</td>
+      <td>2717.0</td>
+      <td>2125.0</td>
+      <td>4114.0</td>
+      <td>4022.0</td>
+      <td>2357.0</td>
+      <td>2889.0</td>
+      <td>5088.0</td>
+      <td>4525.0</td>
+      <td>...</td>
+      <td>0.117606</td>
+      <td>0.062136</td>
+      <td>0.120296</td>
+      <td>0.068920</td>
+      <td>0.111904</td>
+      <td>0.084476</td>
+      <td>0.074096</td>
+      <td>0.079447</td>
+      <td>0.132314</td>
+      <td>0.148776</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>UT</td>
+      <td>985.0</td>
+      <td>1512.0</td>
+      <td>133.0</td>
+      <td>242.0</td>
+      <td>361.0</td>
+      <td>142.0</td>
+      <td>133.0</td>
+      <td>276.0</td>
+      <td>143.0</td>
+      <td>...</td>
+      <td>0.081600</td>
+      <td>0.030063</td>
+      <td>0.054702</td>
+      <td>0.032098</td>
+      <td>0.222649</td>
+      <td>0.030063</td>
+      <td>0.111890</td>
+      <td>0.341772</td>
+      <td>0.032324</td>
+      <td>0.062387</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>VA</td>
+      <td>879.0</td>
+      <td>573.0</td>
+      <td>1578.0</td>
+      <td>1062.0</td>
+      <td>3026.0</td>
+      <td>1965.0</td>
+      <td>804.0</td>
+      <td>884.0</td>
+      <td>1877.0</td>
+      <td>...</td>
+      <td>0.218705</td>
+      <td>0.114050</td>
+      <td>0.076756</td>
+      <td>0.142021</td>
+      <td>0.063530</td>
+      <td>0.058109</td>
+      <td>0.085863</td>
+      <td>0.041414</td>
+      <td>0.135661</td>
+      <td>0.063891</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>VI</td>
+      <td>12.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.051282</td>
+      <td>0.025641</td>
+      <td>NaN</td>
+      <td>0.128205</td>
+      <td>0.307692</td>
+      <td>0.230769</td>
+      <td>0.153846</td>
+      <td>0.051282</td>
+      <td>0.025641</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>VT</td>
+      <td>82.0</td>
+      <td>60.0</td>
+      <td>89.0</td>
+      <td>656.0</td>
+      <td>108.0</td>
+      <td>65.0</td>
+      <td>52.0</td>
+      <td>125.0</td>
+      <td>41.0</td>
+      <td>...</td>
+      <td>0.072338</td>
+      <td>0.059612</td>
+      <td>0.439384</td>
+      <td>0.043537</td>
+      <td>0.054923</td>
+      <td>0.034829</td>
+      <td>0.145345</td>
+      <td>0.040188</td>
+      <td>0.027461</td>
+      <td>0.083724</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>WA</td>
+      <td>3503.0</td>
+      <td>635.0</td>
+      <td>986.0</td>
+      <td>721.0</td>
+      <td>858.0</td>
+      <td>786.0</td>
+      <td>1212.0</td>
+      <td>1572.0</td>
+      <td>1053.0</td>
+      <td>...</td>
+      <td>0.060683</td>
+      <td>0.069736</td>
+      <td>0.050994</td>
+      <td>0.055591</td>
+      <td>0.247754</td>
+      <td>0.085720</td>
+      <td>0.198953</td>
+      <td>0.044911</td>
+      <td>0.074475</td>
+      <td>0.111182</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>WI</td>
+      <td>941.0</td>
+      <td>895.0</td>
+      <td>2228.0</td>
+      <td>1997.0</td>
+      <td>912.0</td>
+      <td>1103.0</td>
+      <td>2995.0</td>
+      <td>1420.0</td>
+      <td>1341.0</td>
+      <td>...</td>
+      <td>0.063140</td>
+      <td>0.154251</td>
+      <td>0.138258</td>
+      <td>0.076364</td>
+      <td>0.065148</td>
+      <td>0.207353</td>
+      <td>0.042301</td>
+      <td>0.061963</td>
+      <td>0.092841</td>
+      <td>0.098311</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>WV</td>
+      <td>212.0</td>
+      <td>732.0</td>
+      <td>484.0</td>
+      <td>491.0</td>
+      <td>147.0</td>
+      <td>304.0</td>
+      <td>194.0</td>
+      <td>163.0</td>
+      <td>257.0</td>
+      <td>...</td>
+      <td>0.045342</td>
+      <td>0.149291</td>
+      <td>0.151450</td>
+      <td>0.093769</td>
+      <td>0.065392</td>
+      <td>0.059840</td>
+      <td>0.079581</td>
+      <td>0.225787</td>
+      <td>0.079272</td>
+      <td>0.050278</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>WY</td>
+      <td>120.0</td>
+      <td>148.0</td>
+      <td>130.0</td>
+      <td>41.0</td>
+      <td>93.0</td>
+      <td>40.0</td>
+      <td>143.0</td>
+      <td>127.0</td>
+      <td>128.0</td>
+      <td>...</td>
+      <td>0.084316</td>
+      <td>0.117860</td>
+      <td>0.037171</td>
+      <td>0.036265</td>
+      <td>0.108794</td>
+      <td>0.129646</td>
+      <td>0.119674</td>
+      <td>0.134180</td>
+      <td>0.116047</td>
+      <td>0.115141</td>
+    </tr>
+  </tbody>
+</table>
+<p>55 rows × 22 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># could also add per capita stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race" class="level2">
+<h2 class="anchored" data-anchor-id="research-q3-community-representativeness-age-and-gender-as-stand-ins-for-race">Research Q3: Community Representativeness: Age and Gender (as Stand-ins for Race)</h2>
+<p>With the growing interest in social determinants of health and community representation, our project has an opportunity to provide unique insights on how and whether physicians reflect the communities they serve. While our research will most likely focus on place of birth and race/ethnicity, we will instead use age and gender as a stand-in since these can be readily obtained from public data.</p>
+<p>Breakdown by Characteristics: Specialty Category, Organization Type</p>
+<p>Breakdown by Geography: Nation, State, CBSA</p>
+<div class="cell" data-execution_count="19">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use drop duplicates to ensure we only count a physician once per state</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> phys_estab[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'gndr'</span>, <span class="st">'age_imputed'</span>]].copy().drop_duplicates()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># topcode ages to 85</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>phys_estab_state[<span class="st">"age_imputed"</span>] <span class="op">=</span> np.where(phys_estab_state[<span class="st">"age_imputed"</span>] <span class="op">&gt;</span> <span class="dv">85</span>, <span class="dv">85</span>, phys_estab_state[<span class="st">"age_imputed"</span>])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># put ages into bins of 10 years</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>age_bins <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">90</span>, <span class="dv">10</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>idxs <span class="op">=</span> np.digitize(phys_estab_state[<span class="st">"age_imputed"</span>], age_bins)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add bin labels to dataset</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>phys_estab_state[<span class="st">"bin"</span>] <span class="op">=</span> idxs</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> []</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> np.arange(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>):</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        phys_age_sex_dp, rmse <span class="op">=</span> diff_count(phys_estab_state, [<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        errors.append([epsilon, rmse])</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot state error</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Examples%20-%20DP_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group by state and bins and get noisy populations</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>phys_age_sex_dp <span class="op">=</span> phys_estab_state.groupby([<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin"</span>]).agg({<span class="st">"NPI"</span>: <span class="kw">lambda</span> x: dp_agg(x, epsilon), <span class="st">"age_imputed"</span>: <span class="st">"min"</span>}).reset_index()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>phys_age_sex_dp.drop(columns<span class="op">=</span>[<span class="st">"bin"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add state data</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop <span class="op">=</span> pd.merge(phys_age_sex_dp, state_agesex, how<span class="op">=</span><span class="st">"left"</span>, left_on<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"age_imputed"</span>], right_on<span class="op">=</span>[<span class="st">"abr"</span>, <span class="st">"sex"</span>, <span class="st">"bin_min"</span>])</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># filter fields</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"NPI"</span>, <span class="st">"pop"</span>]]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># compute per 10k stat</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop[<span class="st">"phy_per_10k"</span>] <span class="op">=</span> phys_age_sex_pop[<span class="st">"NPI"</span>] <span class="op">/</span> (phys_age_sex_pop[<span class="st">"pop"</span>]<span class="op">/</span><span class="dv">10000</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>phys_age_sex_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>bin_min</th>
+      <th>NPI</th>
+      <th>pop</th>
+      <th>phy_per_10k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>30.0</td>
+      <td>145</td>
+      <td>51272.0</td>
+      <td>28.280543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>40.0</td>
+      <td>168</td>
+      <td>40674.0</td>
+      <td>41.304027</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>50.0</td>
+      <td>130</td>
+      <td>43451.0</td>
+      <td>29.918759</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>60.0</td>
+      <td>88</td>
+      <td>39819.0</td>
+      <td>22.100003</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>70.0</td>
+      <td>17</td>
+      <td>19719.0</td>
+      <td>8.621127</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>650</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>40.0</td>
+      <td>273</td>
+      <td>34530.0</td>
+      <td>79.061685</td>
+    </tr>
+    <tr>
+      <th>651</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>50.0</td>
+      <td>250</td>
+      <td>35040.0</td>
+      <td>71.347032</td>
+    </tr>
+    <tr>
+      <th>652</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>60.0</td>
+      <td>199</td>
+      <td>37838.0</td>
+      <td>52.592632</td>
+    </tr>
+    <tr>
+      <th>653</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>70.0</td>
+      <td>72</td>
+      <td>21138.0</td>
+      <td>34.061879</td>
+    </tr>
+    <tr>
+      <th>654</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>80.0</td>
+      <td>11</td>
+      <td>9006.0</td>
+      <td>12.214080</td>
+    </tr>
+  </tbody>
+</table>
+<p>655 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<p>Since the analyses below runs on noisy data, no additional noise needs to be added to maintain DP</p>
+<div class="cell" data-execution_count="21">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">permutation tests</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">https://www.cs.cornell.edu/courses/cs1380/2018sp/textbook/chapters/16/1/two-categorical-distributions.html</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function to get proportion of a class in the data</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> proportions(array):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> array<span class="op">/</span>np.<span class="bu">sum</span>(array)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># total variation distance to measure how different categorical distributions are</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tvd(dist1, dist2):</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span><span class="op">*</span>(np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(dist1 <span class="op">-</span> dist2)))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># get the data associated with physicians</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>phys <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"NPI"</span>]].copy()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># get the data associated with the general public</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> phys_age_sex_pop[[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin_min"</span>, <span class="st">"pop"</span>]].copy()</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column to flag whether the data is for phys or not</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>phys[<span class="st">"phy"</span>] <span class="op">=</span> <span class="st">"1"</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>population[<span class="st">"phy"</span>] <span class="op">=</span> <span class="st">"0"</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the two datasets</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.DataFrame(np.vstack([phys, population]), columns<span class="op">=</span>[<span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"bin"</span>, <span class="st">"pop"</span>, <span class="st">"phy"</span>]).fillna(<span class="dv">0</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="co"># combine all categories into a single column</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">"cat"</span>] <span class="op">=</span> merged[<span class="st">"gndr"</span>] <span class="op">+</span> merged[<span class="st">"bin"</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>merged.drop(columns<span class="op">=</span>[<span class="st">"gndr"</span>, <span class="st">"bin"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co"># get a subset for testing</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> merged[merged[<span class="st">"st"</span>] <span class="op">==</span> <span class="st">"AK"</span>]</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="21">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>pop</th>
+      <th>phy</th>
+      <th>cat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>145.0</td>
+      <td>1</td>
+      <td>F30.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>168.0</td>
+      <td>1</td>
+      <td>F40.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>130.0</td>
+      <td>1</td>
+      <td>F50.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>88.0</td>
+      <td>1</td>
+      <td>F60.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>17.0</td>
+      <td>1</td>
+      <td>F70.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AK</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AK</td>
+      <td>139.0</td>
+      <td>1</td>
+      <td>M30.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AK</td>
+      <td>274.0</td>
+      <td>1</td>
+      <td>M40.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AK</td>
+      <td>292.0</td>
+      <td>1</td>
+      <td>M50.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AK</td>
+      <td>196.0</td>
+      <td>1</td>
+      <td>M60.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AK</td>
+      <td>95.0</td>
+      <td>1</td>
+      <td>M70.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AK</td>
+      <td>24.0</td>
+      <td>1</td>
+      <td>M80.0</td>
+    </tr>
+    <tr>
+      <th>655</th>
+      <td>AK</td>
+      <td>51272.0</td>
+      <td>0</td>
+      <td>F30.0</td>
+    </tr>
+    <tr>
+      <th>656</th>
+      <td>AK</td>
+      <td>40674.0</td>
+      <td>0</td>
+      <td>F40.0</td>
+    </tr>
+    <tr>
+      <th>657</th>
+      <td>AK</td>
+      <td>43451.0</td>
+      <td>0</td>
+      <td>F50.0</td>
+    </tr>
+    <tr>
+      <th>658</th>
+      <td>AK</td>
+      <td>39819.0</td>
+      <td>0</td>
+      <td>F60.0</td>
+    </tr>
+    <tr>
+      <th>659</th>
+      <td>AK</td>
+      <td>19719.0</td>
+      <td>0</td>
+      <td>F70.0</td>
+    </tr>
+    <tr>
+      <th>660</th>
+      <td>AK</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>F0.0</td>
+    </tr>
+    <tr>
+      <th>661</th>
+      <td>AK</td>
+      <td>52633.0</td>
+      <td>0</td>
+      <td>M30.0</td>
+    </tr>
+    <tr>
+      <th>662</th>
+      <td>AK</td>
+      <td>43363.0</td>
+      <td>0</td>
+      <td>M40.0</td>
+    </tr>
+    <tr>
+      <th>663</th>
+      <td>AK</td>
+      <td>47407.0</td>
+      <td>0</td>
+      <td>M50.0</td>
+    </tr>
+    <tr>
+      <th>664</th>
+      <td>AK</td>
+      <td>41558.0</td>
+      <td>0</td>
+      <td>M60.0</td>
+    </tr>
+    <tr>
+      <th>665</th>
+      <td>AK</td>
+      <td>20398.0</td>
+      <td>0</td>
+      <td>M70.0</td>
+    </tr>
+    <tr>
+      <th>666</th>
+      <td>AK</td>
+      <td>6421.0</td>
+      <td>0</td>
+      <td>M80.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> permutation_test(df, category, classes, repetitions):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a pivot table finding the number of phys/not in each category</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> pd.pivot_table(df, columns<span class="op">=</span>[classes], index<span class="op">=</span>category, aggfunc<span class="op">=</span>np.size)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># stop here if data is malformed</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"0"</span> <span class="kw">not</span> <span class="kw">in</span> counts.columns <span class="kw">or</span> <span class="st">"1"</span> <span class="kw">not</span> <span class="kw">in</span> counts.columns:</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate tvd</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    observed_tvd <span class="op">=</span> tvd(proportions(counts[<span class="st">"0"</span>]), proportions(counts[<span class="st">"1"</span>]))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    tvds <span class="op">=</span> []</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shuffle data x times based on input</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(repetitions):</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># shuffle phys/not label</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        shuffled_var <span class="op">=</span> df[[classes]].sample(frac<span class="op">=</span><span class="dv">1</span>).to_numpy()</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add new label to df</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"shuffled"</span>] <span class="op">=</span> shuffled_var</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># recalculate pivot based on shuffled labels</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        shuffled_counts <span class="op">=</span> pd.pivot_table(df[[category, <span class="st">"shuffled"</span>]], columns<span class="op">=</span>[<span class="st">"shuffled"</span>], index<span class="op">=</span>category, aggfunc<span class="op">=</span>np.size)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate tvd based on shuffled counts</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        new_tvd <span class="op">=</span> tvd(proportions(shuffled_counts[<span class="st">"0"</span>]), proportions(shuffled_counts[<span class="st">"1"</span>]))</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># keep track of calculated values</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        tvds.append(new_tvd)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate p-value</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    tvds <span class="op">=</span> np.array(tvds)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    emp_p <span class="op">=</span> np.count_nonzero(tvds <span class="op">&gt;=</span> observed_tvd)<span class="op">/</span>repetitions</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (observed_tvd, emp_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CAREFUL: takes forever (~hour for all 50 states)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> merged[<span class="st">"st"</span>].unique()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, group <span class="kw">in</span> merged.groupby(<span class="st">"st"</span>):</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># format the data so it is one row per person</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    group <span class="op">=</span> group.loc[group.index.repeat(group[<span class="st">"pop"</span>])]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># run function with relevant columns</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    vals <span class="op">=</span> permutation_test(group[[<span class="st">"phy"</span>, <span class="st">"cat"</span>]], <span class="st">"cat"</span>, <span class="st">"phy"</span>, <span class="dv">50</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    results.append([name, vals[<span class="dv">0</span>], vals[<span class="dv">1</span>]])</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>([name, vals[<span class="dv">0</span>], vals[<span class="dv">1</span>]])</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.9/site-packages/pandas/core/frame.py:3607: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._set_item(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['AK', 0.18021522997958397, 0.0]
+['AL', 0.2932136955124203, 0.0]
+['AR', 0.2937022718135871, 0.0]
+['AZ', 0.2606198561672938, 0.0]
+['CA', 0.2347407528633154, 0.0]
+['CO', 0.2288251123980192, 0.0]
+['CT', 0.23527136107987995, 0.0]
+['DC', 0, 0]
+['DE', 0.25029933860194475, 0.0]
+['FL', 0.3029553778100085, 0.0]
+['GA', 0.27281678989061126, 0.0]
+['GU', 0, 0]
+['HI', 0.19974944091922722, 0.0]
+['IA', 0.23998560753313636, 0.0]
+['ID', 0.24630874345728387, 0.0]
+['IL', 0.23441423101332284, 0.0]
+['IN', 0.2697486816663744, 0.0]
+['KS', 0.26336729446962004, 0.0]
+['KY', 0.2722768267897496, 0.0]
+['LA', 0.27347980078737105, 0.0]
+['MA', 0.1978436360546689, 0.0]
+['MD', 0.2289315610239334, 0.0]
+['ME', 0.21749939235094626, 0.0]
+['MI', 0.21914869692714858, 0.0]
+['MN', 0.21875506804397793, 0.0]
+['MO', 0.2580233284315929, 0.0]
+['MP', 0, 0]
+['MS', 0.3189530580657671, 0.0]
+['MT', 0.2821870597873727, 0.0]
+['NC', 0.25963133381598574, 0.0]
+['ND', 0.21149760129583914, 0.0]
+['NE', 0.2530966429205866, 0.0]
+['NH', 0.21119041454015075, 0.0]
+['NJ', 0.24876949889183236, 0.0]
+['NM', 0.2186982696570639, 0.0]
+['NV', 0.2855833315796024, 0.0]
+['NY', 0.24237199347297012, 0.0]
+['OH', 0.2520410830889507, 0.0]
+['OK', 0.2840563221741394, 0.0]
+['OR', 0.24334216904386435, 0.0]
+['PA', 0.25059056617991216, 0.0]
+['PR', 0, 0]
+['RI', 0.18583370830677687, 0.0]
+['SC', 0.27903244780381925, 0.0]
+['SD', 0.23387317242589084, 0.0]
+['TN', 0.2920888997854446, 0.0]
+['TX', 0.2648182719557806, 0.0]
+['UT', 0.30165251189624265, 0.0]
+['VA', 0.25963604454610856, 0.0]
+['VI', 0, 0]
+['VT', 0.17382601049143895, 0.0]
+['WA', 0.2198138521463306, 0.0]
+['WI', 0.2408151134735927, 0.0]
+['WV', 0.25620053560926886, 0.0]
+['WY', 0.29211924877081863, 0.0]
+[['AK', 0.18021522997958397, 0.0], ['AL', 0.2932136955124203, 0.0], ['AR', 0.2937022718135871, 0.0], ['AZ', 0.2606198561672938, 0.0], ['CA', 0.2347407528633154, 0.0], ['CO', 0.2288251123980192, 0.0], ['CT', 0.23527136107987995, 0.0], ['DC', 0, 0], ['DE', 0.25029933860194475, 0.0], ['FL', 0.3029553778100085, 0.0], ['GA', 0.27281678989061126, 0.0], ['GU', 0, 0], ['HI', 0.19974944091922722, 0.0], ['IA', 0.23998560753313636, 0.0], ['ID', 0.24630874345728387, 0.0], ['IL', 0.23441423101332284, 0.0], ['IN', 0.2697486816663744, 0.0], ['KS', 0.26336729446962004, 0.0], ['KY', 0.2722768267897496, 0.0], ['LA', 0.27347980078737105, 0.0], ['MA', 0.1978436360546689, 0.0], ['MD', 0.2289315610239334, 0.0], ['ME', 0.21749939235094626, 0.0], ['MI', 0.21914869692714858, 0.0], ['MN', 0.21875506804397793, 0.0], ['MO', 0.2580233284315929, 0.0], ['MP', 0, 0], ['MS', 0.3189530580657671, 0.0], ['MT', 0.2821870597873727, 0.0], ['NC', 0.25963133381598574, 0.0], ['ND', 0.21149760129583914, 0.0], ['NE', 0.2530966429205866, 0.0], ['NH', 0.21119041454015075, 0.0], ['NJ', 0.24876949889183236, 0.0], ['NM', 0.2186982696570639, 0.0], ['NV', 0.2855833315796024, 0.0], ['NY', 0.24237199347297012, 0.0], ['OH', 0.2520410830889507, 0.0], ['OK', 0.2840563221741394, 0.0], ['OR', 0.24334216904386435, 0.0], ['PA', 0.25059056617991216, 0.0], ['PR', 0, 0], ['RI', 0.18583370830677687, 0.0], ['SC', 0.27903244780381925, 0.0], ['SD', 0.23387317242589084, 0.0], ['TN', 0.2920888997854446, 0.0], ['TX', 0.2648182719557806, 0.0], ['UT', 0.30165251189624265, 0.0], ['VA', 0.25963604454610856, 0.0], ['VI', 0, 0], ['VT', 0.17382601049143895, 0.0], ['WA', 0.2198138521463306, 0.0], ['WI', 0.2408151134735927, 0.0], ['WV', 0.25620053560926886, 0.0], ['WY', 0.29211924877081863, 0.0]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load results into a pandas df</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tvd <span class="op">=</span> pd.DataFrame(results, columns <span class="op">=</span> [<span class="st">"st"</span>, <span class="st">"tvd"</span>, <span class="st">"pval"</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add it to the physician data by state</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>age_tvd <span class="op">=</span> pd.merge(phys_age_sex_pop, tvd, on<span class="op">=</span><span class="st">"st"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>age_tvd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>bin_min</th>
+      <th>NPI</th>
+      <th>pop</th>
+      <th>phy_per_10k</th>
+      <th>tvd</th>
+      <th>pval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>30.0</td>
+      <td>145</td>
+      <td>51272.0</td>
+      <td>28.280543</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>40.0</td>
+      <td>168</td>
+      <td>40674.0</td>
+      <td>41.304027</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>50.0</td>
+      <td>130</td>
+      <td>43451.0</td>
+      <td>29.918759</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>60.0</td>
+      <td>88</td>
+      <td>39819.0</td>
+      <td>22.100003</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK</td>
+      <td>F</td>
+      <td>70.0</td>
+      <td>17</td>
+      <td>19719.0</td>
+      <td>8.621127</td>
+      <td>0.180215</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>813</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>50.0</td>
+      <td>250</td>
+      <td>35040.0</td>
+      <td>71.347032</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>814</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>60.0</td>
+      <td>199</td>
+      <td>37838.0</td>
+      <td>52.592632</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>70.0</td>
+      <td>72</td>
+      <td>21138.0</td>
+      <td>34.061879</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>816</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>80.0</td>
+      <td>8</td>
+      <td>9006.0</td>
+      <td>8.882967</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>817</th>
+      <td>WY</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.292119</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>818 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="research-q4-firm-market-concentration-by-geography" class="level2">
+<h2 class="anchored" data-anchor-id="research-q4-firm-market-concentration-by-geography">Research Q4: Firm Market Concentration by Geography</h2>
+<p>A key advantage of our data is that we can explicitly identify common ownership and individual places of work. Using data on common ownership – what are called firms, which are roughly equivalent to the concept of “health systems” in the health care arena – we can calculate the level of market concentration for specific geographies.</p>
+<p>Calculation: HHI (or consider CRn), using employed physicians as the measure of market power</p>
+<p>Breakdown by Geography: State, CBSA</p>
+<p>Follow-up question of interest: Market concentration of employeed physicians by certain specialties</p>
+<div class="cell" data-execution_count="24">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge physician data with establishment data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab[[<span class="st">"NPI"</span>, <span class="st">"establishment_id"</span>]], on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)[[<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"org_pac_id"</span>]]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practice and then firm data</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_prac.merge(firms, on<span class="op">=</span><span class="st">"health_sys_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># get relevant columns for measuring market concentration</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_firm[[<span class="st">"NPI"</span>, <span class="st">"health_sys_name"</span>, <span class="st">"health_sys_state"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="25">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sdi(data):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> p(n, N):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">""" Relative abundance """</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">float</span>(n)<span class="op">/</span>N</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">sum</span>(data)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> (<span class="bu">sum</span>(p(n, N)<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> n <span class="kw">in</span> data <span class="cf">if</span> n <span class="op">!=</span> <span class="dv">0</span>))</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># get count of physicians per health system and state</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>phys_firm_cts, rmse <span class="op">=</span> diff_count(phys_firm, [<span class="st">"health_sys_name"</span>, <span class="st">"health_sys_state"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate diversity of state based on Simpson's Index</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>phy_diversity <span class="op">=</span> phys_firm_cts.groupby(<span class="st">"health_sys_state"</span>)[<span class="st">"NPI"</span>].<span class="bu">apply</span>(<span class="bu">list</span>).<span class="bu">apply</span>(sdi).reset_index(name<span class="op">=</span><span class="st">"sdi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="26">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>phy_diversity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="26">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>health_sys_state</th>
+      <th>sdi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL</td>
+      <td>0.749003</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AR</td>
+      <td>0.779147</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AZ</td>
+      <td>0.476747</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CA</td>
+      <td>0.859679</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CO</td>
+      <td>0.555365</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CT</td>
+      <td>0.680188</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>DC</td>
+      <td>0.043838</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>DE</td>
+      <td>0.286735</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>FL</td>
+      <td>0.852224</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>GA</td>
+      <td>0.886339</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>HI</td>
+      <td>0.584060</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>IA</td>
+      <td>0.641867</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID</td>
+      <td>0.233077</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>IL</td>
+      <td>0.816225</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>IN</td>
+      <td>0.814847</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>KS</td>
+      <td>0.575245</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>KY</td>
+      <td>0.805964</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>LA</td>
+      <td>0.790216</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>MA</td>
+      <td>0.837692</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>MD</td>
+      <td>0.852337</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ME</td>
+      <td>0.684787</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MI</td>
+      <td>0.787364</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>MN</td>
+      <td>0.813374</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MO</td>
+      <td>0.787279</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MS</td>
+      <td>0.827021</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MT</td>
+      <td>0.771104</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>NC</td>
+      <td>0.818240</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>ND</td>
+      <td>0.458282</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>NE</td>
+      <td>0.787449</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NH</td>
+      <td>0.751812</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>NJ</td>
+      <td>0.886927</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NM</td>
+      <td>0.506308</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>NV</td>
+      <td>0.412152</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NY</td>
+      <td>0.890892</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>OH</td>
+      <td>0.866450</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>OK</td>
+      <td>0.677279</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>OR</td>
+      <td>0.786595</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>PA</td>
+      <td>0.905693</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>RI</td>
+      <td>0.328761</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>SC</td>
+      <td>0.839665</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>SD</td>
+      <td>0.467802</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>TN</td>
+      <td>0.850914</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>TX</td>
+      <td>0.888860</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>UT</td>
+      <td>0.321171</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>VA</td>
+      <td>0.852326</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>VT</td>
+      <td>0.323371</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>WA</td>
+      <td>0.695122</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>WI</td>
+      <td>0.825265</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>WV</td>
+      <td>0.672337</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>WY</td>
+      <td>0.561602</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-noisy-percentiles" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-noisy-percentiles">Calculating Noisy Percentiles</h2>
+<p>Based on the algorithm outlined in the PSEO paper.</p>
+<p>Final formula for noisy percentile: y* = y + S<sub>px</sub>(D)*Gamma(1/ε<sub>x</sub>)</p>
+<p>y* is the protected percentile value</p>
+<p>y is the true value</p>
+<p>S<sub>px</sub>(D) is the smooth sensitivity</p>
+<p>Gamma(1/ε<sub>x</sub>) is a draw from the gamma distribution</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read files</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>physicians <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"physicians.csv"</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>establishments <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"establishments.csv"</span>, dtype<span class="op">=</span>{<span class="st">'zip'</span>: <span class="bu">str</span>, <span class="st">'zip9'</span>: <span class="bu">str</span>, <span class="st">'zip3'</span>: <span class="bu">str</span>})</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>practices <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"practices.csv"</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>firms <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"firms.csv"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>phys2estab <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2estab.csv"</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add practices and firms</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_prac.merge(firms, on<span class="op">=</span><span class="st">"health_sys_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co"># define the columns we want to keep</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"age_imputed"</span>, <span class="st">"tin_name"</span>, <span class="st">"practice_type_random"</span>, <span class="st">"health_sys_state"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>, <span class="st">"medicare_charges"</span>]</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all other columns</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> phys_firm[columns].drop_duplicates()</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co"># clean a few values</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> dataset[<span class="st">"age_imputed"</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> np.where(dataset[<span class="st">"age_imputed"</span>] <span class="op">&gt;</span> <span class="dv">85</span>, <span class="dv">85</span>, dataset[<span class="st">"age_imputed"</span>].astype(<span class="bu">int</span>))</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="co"># cast as int</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"medicare_charges"</span>] <span class="op">=</span> dataset[<span class="st">"medicare_charges"</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># percentiles we want to calculate</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>pctiles <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># num elements in dataset</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="bu">len</span>(dataset)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># define epsilon</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># epsilon will be evenly divided between each percentile we want to calculate</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># to keep track of final values</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>protected_pctiles <span class="op">=</span> []</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pctile <span class="kw">in</span> pctiles:</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># percentile position (index in the dataset where the percentile would be found)</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    ptile <span class="op">=</span> <span class="bu">int</span>(l <span class="op">*</span> pctile<span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># complement of percentile position</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    ptile_comp <span class="op">=</span> <span class="bu">int</span>(l <span class="op">*</span> (<span class="dv">100</span> <span class="op">-</span> pctile) <span class="op">/</span> <span class="dv">100</span>)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n is the number of observations between the given percentile and the end of the distribution (top or bottom)</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># cap of 50</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    n1 <span class="op">=</span> l <span class="op">-</span> ptile <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    n2 <span class="op">=</span> l <span class="op">-</span> ptile_comp <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    n3 <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">min</span>(n1, n2, n3)</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># define beta based on epsilon</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    beta <span class="op">=</span> (eps<span class="op">/</span>(<span class="dv">100</span><span class="op">*</span><span class="bu">len</span>(pctiles)))<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># order column we want percentiles of</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> <span class="bu">sorted</span>(dataset[<span class="st">"medicare_charges"</span>])</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get sensitivity</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># https://github.com/andrewfoote/pseo_dp_paper/blob/v2.0.0/macros/compute_ss_iteration.sas</span></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> []</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>        cur <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(k<span class="op">+</span><span class="dv">2</span>):</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>            x1 <span class="op">=</span> X[ptile<span class="op">+</span>t]</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>            x2 <span class="op">=</span> X[ptile<span class="op">+</span>t<span class="op">-</span>k<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x1<span class="op">-</span>x2 <span class="op">&gt;</span> cur:</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>                cur<span class="op">=</span>x1<span class="op">-</span>x2</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> k<span class="op">*</span>beta</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>        A.append(cur<span class="op">/</span>(math.exp(i)))</span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find maximum sensitivity</span></span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>    sens <span class="op">=</span> <span class="bu">max</span>(A)</span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add noise based on sensitivity to true percentile</span></span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># https://github.com/andrewfoote/pseo_dp_paper/blob/v2.0.0/macros/dp_iteration.sas</span></span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># true value at percentile</span></span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>    true_val <span class="op">=</span> np.percentile(X, pctile)</span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add noise based on smooth sensitivity and gamme distribution</span></span>
+<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a>    protected_pctile <span class="op">=</span> true_val <span class="op">+</span> (np.random.gamma(<span class="dv">1</span>) <span class="op">*</span> sens)</span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a>    protected_pctiles.append([pctile, true_val, protected_pctile])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>protected_pctiles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[[25, 88243.75, 88302.00459038059],
+ [50, 243214.5, 243226.8812943136],
+ [75, 549093.0, 549110.4070669264]]</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

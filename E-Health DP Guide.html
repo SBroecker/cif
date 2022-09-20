@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Privacy Models for E-Health – e-health-dp-guide</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Privacy Models for E-Health</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Privacy Models for EHealth - Intro and Scope.html">Intro</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Literature Review.html">Lit Review</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./E-Health DP Guide.html" aria-current="page">Implementation Guide</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples.html">P0. Actuals</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - DP.html">P2. DP Noise</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Examples - Synthetic Data.html">P3. Synthetic Data</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#stefans-comprehensive-guide-to-implementing-differential-privacy-in-e-health" id="toc-stefans-comprehensive-guide-to-implementing-differential-privacy-in-e-health" class="nav-link active" data-scroll-target="#stefans-comprehensive-guide-to-implementing-differential-privacy-in-e-health">Stefan’s Comprehensive* Guide to Implementing Differential Privacy in E-Health</a>
+  <ul class="collapse">
+  <li><a href="#create-a-base-dataset" id="toc-create-a-base-dataset" class="nav-link" data-scroll-target="#create-a-base-dataset">Create a base dataset</a>
+  <ul class="collapse">
+  <li><a href="#joining-and-cleaning" id="toc-joining-and-cleaning" class="nav-link" data-scroll-target="#joining-and-cleaning">Joining and Cleaning</a></li>
+  <li><a href="#note-on-income-bins" id="toc-note-on-income-bins" class="nav-link" data-scroll-target="#note-on-income-bins">Note on Income Bins</a></li>
+  </ul></li>
+  <li><a href="#rounding" id="toc-rounding" class="nav-link" data-scroll-target="#rounding">Rounding</a></li>
+  <li><a href="#noise-injected-into-precomputed-values" id="toc-noise-injected-into-precomputed-values" class="nav-link" data-scroll-target="#noise-injected-into-precomputed-values">Noise Injected into Precomputed Values</a>
+  <ul class="collapse">
+  <li><a href="#dp-functions" id="toc-dp-functions" class="nav-link" data-scroll-target="#dp-functions">DP Functions</a>
+  <ul class="collapse">
+  <li><a href="#diff_count" id="toc-diff_count" class="nav-link" data-scroll-target="#diff_count">diff_count</a></li>
+  <li><a href="#dp_agg" id="toc-dp_agg" class="nav-link" data-scroll-target="#dp_agg">dp_agg</a></li>
+  <li><a href="#choosing-an-epsilon-value" id="toc-choosing-an-epsilon-value" class="nav-link" data-scroll-target="#choosing-an-epsilon-value">Choosing an Epsilon Value</a></li>
+  <li><a href="#histogram-example" id="toc-histogram-example" class="nav-link" data-scroll-target="#histogram-example">Histogram example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#synthetic-data" id="toc-synthetic-data" class="nav-link" data-scroll-target="#synthetic-data">Synthetic Data</a>
+  <ul class="collapse">
+  <li><a href="#redacted" id="toc-redacted" class="nav-link" data-scroll-target="#redacted">Redacted</a></li>
+  <li><a href="#mst" id="toc-mst" class="nav-link" data-scroll-target="#mst">MST</a>
+  <ul class="collapse">
+  <li><a href="#measure" id="toc-measure" class="nav-link" data-scroll-target="#measure">Measure</a></li>
+  <li><a href="#generate" id="toc-generate" class="nav-link" data-scroll-target="#generate">Generate</a></li>
+  </ul></li>
+  <li><a href="#install-redacted" id="toc-install-redacted" class="nav-link" data-scroll-target="#install-redacted">Install Redacted</a>
+  <ul class="collapse">
+  <li><a href="#update-pip" id="toc-update-pip" class="nav-link" data-scroll-target="#update-pip">Update pip</a></li>
+  <li><a href="#install-from-wheel-file" id="toc-install-from-wheel-file" class="nav-link" data-scroll-target="#install-from-wheel-file">Install from wheel file</a></li>
+  </ul></li>
+  <li><a href="#install-mst" id="toc-install-mst" class="nav-link" data-scroll-target="#install-mst">Install MST</a>
+  <ul class="collapse">
+  <li><a href="#private-pgm" id="toc-private-pgm" class="nav-link" data-scroll-target="#private-pgm">private-pgm</a></li>
+  <li><a href="#ibm-functions" id="toc-ibm-functions" class="nav-link" data-scroll-target="#ibm-functions">IBM functions</a></li>
+  </ul></li>
+  <li><a href="#prepare-dataset" id="toc-prepare-dataset" class="nav-link" data-scroll-target="#prepare-dataset">Prepare Dataset</a>
+  <ul class="collapse">
+  <li><a href="#write-the-data-to-a-csv-file-for-mst-and-a-parquet-file-for-redacted" id="toc-write-the-data-to-a-csv-file-for-mst-and-a-parquet-file-for-redacted" class="nav-link" data-scroll-target="#write-the-data-to-a-csv-file-for-mst-and-a-parquet-file-for-redacted">Write the data to a csv file for MST and a parquet file for Redacted</a></li>
+  </ul></li>
+  <li><a href="#configuration-files" id="toc-configuration-files" class="nav-link" data-scroll-target="#configuration-files">Configuration Files</a>
+  <ul class="collapse">
+  <li><a href="#mst-1" id="toc-mst-1" class="nav-link" data-scroll-target="#mst-1">MST</a></li>
+  <li><a href="#redacted-1" id="toc-redacted-1" class="nav-link" data-scroll-target="#redacted-1">Redacted</a></li>
+  </ul></li>
+  <li><a href="#run-synthesis" id="toc-run-synthesis" class="nav-link" data-scroll-target="#run-synthesis">Run Synthesis</a>
+  <ul class="collapse">
+  <li><a href="#mst-2" id="toc-mst-2" class="nav-link" data-scroll-target="#mst-2">MST</a></li>
+  <li><a href="#redacted-2" id="toc-redacted-2" class="nav-link" data-scroll-target="#redacted-2">Redacted</a></li>
+  </ul></li>
+  <li><a href="#decode-synthesized-data" id="toc-decode-synthesized-data" class="nav-link" data-scroll-target="#decode-synthesized-data">Decode Synthesized Data</a></li>
+  <li><a href="#evaluate-with-redacted" id="toc-evaluate-with-redacted" class="nav-link" data-scroll-target="#evaluate-with-redacted">Evaluate with Redacted</a>
+  <ul class="collapse">
+  <li><a href="#configuration-file" id="toc-configuration-file" class="nav-link" data-scroll-target="#configuration-file">Configuration File</a></li>
+  <li><a href="#run-evaluator" id="toc-run-evaluator" class="nav-link" data-scroll-target="#run-evaluator">Run Evaluator</a></li>
+  </ul></li>
+  <li><a href="#rmse-evaluation" id="toc-rmse-evaluation" class="nav-link" data-scroll-target="#rmse-evaluation">RMSE Evaluation</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+
+<section id="stefans-comprehensive-guide-to-implementing-differential-privacy-in-e-health" class="level1">
+<h1>Stefan’s Comprehensive* Guide to Implementing Differential Privacy in E-Health</h1>
+<p>*ish</p>
+<section id="create-a-base-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-base-dataset">Create a base dataset</h3>
+<p>Before starting on any of the disclosure techniques, create a dataset that can be used as an example</p>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read files</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>physicians <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"physicians.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>establishments <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"establishments.csv"</span>, dtype<span class="op">=</span>{<span class="st">'zip'</span>: <span class="bu">str</span>, <span class="st">'zip9'</span>: <span class="bu">str</span>, <span class="st">'zip3'</span>: <span class="bu">str</span>})</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>practices <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"practices.csv"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>firms <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"firms.csv"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>phys2estab <span class="op">=</span> pd.read_csv(data_dir <span class="op">+</span> <span class="st">"rel_phys2estab.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="joining-and-cleaning" class="level4">
+<h4 class="anchored" data-anchor-id="joining-and-cleaning">Joining and Cleaning</h4>
+<p>Once the physicians are linked to establishments, practices, and firms, a few fields need to be cleaned to make processing easier down the line.</p>
+<ul>
+<li>Ages are top-coded to 85
+<ul>
+<li>This is for consistency across datasets</li>
+</ul></li>
+<li>Null ages are set to a default 0 value</li>
+<li>Medicare charges are put into bins
+<ul>
+<li>This is for convenience when we eventually start creating synthetic datasets. We treat all fields as categorical when making synthetic data, and this prevents the number of categories from going too high</li>
+<li>Binning can be removed if we start treating numeric values as numeric during synthetic data generation</li>
+<li>Also see the PSEO paper (link in the differential privacy section of this guide) for notes on binning incomes without sacrificing privacy and revealing information about the dataset</li>
+</ul></li>
+<li>Replace nulls with a default “nan” value</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> physicians.merge(phys2estab, on<span class="op">=</span><span class="st">'NPI'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>phys_estab <span class="op">=</span> phys_estab.merge(establishments, on<span class="op">=</span><span class="st">'establishment_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add practices and firms</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>phys_prac <span class="op">=</span> phys_estab.merge(practices, on<span class="op">=</span><span class="st">"org_pac_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>phys_firm <span class="op">=</span> phys_prac.merge(firms, on<span class="op">=</span><span class="st">"health_sys_id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># define the columns we want to keep</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">"NPI"</span>, <span class="st">"st"</span>, <span class="st">"gndr"</span>, <span class="st">"age_imputed"</span>, <span class="st">"tin_name"</span>, <span class="st">"practice_type_random"</span>, <span class="st">"health_sys_state"</span>, <span class="st">"pri_spec_category"</span>, <span class="st">"practice_scope"</span>, <span class="st">"practice_size"</span>, <span class="st">"medicare_charges"</span>]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all other columns</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> phys_firm[columns].drop_duplicates()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># clean a few values</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> dataset[<span class="st">"age_imputed"</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"age_imputed"</span>] <span class="op">=</span> np.where(dataset[<span class="st">"age_imputed"</span>] <span class="op">&gt;</span> <span class="dv">85</span>, <span class="dv">85</span>, dataset[<span class="st">"age_imputed"</span>].astype(<span class="bu">int</span>))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># bin the medicare charges</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"</span><span class="sc">{0}</span><span class="st"> - </span><span class="sc">{1}</span><span class="st">"</span>.<span class="bu">format</span>(i, i <span class="op">+</span> <span class="dv">999999</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">55000000</span>, <span class="dv">1000000</span>)]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"medicare_charges"</span>] <span class="op">=</span> dataset[<span class="st">"medicare_charges"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>dataset[<span class="st">"medicare_charges"</span>] <span class="op">=</span> pd.cut(dataset.medicare_charges, bins<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="dv">56000000</span>, <span class="dv">1000000</span>), right<span class="op">=</span><span class="va">False</span>, labels<span class="op">=</span>labels)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># get rid of nulls in non-numeric columns</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>string_cols <span class="op">=</span> dataset.select_dtypes(include<span class="op">=</span>[np.<span class="bu">object</span>]).columns</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> string_cols:</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    dataset[col] <span class="op">=</span> dataset[col].fillna(<span class="st">"nan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="note-on-income-bins" class="level4">
+<h4 class="anchored" data-anchor-id="note-on-income-bins">Note on Income Bins</h4>
+<p>A more comprehensive way to organize incomes would be by binning with a lognormal distribution. The main reason you would want to do this is to prevent information leakage. The method I used above (finding the min and max of the dataset and then making evenly spaced bins) reveals information about the dataset, and this weakens privacy.</p>
+<p>To avoid this leakage, we can use external information about income to create our bins. Incomes tend to follow a lognormal distribution, so we can use the median and standard deviation of incomes in the US to create an accurate enough model to bin our data.</p>
+<p>Note within the note: our bins could be even more accurate if we had estimates of physician incomes instead of just average income in the US, but I couldn’t find any public data for that.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take mean and standard deviation form the PSEO paper</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> <span class="fl">11.003</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>stdv <span class="op">=</span> <span class="fl">0.753</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sample a lognormal distribution a few times</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>lognorm_dist <span class="op">=</span> np.random.lognormal(mean, stdv, size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get thresholds for 20 evenly spaced bins from the lognormal distribution</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>percentiles <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">5</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>income_bins <span class="op">=</span> np.percentile(lognorm_dist, percentiles)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add a top-code value</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>income_bins <span class="op">=</span> np.append(income_bins, <span class="dv">1000000</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>income_bins</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below is how you would incorporate the lognormal bins into the dataset</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># link physicians to establishments</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">phys_estab = physicians.merge(phys2estab, on='NPI', how='left')</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">phys_estab = phys_estab.merge(establishments, on='establishment_id', how='left')</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># add practices and firms</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">phys_prac = phys_estab.merge(practices, on="org_pac_id", how="left")</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">phys_firm = phys_prac.merge(firms, on="health_sys_id", how="left")</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># define the columns we want to keep</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">columns = ["NPI", "st", "gndr", "age_imputed", "tin_name", "practice_type_random", "health_sys_state", "pri_spec_category", "practice_scope", "practice_size", "medicare_charges"]</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all other columns</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">dataset = phys_firm[columns].drop_duplicates()</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">dataset["medicare_charges"] = dataset["medicare_charges"].astype(int)</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">dataset["medicare_charges"] = np.where(dataset["medicare_charges"] &gt; 999999, 999999, dataset["medicare_charges"])</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">dataset["medicare_charges"] = pd.cut(dataset.medicare_charges, bins=income_bins, right=False)</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co">dataset</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><em>Note:</em> I’m making a blanket replacement of nulls with “nan” here. Nulls should be handled based on the context of the column for the real data</p>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>NPI</th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>tin_name</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1003000126</td>
+      <td>VA</td>
+      <td>M</td>
+      <td>54</td>
+      <td>Commonwealth Hospitalist Group Llc</td>
+      <td>type-4</td>
+      <td>TN</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1003000134</td>
+      <td>IL</td>
+      <td>M</td>
+      <td>45</td>
+      <td>Northshore University Healthsystem Faculty Pra...</td>
+      <td>type-2</td>
+      <td>IL</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>1000000 - 1999999</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1003000142</td>
+      <td>OH</td>
+      <td>M</td>
+      <td>49</td>
+      <td>Mercy Health Physicians - North, Llc.</td>
+      <td>type-2</td>
+      <td>OH</td>
+      <td>Hospital based</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1003000407</td>
+      <td>PA</td>
+      <td>M</td>
+      <td>45</td>
+      <td>Brookville Hospital</td>
+      <td>type-3</td>
+      <td>PA</td>
+      <td>Primary care</td>
+      <td>single-unit</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1003000423</td>
+      <td>OH</td>
+      <td>F</td>
+      <td>41</td>
+      <td>Lake Obstetrics &amp; Gynecology, Inc.</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>OBGYN</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1203604</th>
+      <td>1992998736</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>41</td>
+      <td>Premier Family &amp; Sports Medicine, Llc</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>single-unit</td>
+      <td>small (2-5)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203605</th>
+      <td>1992999031</td>
+      <td>CA</td>
+      <td>M</td>
+      <td>42</td>
+      <td>Austin J Ma Md A Professional Corporation</td>
+      <td>type-8</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203606</th>
+      <td>1992999122</td>
+      <td>FL</td>
+      <td>M</td>
+      <td>65</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203608</th>
+      <td>1992999551</td>
+      <td>CA</td>
+      <td>F</td>
+      <td>44</td>
+      <td>Graybill Medical Group Inc</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1203609</th>
+      <td>1992999825</td>
+      <td>WA</td>
+      <td>M</td>
+      <td>43</td>
+      <td>Virginia Mason Medical Center</td>
+      <td>type-9</td>
+      <td>WA</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672614 rows × 11 columns</p>
+</div>
+</div>
+</div>
+<p>The final dataset has information about physicians, practices, and health systems. Null values are replaced with placeholder values where necessary.</p>
+</section>
+</section>
+<section id="rounding" class="level2">
+<h2 class="anchored" data-anchor-id="rounding">Rounding</h2>
+<p>The Census DRB defined a set of rounding rules for disclosing aggregate statistics. The rules, in the DRB’s words, are “an interim solution for privacy protection.” They are defined as:</p>
+<pre><code>If N is less than 15, report N&lt;15
+If N is between 15 and 99, round to the nearest 10
+If N is between 100-999, round to the nearest 50
+If N is between 1000-9999, round to the nearest 100
+If N is between 10000-99999, round to the nearest 500
+If N is between 100000-999999, round to the nearest 1,000
+If N is 1000000 or more, round to four significant digits</code></pre>
+<p>The following code implements the DRB rounding rules and is taken from this Github repo: https://github.com/uscensusbureau/drb_rounder</p>
+<div class="cell" data-execution_count="14">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nearest(n, number):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returns n to the nearest number"""</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> math.floor((n <span class="op">/</span> number) <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> number</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> round_counts(n):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Implements the DRB rounding rules for counts. Note that we return a string, </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">    so that we can report N &lt; 15</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">int</span>(n)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> n <span class="op">==</span> math.floor(n)  <span class="co"># make sure it is an integer; shouldn't be needed with above</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> n <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>      <span class="dv">0</span> <span class="op">&lt;=</span> n <span class="op">&lt;</span>      <span class="dv">15</span>: <span class="cf">return</span> <span class="dv">15</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>     <span class="dv">15</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span>     <span class="dv">99</span>: <span class="cf">return</span> nearest( n,   <span class="dv">10</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>    <span class="dv">100</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span>    <span class="dv">999</span>: <span class="cf">return</span> nearest( n,   <span class="dv">50</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>   <span class="dv">1000</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span>   <span class="dv">9999</span>: <span class="cf">return</span> nearest( n,  <span class="dv">100</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>  <span class="dv">10000</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span>  <span class="dv">99999</span>: <span class="cf">return</span> nearest( n,  <span class="dv">500</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="dv">100000</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span> <span class="dv">999999</span>: <span class="cf">return</span> nearest( n, <span class="dv">1000</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> round4_decimal(n)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> round4_float(f):</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">    Implements the IEEE floating point rounding rules with the "round half even"</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">    option when rounding. This means that 1000.5 rounds to 1000 while 1001.5 </span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">    rounds to 1002.</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> decimal <span class="im">import</span> ROUND_HALF_EVEN, Context</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    prec4_rounder <span class="op">=</span> Context(prec<span class="op">=</span><span class="dv">4</span>, rounding<span class="op">=</span>ROUND_HALF_EVEN)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(<span class="bu">str</span>(prec4_rounder.create_decimal(f)))</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> round4_decimal(d):</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Similarly rounds half even with precision of 4 but for decimals"""</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(round4_float(d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The DRB’s code is then used in the following function that can be applied to a dataset.</p>
+<p>The function takes the raw data as an input, applies whatever grouping you specify, calculates counts, and then applies rounding rules.</p>
+<div class="cell" data-execution_count="15">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> drb_round(data, grouping_columns, target_column):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Apply rounding rules to user-defined grouping"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># copy input df so we can change it</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.copy()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get true group counts</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    group_counts <span class="op">=</span> df.groupby(grouping_columns)[target_column].count().reset_index(name<span class="op">=</span><span class="st">"true_count"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># apply rounding rules</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    group_counts[target_column] <span class="op">=</span> group_counts[<span class="st">"true_count"</span>].<span class="bu">apply</span>(round_counts)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop true count from df</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    group_counts.drop(columns<span class="op">=</span>[<span class="st">"true_count"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example usage</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the number of physicians per practice size</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>phys_per_prac_size <span class="op">=</span> drb_round(dataset, [<span class="st">"practice_size"</span>], <span class="st">"NPI"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>phys_per_prac_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="16">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>practice_size</th>
+      <th>NPI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>large (20-99)</td>
+      <td>447000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>medium (6-19)</td>
+      <td>74000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>nan</td>
+      <td>102000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>small (2-5)</td>
+      <td>49000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sole practitioner</td>
+      <td>450</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="noise-injected-into-precomputed-values" class="level2">
+<h2 class="anchored" data-anchor-id="noise-injected-into-precomputed-values">Noise Injected into Precomputed Values</h2>
+<p>The two main papers I used as influences for my DP research fall into this category. Those papers were:</p>
+<p><a href="https://www.nber.org/system/files/working_papers/w25626/w25626.pdf">A PRACTICAL METHOD TO REDUCE PRIVACY LOSS WHEN DISCLOSING STATISTICS BASED ON SMALL SAMPLES</a></p>
+<p><a href="https://journalprivacyconfidentiality.org/index.php/jpc/article/view/722/684">RELEASING EARNINGS DISTRIBUTIONS USING DIFFERENTIALPRIVACY: DISCLOSURE AVOIDANCE SYSTEM FOR POST-SECONDARY EMPLOYMENT OUTCOMES (PSEO)</a></p>
+<p>Practically speaking, this form of DP is implemented similar to the rounding method above. The basic procedure is:</p>
+<ol type="1">
+<li>Group the data based on some predefined marginal (group of variables)</li>
+<li>Calculate the number of rows in each unique combination of variables (the size of each cell)</li>
+<li>Apply the disclosure avoidance technique</li>
+</ol>
+<p>The difference is that, instead of rounding based on some predefined rule in step 3, you’re adding noise from a zero-centered random distribtion (a Laplace distribution in our case).</p>
+<p>Also similar to rounding, there’s a mechanism for controlling how much the protected value can differ from the true value. DP does this with the epsilon parameter, which dictates the magnitude of noise that gets added to a measurement, and thus how “private” the measurement is. A higher epsilon means that <em>less</em> noise is added, and the data is <em>less</em> private. Conversely, a low epsilon means more noise and more privacy protection.</p>
+<p>Generally, you would want to use a lower epsilon (more noise, more privacy) when the data you’re working with has a high sensitivity. More information on sensitivity can be found in the first paper linked to above.</p>
+<section id="dp-functions" class="level3">
+<h3 class="anchored" data-anchor-id="dp-functions">DP Functions</h3>
+<section id="diff_count" class="level4">
+<h4 class="anchored" data-anchor-id="diff_count">diff_count</h4>
+<p>Function used in place of groupby + count()</p>
+<p>Takes in the columns you want to group by and the column you want to count and returns a differentially private count based on the given epsilon.</p>
+<p>Also returns the root-mean-square error (RMSE) between the true counts and the private counts</p>
+</section>
+<section id="dp_agg" class="level4">
+<h4 class="anchored" data-anchor-id="dp_agg">dp_agg</h4>
+<p>Can be used in the agg clause of a function.</p>
+<p>Takes in the epsilon and returns a differentially private count based on the epsilon</p>
+<div class="cell" data-execution_count="17">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> diff_count(data, grouping_columns, target_column, epsilon):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Create differentially private count of cells based on input columns"""</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># copy input df so we can change it</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.copy()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get true group counts</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    group_counts <span class="op">=</span> df.groupby(grouping_columns)[target_column].count().reset_index(name<span class="op">=</span><span class="st">"true_count"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add discrete Laplacian noise to group counts to get noisy group counts</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># noise function from here: https://randorithms.com/2020/10/09/geometric-mechanism.html</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>epsilon)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> np.random.geometric(p, size<span class="op">=</span><span class="bu">len</span>(group_counts)) <span class="op">-</span> np.random.geometric(p, size<span class="op">=</span><span class="bu">len</span>(group_counts))</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    group_counts[target_column] <span class="op">=</span> group_counts[<span class="st">"true_count"</span>] <span class="op">+</span> noise</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the error between the true and the noisy counts</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    err <span class="op">=</span> mean_squared_error(group_counts[<span class="st">"true_count"</span>], group_counts[target_column])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop the true count from the df</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    group_counts.drop(columns<span class="op">=</span>[<span class="st">"true_count"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> group_counts, err</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dp_agg(data, epsilon):</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create noise based on the given epsilon</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>epsilon)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> np.random.geometric(p) <span class="op">-</span> np.random.geometric(p)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get noisy count by adding noise to true count</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(data) <span class="op">+</span> noise</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="choosing-an-epsilon-value" class="level4">
+<h4 class="anchored" data-anchor-id="choosing-an-epsilon-value">Choosing an Epsilon Value</h4>
+<p>Deciding on an epsilon value is more of a policy decision than a technical one. Its influenced by the tradeoff between privacy and accuracy, and how much of each you’re willing to tolerate.</p>
+<p>To make an informed decision, the most common approach is to run your calculation with a range of epsilon values and choose a value that has enough privacy protection while also having as little error as possible. (Note: this procedure is why the diff_count function returns RMSE, a common metric used to measure the difference between a true statistic and an estimated statistic). Because of the random nature of adding noise, we also repeat the calculation a few times.</p>
+<p>A very loose “rule of thumb” is that epsilon should be around 1. However, many large scale DP implementations use epsilon values closer to 10 or higher.</p>
+<p>A discussion about choosing epsilon in practice can be found in <a href="https://par.nsf.gov/servlets/purl/10217360">this paper</a>.</p>
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a list to keep track of errors</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> []</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the range of epsilon values to try</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>bottom_range <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>top_range <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># how granular the steps should be</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>step <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># how many times to try each epsilon value</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> np.arange(bottom_range, top_range, step):</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># repeat the calculation five times</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate the noisy count</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        phys_by_spec_dp, rmse <span class="op">=</span> diff_count(dataset, [<span class="st">"pri_spec_category"</span>], <span class="st">"NPI"</span>, epsilon)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># save the error value</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        errors.append([epsilon, rmse])</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># plot error vs. epsilon</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(errors, columns<span class="op">=</span>[<span class="st">"eps"</span>, <span class="st">"rmse"</span>])</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>plt.scatter(df.eps, df.rmse)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Epsilon"</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"RMSE"</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="E-Health%20DP%20Guide_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"eps"</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>rmse</th>
+    </tr>
+    <tr>
+      <th>eps</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.1</th>
+      <td>387.400000</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>49.600000</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>24.100000</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>13.400000</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>7.366667</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>6.866667</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>1.833333</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>7.100000</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>1.633333</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>1.433333</td>
+    </tr>
+    <tr>
+      <th>1.1</th>
+      <td>2.100000</td>
+    </tr>
+    <tr>
+      <th>1.2</th>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1.3</th>
+      <td>3.233333</td>
+    </tr>
+    <tr>
+      <th>1.4</th>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>1.5</th>
+      <td>0.900000</td>
+    </tr>
+    <tr>
+      <th>1.6</th>
+      <td>0.633333</td>
+    </tr>
+    <tr>
+      <th>1.7</th>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>1.8</th>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>1.9</th>
+      <td>0.266667</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-example" class="level4">
+<h4 class="anchored" data-anchor-id="histogram-example">Histogram example</h4>
+<p>Based on the PSEO paper, add noise to histograms</p>
+<div class="cell" data-execution_count="21">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># choose bins</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>bin_thresh <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">85</span>, <span class="dv">10</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># put ages into the bins</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>age_bins <span class="op">=</span> pd.cut(dataset[<span class="st">"age_imputed"</span>], bin_thresh, right<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new df with state and bins</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>hist_ex <span class="op">=</span> dataset[[<span class="st">"st"</span>, <span class="st">"NPI"</span>]].copy()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>hist_ex[<span class="st">"age_bin"</span>] <span class="op">=</span> age_bins.astype(<span class="bu">str</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># get bin counts per state and age group</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>hist_ex, rmse <span class="op">=</span> diff_count(hist_ex, [<span class="st">"st"</span>, <span class="st">"age_bin"</span>], <span class="st">"NPI"</span>, <span class="dv">1</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot histogram for an example state</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>hist_ex <span class="op">=</span> hist_ex[hist_ex[<span class="st">"st"</span>] <span class="op">==</span> <span class="st">"VA"</span>]</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.bar(hist_ex[<span class="st">"age_bin"</span>], hist_ex[<span class="st">"NPI"</span>])</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="E-Health%20DP%20Guide_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="synthetic-data" class="level2">
+<h2 class="anchored" data-anchor-id="synthetic-data">Synthetic Data</h2>
+<p>Now, instead of computing a statistic and then adding noise to protect the results, we create synthetic data that has similar characteristics to the original dataset, which then allows statistics to be computed without the need for additional noise injection. Broadly speaking, synthetic data generation works by modeling the original data and then using that model to create synthetic data with similar data distributions.</p>
+<p>As an example, say our original dataset has 35 records from Virginia and 40 records from Maryland. The synthetic dataset, which doesn’t contain any of the same records as the original dataset, will also have 35 records from Virginia and 40 records from Maryland (or somewhere close to that).</p>
+<section id="redacted" class="level3">
+<h3 class="anchored" data-anchor-id="redacted">Redacted</h3>
+<p>The first tool we used for generating synthetic data is Redacted. Redacted is a tool developed by the Census in collaboration with Also Redacted for creating synthetic datasets. The underlying model for Redacted is based on a series of decision trees. Each tree uses a set of variables to predict another set, which can then be used to predict another set, and so on for all of the variables in the dataset.</p>
+<p>More about Redacted are available <a href="https://www.youtube.com/watch?v=6d75SfMyIKM&amp;t=1163s">here</a></p>
+</section>
+<section id="mst" class="level3">
+<h3 class="anchored" data-anchor-id="mst">MST</h3>
+<p>The other tool we used is called MST. MST was the winner of the 2018 National Institute of Standards and Technology (NIST) Differential Privacy Synthetic Data Competition. It was developed by McKenna et al.&nbsp;from UMass, Amherst.</p>
+<p>The two main steps in MST are: 1) take noisy measurements of marginal queries, 2) estimate a data distribution from the noisy measurements and generate a synthetic dataset from the distribution.</p>
+<section id="measure" class="level4">
+<h4 class="anchored" data-anchor-id="measure">Measure</h4>
+<p>Given a set of marginal queries, the first step is to take measurements and add Gaussian noise. Weights can also be assigned in this step if some queries are more important than others.</p>
+<p>The noisy measurements, the weights, and the magnitude of noise are passed to the next step.</p>
+</section>
+<section id="generate" class="level4">
+<h4 class="anchored" data-anchor-id="generate">Generate</h4>
+<p>MST then uses another algorithm written by McKenna, Private-PGM. Private-PGM is designed to infer a data distribution from a set of noisy measurements. It does this by solving an optimization problem comparing the noisy measurements and the estimated distribution, and can be interpreted as a maximum likelihood estimator. Once Private-PGM finds a data distribution, it can then generate a synthetic dataset that closely matches the noisy marginal measurements.</p>
+<p>More details can be found in <a href="https://arxiv.org/pdf/2108.04978.pdf">this paper</a> about the competition, and <a href="https://arxiv.org/pdf/1901.09136.pdf">this paper</a> about the mechanism that MST relies on.</p>
+</section>
+</section>
+<section id="install-redacted" class="level3">
+<h3 class="anchored" data-anchor-id="install-redacted">Install Redacted</h3>
+<p>This portion of the notebook is meant to be run from your console/command prompt.</p>
+<section id="update-pip" class="level4">
+<h4 class="anchored" data-anchor-id="update-pip">Update pip</h4>
+<p>I had issues with an SSL error the first time I tried installing Redacted, and I solved that by updating pip:</p>
+<pre><code>python -m pip install --upgrade --force-reinstall pip</code></pre>
+</section>
+<section id="install-from-wheel-file" class="level4">
+<h4 class="anchored" data-anchor-id="install-from-wheel-file">Install from wheel file</h4>
+<p>From the directory with the Redacted wheel file, run:</p>
+<pre><code>pip install redacted-0.7.0-py3-none-any.whl</code></pre>
+</section>
+</section>
+<section id="install-mst" class="level3">
+<h3 class="anchored" data-anchor-id="install-mst">Install MST</h3>
+<section id="private-pgm" class="level4">
+<h4 class="anchored" data-anchor-id="private-pgm">private-pgm</h4>
+<p>The core functions used in MST are from a github repo called private-pgm. They can be installed with:</p>
+<pre><code>pip install git+https://github.com/ryan112358/private-pgm.git</code></pre>
+</section>
+<section id="ibm-functions" class="level4">
+<h4 class="anchored" data-anchor-id="ibm-functions">IBM functions</h4>
+<p>MST uses a function called cdp2adp that comes from a github repo published by IBM. You can get them with:</p>
+<pre><code>git clone https://github.com/IBM/discrete-gaussian-differential-privacy.git
+mv discrete-gaussian-differential-privacy ibm</code></pre>
+<p>This will put the files needed for the function in a directory called ibm.</p>
+<p>You’ll need to add this to your python file to actually use cdp2adp:</p>
+<pre><code>import sys
+import os
+sys.path.append(os.getcwd() + "/ibm")</code></pre>
+</section>
+</section>
+<section id="prepare-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-dataset">Prepare Dataset</h3>
+<p>Both MST and Redacted expect the input dataset to have numeric values. We’re going to need map the original dataset to numeric values, and then reverse map the synthetic data to get the original categorical values.</p>
+<p>I used an sklearn LabelEncoder to create this mapping.</p>
+<div class="cell" data-execution_count="22">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not 100% sure how to handle identifiers with MST, so dropping them</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>dataset_presyn <span class="op">=</span> dataset.drop(columns<span class="op">=</span>[<span class="st">"NPI"</span>, <span class="st">"tin_name"</span>])</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get a list of the columns in the dataset</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> dataset_presyn.columns</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dict to store the mappings for later use</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {}</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># make an empty dataframe that will be used for the mapped data</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(dataset_presyn)),columns<span class="op">=</span>cols)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> cols:</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a mapping between the dataset's values and numbers</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    le <span class="op">=</span> preprocessing.LabelEncoder()</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    le.fit(dataset_presyn[col])</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># transform the dataset column into a mapped column</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> le.transform(dataset_presyn[col])</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep track of the mapping</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    mapping[col] <span class="op">=</span> [le, le.classes_]</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="22">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>1</td>
+      <td>25</td>
+      <td>5</td>
+      <td>41</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15</td>
+      <td>1</td>
+      <td>16</td>
+      <td>3</td>
+      <td>13</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>1</td>
+      <td>20</td>
+      <td>3</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>40</td>
+      <td>1</td>
+      <td>16</td>
+      <td>4</td>
+      <td>37</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>37</td>
+      <td>0</td>
+      <td>12</td>
+      <td>6</td>
+      <td>50</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>672609</th>
+      <td>9</td>
+      <td>1</td>
+      <td>12</td>
+      <td>10</td>
+      <td>50</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>672610</th>
+      <td>4</td>
+      <td>1</td>
+      <td>13</td>
+      <td>9</td>
+      <td>50</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>672611</th>
+      <td>9</td>
+      <td>1</td>
+      <td>36</td>
+      <td>0</td>
+      <td>50</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>672612</th>
+      <td>4</td>
+      <td>0</td>
+      <td>15</td>
+      <td>10</td>
+      <td>50</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>672613</th>
+      <td>51</td>
+      <td>1</td>
+      <td>14</td>
+      <td>10</td>
+      <td>46</td>
+      <td>5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>672614 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<section id="write-the-data-to-a-csv-file-for-mst-and-a-parquet-file-for-redacted" class="level4">
+<h4 class="anchored" data-anchor-id="write-the-data-to-a-csv-file-for-mst-and-a-parquet-file-for-redacted">Write the data to a csv file for MST and a parquet file for Redacted</h4>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>redacted_location <span class="op">=</span> <span class="st">"data/data.parquet"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mst_location <span class="op">=</span> <span class="st">"data.csv"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df.to_parquet(redacted_location)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df.to_csv(mst_location, index<span class="op">=</span><span class="va">False</span>)a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="configuration-files" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-files">Configuration Files</h3>
+<section id="mst-1" class="level4">
+<h4 class="anchored" data-anchor-id="mst-1">MST</h4>
+<p>The only other file that MST needs is a domain file that tells MST how many possible values there are for each column</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dict to keep track of column values</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>domain <span class="op">=</span> {}</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use the mapping created in the encoding step to figure out the number of values per column</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create an entry for each column</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    domain[key] <span class="op">=</span> <span class="bu">len</span>(value[<span class="dv">1</span>])</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>domain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>{'st': 55,
+ 'gndr': 2,
+ 'age_imputed': 57,
+ 'practice_type_random': 11,
+ 'health_sys_state': 51,
+ 'pri_spec_category': 6,
+ 'practice_scope': 5,
+ 'practice_size': 5,
+ 'medicare_charges': 41}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>mst_domain <span class="op">=</span> <span class="st">"data-domain.json"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># write the domain information to a file</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(mst_domain, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(domain))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="redacted-1" class="level4">
+<h4 class="anchored" data-anchor-id="redacted-1">Redacted</h4>
+<p>Redacted configuration is a little more involved.</p>
+<p>The first file you need is a feature file that tells Redacted what each feature is and how it should be modeled. For example:</p>
+<pre><code>"st": {
+    "feature_desc": "Two-letter state code",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+        "model_name": "DecisionTreeModel",
+        "model_type": "",
+        "model_params": {
+            "max_depth": 10,
+            "criterion": "entropy",
+            "min_impurity_decrease": 1e-05
+        }
+    },
+    "encoder": {
+        "encoder_type": "encoder.encoder.IdentityEncoder",
+        "encoder_param": {
+            "column": "st",
+            "indicator": true,
+            "inplace": true
+        }
+    },
+    "dependencies": []</code></pre>
+<p>For this notebook I’m going to treat every column as categorical and use the same decision tree model configuration for each. This can (and probably should) be customized later.</p>
+<div class="cell" data-execution_count="34">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the max length of each field for the "field_length" field</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>measurer <span class="op">=</span> np.vectorize(<span class="bu">len</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>featurelens <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(df, measurer(df.values.astype(<span class="bu">str</span>)).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>featuresjson <span class="op">=</span> {}</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> featurelens.items():</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fields that need to be updated for each column: field_length, encoder.encoder_param.column</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    base_entry <span class="op">=</span> {</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"feature_desc"</span>: <span class="st">"desc"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"feature_type"</span>: <span class="st">"obj"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"field_length"</span>: <span class="dv">0</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"contains_null"</span>: <span class="va">False</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"field_density"</span>: <span class="st">"dense"</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"model_info"</span>: {</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">"model_name"</span>: <span class="st">"DecisionTreeModel"</span>,</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"model_type"</span>: <span class="st">""</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"model_params"</span>: {</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"max_depth"</span>: <span class="dv">10</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"criterion"</span>: <span class="st">"entropy"</span>,</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"min_impurity_decrease"</span>: <span class="fl">1e-05</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"encoder"</span>: {</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"encoder_type"</span>: <span class="st">"encoder.encoder.IdentityEncoder"</span>,</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">"encoder_param"</span>: {</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"column"</span>: <span class="st">"cl"</span>,</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"indicator"</span>: <span class="va">True</span>,</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"inplace"</span>: <span class="va">True</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"dependencies"</span>: []</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    base_entry[<span class="st">"field_length"</span>] <span class="op">=</span> <span class="bu">int</span>(value)</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    base_entry[<span class="st">"encoder"</span>][<span class="st">"encoder_param"</span>][<span class="st">"column"</span>] <span class="op">=</span> key</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    featuresjson[key] <span class="op">=</span> base_entry</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(featuresjson, indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+  "st": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "st",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "gndr": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 1,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "gndr",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "age_imputed": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "age_imputed",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "practice_type_random": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "practice_type_random",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "health_sys_state": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "health_sys_state",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "pri_spec_category": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 1,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "pri_spec_category",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "practice_scope": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 1,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "practice_scope",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "practice_size": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 1,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "practice_size",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  },
+  "medicare_charges": {
+    "feature_desc": "desc",
+    "feature_type": "obj",
+    "field_length": 2,
+    "contains_null": false,
+    "field_density": "dense",
+    "model_info": {
+      "model_name": "DecisionTreeModel",
+      "model_type": "",
+      "model_params": {
+        "max_depth": 10,
+        "criterion": "entropy",
+        "min_impurity_decrease": 1e-05
+      }
+    },
+    "encoder": {
+      "encoder_type": "encoder.encoder.IdentityEncoder",
+      "encoder_param": {
+        "column": "medicare_charges",
+        "indicator": true,
+        "inplace": true
+      }
+    },
+    "dependencies": []
+  }
+}</code></pre>
+</div>
+</div>
+<p>The second file you need is a feature schema file. I don’t know of anything here that needs to be changed.</p>
+<div class="cell" data-execution_count="24">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>feature_schema <span class="op">=</span> {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$schema"</span>: <span class="st">"http://json-schema.org/schema#"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$id"</span>: <span class="st">"redacted_feature_definition_0.1"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"patternProperties"</span>: {</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">".*?"</span>: {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"properties"</span>: {</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"feature_desc"</span>: { <span class="st">"type"</span>: <span class="st">"string"</span> },</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"feature_type"</span>: {</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"string"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"enum"</span>: [</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"obj"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"integer"</span>,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"floating_point"</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>                    ]</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"field_length"</span>: {</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"number"</span> ,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"multipleOf"</span>: <span class="dv">1</span>,</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"minimum"</span>: <span class="dv">1</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"contains_null"</span>: { <span class="st">"type"</span>: <span class="st">"boolean"</span> },</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"field_density"</span>: {</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"string"</span>,</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"enum"</span>: [</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"dense"</span>,</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"sparse"</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>                    ]</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bins"</span>: {</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"object"</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"constraints"</span>: {</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"range"</span>: {</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"patternProperties"</span>: {</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"*.^$"</span>: {</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"type"</span>: [</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"number"</span>,</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"array"</span>,</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"string"</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>                            ],</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"items"</span>: {</span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"type"</span>: [</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"number"</span>,</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"null"</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>                                ],</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"minItems"</span>: <span class="dv">2</span>,</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"maxItems"</span>: <span class="dv">2</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>                    },</span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"minItems"</span>: <span class="dv">1</span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>            <span class="st">"oneOf"</span>: [{</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>                <span class="st">"required"</span>: [</span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"feature_desc"</span>,</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"feature_type"</span>,</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"field_length"</span>,</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"contains_null"</span>,</span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"field_density"</span></span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>                ]</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a>                <span class="st">"required"</span>: [</span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"feature_desc"</span>,</span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"feature_type"</span>,</span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"field_length"</span>,</span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"contains_null"</span>,</span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"field_density"</span>,</span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"constraints"</span></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a>                ]</span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>            }]</span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The last file is the synthesis configuration file. This is the file that tells Redacted where to find all of the previously built configuration files.</p>
+<p>A couple notes about this file:</p>
+<ul>
+<li>I’m not specifying any consistency check. That’s a feature that could be useful though
+<ul>
+<li>An example of a consistency check might be: all synthetic data must have an age between 30 and 85</li>
+</ul></li>
+<li>I’m randomly choosing bootstrap features. It might be useful to choose those more strategically in the future</li>
+<li>I’m specifying a single processor. If using a system that can handle more, that might be something to play around with</li>
+</ul>
+<div class="cell" data-execution_count="36">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify locations for input files</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>feature_location <span class="op">=</span> <span class="st">"conf/features.json"</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>schema_location <span class="op">=</span> <span class="st">"conf/features_schema.json"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># specify location for output</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>cen_output <span class="op">=</span> <span class="st">"syn_data/syn.parquet"</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># write feature and feature schema files</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(feature_location, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(featuresjson, indent<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(schema_location, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(feature_schema, indent<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly pick two columns to be bootstrap columns</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>bootstrap_cols <span class="op">=</span> np.random.choice(cols, size<span class="op">=</span><span class="dv">2</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>configs <span class="op">=</span> {</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"experiment_file"</span>: <span class="st">""</span>,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features_file"</span>: feature_location,</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"process_features"</span>: <span class="bu">list</span>(cols),</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bootstrap_features"</span>: <span class="bu">list</span>(bootstrap_cols),</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"post_process_features"</span>: [],</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ignore_features"</span>: [],</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight_features"</span>: [],</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_files"</span>: [redacted_location],</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filters"</span>: [],</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"external_bootstrap_data_files"</span>: [],</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"external_bootstrap_filters"</span>: [],</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"synthesize_external_bootstrap_data"</span>: <span class="va">False</span>,</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"independent_features_name"</span>: <span class="st">""</span>,</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"independent_feature_filters"</span>: [],</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"synthesize_filters"</span>: [],</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model_file"</span>: <span class="st">""</span>,</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"output_data_file"</span>: cen_output,</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"report"</span>: {</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_file"</span>: <span class="st">"output/synthesis_report.txt"</span>,</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_level"</span>: <span class="st">"SUMMARY"</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"processes"</span>: <span class="dv">1</span>,</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"logging_level"</span>: <span class="st">"WARNING"</span></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="co"># write configuration file</span></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>config_location <span class="op">=</span> <span class="st">"conf/synthesize.cfg"</span></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(config_location, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(configs, indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="run-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="run-synthesis">Run Synthesis</h3>
+<section id="mst-2" class="level4">
+<h4 class="anchored" data-anchor-id="mst-2">MST</h4>
+<p>This one can be run from a notebook.</p>
+<p>First we load all of the functions we’ll need:</p>
+<div class="cell" data-execution_count="21">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source: https://github.com/ryan112358/private-pgm/blob/master/mechanisms/mst.py</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add folder with cdp2adp to working directory so python can find the import</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>sys.path.append(os.getcwd() <span class="op">+</span> <span class="st">"/ibm"</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mbi <span class="im">import</span> FactoredInference, Dataset, Domain</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> sparse</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> disjoint_set <span class="im">import</span> DisjointSet</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp2adp <span class="im">import</span> cdp_rho</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> logsumexp</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MST(data, epsilon, delta):</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    rho <span class="op">=</span> cdp_rho(epsilon, delta)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> np.sqrt(<span class="dv">3</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>rho))</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    cliques <span class="op">=</span> [(col,) <span class="cf">for</span> col <span class="kw">in</span> data.domain]</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    log1 <span class="op">=</span> measure(data, cliques, sigma)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    data, log1, undo_compress_fn <span class="op">=</span> compress_domain(data, log1)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    cliques <span class="op">=</span> select(data, rho<span class="op">/</span><span class="fl">3.0</span>, log1)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    log2 <span class="op">=</span> measure(data, cliques, sigma)</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>    engine <span class="op">=</span> FactoredInference(data.domain, iters<span class="op">=</span><span class="dv">5000</span>)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>    est <span class="op">=</span> engine.estimate(log1<span class="op">+</span>log2)</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>    synth <span class="op">=</span> est.synthetic_data()</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> undo_compress_fn(synth)</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> measure(data, cliques, sigma, weights<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> weights <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">=</span> np.ones(<span class="bu">len</span>(cliques))</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> np.array(weights) <span class="op">/</span> np.linalg.norm(weights)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>    measurements <span class="op">=</span> []</span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> proj, wgt <span class="kw">in</span> <span class="bu">zip</span>(cliques, weights):</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> data.project(proj).datavector()</span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> x <span class="op">+</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span>sigma<span class="op">/</span>wgt, size<span class="op">=</span>x.size)</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>        Q <span class="op">=</span> sparse.eye(x.size)</span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>        measurements.append( (Q, y, sigma<span class="op">/</span>wgt, proj) )</span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> measurements</span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compress_domain(data, measurements):</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>    supports <span class="op">=</span> {}</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>    new_measurements <span class="op">=</span> []</span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> Q, y, sigma, proj <span class="kw">in</span> measurements:</span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>        col <span class="op">=</span> proj[<span class="dv">0</span>]</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>        sup <span class="op">=</span> y <span class="op">&gt;=</span> <span class="dv">3</span><span class="op">*</span>sigma</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>        supports[col] <span class="op">=</span> sup</span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> supports[col].<span class="bu">sum</span>() <span class="op">==</span> y.size:</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>            new_measurements.append( (Q, y, sigma, proj) )</span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: <span class="co"># need to re-express measurement over the new domain</span></span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>            y2 <span class="op">=</span> np.append(y[sup], y[<span class="op">~</span>sup].<span class="bu">sum</span>())</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>            I2 <span class="op">=</span> np.ones(y2.size)</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>            I2[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> np.sqrt(y.size <span class="op">-</span> y2.size <span class="op">+</span> <span class="fl">1.0</span>)</span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>            y2[<span class="op">-</span><span class="dv">1</span>] <span class="op">/=</span> np.sqrt(y.size <span class="op">-</span> y2.size <span class="op">+</span> <span class="fl">1.0</span>)</span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a>            I2 <span class="op">=</span> sparse.diags(I2)</span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a>            new_measurements.append( (I2, y2, sigma, proj) )</span>
+<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a>    undo_compress_fn <span class="op">=</span> <span class="kw">lambda</span> data: reverse_data(data, supports)</span>
+<span id="cb28-60"><a href="#cb28-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> transform_data(data, supports), new_measurements, undo_compress_fn</span>
+<span id="cb28-61"><a href="#cb28-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-62"><a href="#cb28-62" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exponential_mechanism(q, eps, sensitivity, prng<span class="op">=</span>np.random, monotonic<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb28-63"><a href="#cb28-63" aria-hidden="true" tabindex="-1"></a>    coef <span class="op">=</span> <span class="fl">1.0</span> <span class="cf">if</span> monotonic <span class="cf">else</span> <span class="fl">0.5</span></span>
+<span id="cb28-64"><a href="#cb28-64" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> coef<span class="op">*</span>eps<span class="op">/</span>sensitivity<span class="op">*</span>q</span>
+<span id="cb28-65"><a href="#cb28-65" aria-hidden="true" tabindex="-1"></a>    probas <span class="op">=</span> np.exp(scores <span class="op">-</span> logsumexp(scores))</span>
+<span id="cb28-66"><a href="#cb28-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prng.choice(q.size, p<span class="op">=</span>probas)</span>
+<span id="cb28-67"><a href="#cb28-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-68"><a href="#cb28-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> select(data, rho, measurement_log, cliques<span class="op">=</span>[]):</span>
+<span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a>    engine <span class="op">=</span> FactoredInference(data.domain, iters<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a>    est <span class="op">=</span> engine.estimate(measurement_log)</span>
+<span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-72"><a href="#cb28-72" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">=</span> {}</span>
+<span id="cb28-73"><a href="#cb28-73" aria-hidden="true" tabindex="-1"></a>    candidates <span class="op">=</span> <span class="bu">list</span>(itertools.combinations(data.domain.attrs, <span class="dv">2</span>))</span>
+<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a, b <span class="kw">in</span> candidates:</span>
+<span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a>        xhat <span class="op">=</span> est.project([a, b]).datavector()</span>
+<span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> data.project([a, b]).datavector()</span>
+<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>        weights[a,b] <span class="op">=</span> np.linalg.norm(x <span class="op">-</span> xhat, <span class="dv">1</span>)</span>
+<span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a>    T <span class="op">=</span> nx.Graph()</span>
+<span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a>    T.add_nodes_from(data.domain.attrs)</span>
+<span id="cb28-81"><a href="#cb28-81" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> DisjointSet()</span>
+<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-83"><a href="#cb28-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> e <span class="kw">in</span> cliques:</span>
+<span id="cb28-84"><a href="#cb28-84" aria-hidden="true" tabindex="-1"></a>        T.add_edge(<span class="op">*</span>e)</span>
+<span id="cb28-85"><a href="#cb28-85" aria-hidden="true" tabindex="-1"></a>        ds.union(<span class="op">*</span>e)</span>
+<span id="cb28-86"><a href="#cb28-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-87"><a href="#cb28-87" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="bu">len</span>(<span class="bu">list</span>(nx.connected_components(T)))</span>
+<span id="cb28-88"><a href="#cb28-88" aria-hidden="true" tabindex="-1"></a>    epsilon <span class="op">=</span> np.sqrt(<span class="dv">8</span><span class="op">*</span>rho<span class="op">/</span>(r<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb28-89"><a href="#cb28-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(r<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb28-90"><a href="#cb28-90" aria-hidden="true" tabindex="-1"></a>        candidates <span class="op">=</span> [e <span class="cf">for</span> e <span class="kw">in</span> candidates <span class="cf">if</span> <span class="kw">not</span> ds.connected(<span class="op">*</span>e)]</span>
+<span id="cb28-91"><a href="#cb28-91" aria-hidden="true" tabindex="-1"></a>        wgts <span class="op">=</span> np.array([weights[e] <span class="cf">for</span> e <span class="kw">in</span> candidates])</span>
+<span id="cb28-92"><a href="#cb28-92" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> exponential_mechanism(wgts, epsilon, sensitivity<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb28-93"><a href="#cb28-93" aria-hidden="true" tabindex="-1"></a>        e <span class="op">=</span> candidates[idx]</span>
+<span id="cb28-94"><a href="#cb28-94" aria-hidden="true" tabindex="-1"></a>        T.add_edge(<span class="op">*</span>e)</span>
+<span id="cb28-95"><a href="#cb28-95" aria-hidden="true" tabindex="-1"></a>        ds.union(<span class="op">*</span>e)</span>
+<span id="cb28-96"><a href="#cb28-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-97"><a href="#cb28-97" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(T.edges)</span>
+<span id="cb28-98"><a href="#cb28-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-99"><a href="#cb28-99" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform_data(data, supports):</span>
+<span id="cb28-100"><a href="#cb28-100" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.df.copy()</span>
+<span id="cb28-101"><a href="#cb28-101" aria-hidden="true" tabindex="-1"></a>    newdom <span class="op">=</span> {}</span>
+<span id="cb28-102"><a href="#cb28-102" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> data.domain:</span>
+<span id="cb28-103"><a href="#cb28-103" aria-hidden="true" tabindex="-1"></a>        support <span class="op">=</span> supports[col]</span>
+<span id="cb28-104"><a href="#cb28-104" aria-hidden="true" tabindex="-1"></a>        size <span class="op">=</span> support.<span class="bu">sum</span>()</span>
+<span id="cb28-105"><a href="#cb28-105" aria-hidden="true" tabindex="-1"></a>        newdom[col] <span class="op">=</span> <span class="bu">int</span>(size)</span>
+<span id="cb28-106"><a href="#cb28-106" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> size <span class="op">&lt;</span> support.size:</span>
+<span id="cb28-107"><a href="#cb28-107" aria-hidden="true" tabindex="-1"></a>            newdom[col] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb28-108"><a href="#cb28-108" aria-hidden="true" tabindex="-1"></a>        mapping <span class="op">=</span> {}</span>
+<span id="cb28-109"><a href="#cb28-109" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-110"><a href="#cb28-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(support.size):</span>
+<span id="cb28-111"><a href="#cb28-111" aria-hidden="true" tabindex="-1"></a>            mapping[i] <span class="op">=</span> size</span>
+<span id="cb28-112"><a href="#cb28-112" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> support[i]:</span>
+<span id="cb28-113"><a href="#cb28-113" aria-hidden="true" tabindex="-1"></a>                mapping[i] <span class="op">=</span> idx</span>
+<span id="cb28-114"><a href="#cb28-114" aria-hidden="true" tabindex="-1"></a>                idx <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb28-115"><a href="#cb28-115" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> idx <span class="op">==</span> size</span>
+<span id="cb28-116"><a href="#cb28-116" aria-hidden="true" tabindex="-1"></a>        df[col] <span class="op">=</span> df[col].<span class="bu">map</span>(mapping)</span>
+<span id="cb28-117"><a href="#cb28-117" aria-hidden="true" tabindex="-1"></a>    newdom <span class="op">=</span> Domain.fromdict(newdom)</span>
+<span id="cb28-118"><a href="#cb28-118" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Dataset(df, newdom)</span>
+<span id="cb28-119"><a href="#cb28-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-120"><a href="#cb28-120" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse_data(data, supports):</span>
+<span id="cb28-121"><a href="#cb28-121" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.df.copy()</span>
+<span id="cb28-122"><a href="#cb28-122" aria-hidden="true" tabindex="-1"></a>    newdom <span class="op">=</span> {}</span>
+<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> data.domain:</span>
+<span id="cb28-124"><a href="#cb28-124" aria-hidden="true" tabindex="-1"></a>        support <span class="op">=</span> supports[col]</span>
+<span id="cb28-125"><a href="#cb28-125" aria-hidden="true" tabindex="-1"></a>        mx <span class="op">=</span> support.<span class="bu">sum</span>()</span>
+<span id="cb28-126"><a href="#cb28-126" aria-hidden="true" tabindex="-1"></a>        newdom[col] <span class="op">=</span> <span class="bu">int</span>(support.size)</span>
+<span id="cb28-127"><a href="#cb28-127" aria-hidden="true" tabindex="-1"></a>        idx, extra <span class="op">=</span> np.where(support)[<span class="dv">0</span>], np.where(<span class="op">~</span>support)[<span class="dv">0</span>]</span>
+<span id="cb28-128"><a href="#cb28-128" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> df[col] <span class="op">==</span> mx</span>
+<span id="cb28-129"><a href="#cb28-129" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> extra.size <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb28-130"><a href="#cb28-130" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
+<span id="cb28-131"><a href="#cb28-131" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb28-132"><a href="#cb28-132" aria-hidden="true" tabindex="-1"></a>            df.loc[mask, col] <span class="op">=</span> np.random.choice(extra, mask.<span class="bu">sum</span>())</span>
+<span id="cb28-133"><a href="#cb28-133" aria-hidden="true" tabindex="-1"></a>        df.loc[<span class="op">~</span>mask, col] <span class="op">=</span> idx[df.loc[<span class="op">~</span>mask, col]]</span>
+<span id="cb28-134"><a href="#cb28-134" aria-hidden="true" tabindex="-1"></a>    newdom <span class="op">=</span> Domain.fromdict(newdom)</span>
+<span id="cb28-135"><a href="#cb28-135" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Dataset(df, newdom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Anaconda3 2020.07\lib\site-packages\mbi\__init__.py:15: UserWarning: MixtureInference disabled, please install jax and jaxlib
+  warnings.warn('MixtureInference disabled, please install jax and jaxlib')</code></pre>
+</div>
+</div>
+<p>Then we feed in the data.</p>
+<p>Some notes about the parameters we’re using:</p>
+<ul>
+<li>Delta allows for a slightly looser definition of differential privacy. It’s defined the probability that there’s a privacy leakage in the output data</li>
+<li>The degree is the type of marginals that are used to train MST. We use 3-marginals in this case</li>
+<li>If computational load is a concern, num_marginals can be used to select only a subset of all possible variable combinations during training. By setting it to None, we’re telling MST to use all possible combinations</li>
+</ul>
+<div class="cell" data-execution_count="23">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set parameters</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>delta <span class="op">=</span> <span class="fl">1e-9</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>degree <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>num_marginals <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>max_cells <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>save <span class="op">=</span> <span class="st">"synth-data.csv"</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a Dataset object with our input data</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> Dataset.load(mst_location, mst_domain)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create workloads based on the degree of marginals we want</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>workload <span class="op">=</span> <span class="bu">list</span>(itertools.combinations(data.domain, degree))</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># workload = [cl for cl in workload if data.domain.size(cl) &lt;= max_cells]</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> num_marginals <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    workload <span class="op">=</span> [workload[i] <span class="cf">for</span> i <span class="kw">in</span> prng.choice(<span class="bu">len</span>(workload), num_marginals, replace<span class="op">=</span><span class="va">False</span>)]</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># run the synthesis</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>synth <span class="op">=</span> MST(data, epsilon, delta)</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co"># write out output data to a csv file</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> save <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    synth.df.to_csv(save, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="co"># error evaluation</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> []</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> proj <span class="kw">in</span> workload:</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> data.project(proj).datavector()</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> synth.project(proj).datavector()</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>np.linalg.norm(X<span class="op">/</span>X.<span class="bu">sum</span>() <span class="op">-</span> Y<span class="op">/</span>Y.<span class="bu">sum</span>(), <span class="dv">1</span>)</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>    errors.append(e)</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Average Error: '</span>, np.mean(errors)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average Error:  0.08556736815034863</code></pre>
+</div>
+</div>
+</section>
+<section id="redacted-2" class="level4">
+<h4 class="anchored" data-anchor-id="redacted-2">Redacted</h4>
+<p>This one happens outside of the notebook.</p>
+<p>From the current directory, run the following command:</p>
+<pre><code>redacted --synthesize_config_file &lt;config_location&gt;</code></pre>
+<p>Replacing <code>&lt;config_location&gt;</code> with whatever location you used in your code.</p>
+</section>
+</section>
+<section id="decode-synthesized-data" class="level3">
+<h3 class="anchored" data-anchor-id="decode-synthesized-data">Decode Synthesized Data</h3>
+<p>We now have two synthetic datasets saved as files. The next step is to read them back into pandas and use the mapping from the encoding step to decode the data back into a readable format.</p>
+<div class="cell" data-execution_count="37">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read MST data from csv</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mst_synth <span class="op">=</span> pd.read_csv(save)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read Redacted data from parquet</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>cen_synth <span class="op">=</span> pd.read_parquet(cen_output)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create empty DFs for decoded data</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>synth_df_mst <span class="op">=</span> pd.DataFrame(index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(mst_synth)), columns<span class="op">=</span>cols)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>synth_df_cen <span class="op">=</span> pd.DataFrame(index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(cen_synth)), columns<span class="op">=</span>cols)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># decode MST data using mappings</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    synth_df_mst[key] <span class="op">=</span> value[<span class="dv">0</span>].inverse_transform(mst_synth[key].astype(<span class="bu">int</span>))</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co"># decode Redacted data with the mappings</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    synth_df_cen[key] <span class="op">=</span> value[<span class="dv">0</span>].inverse_transform(cen_synth[key].astype(<span class="bu">int</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="38">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>synth_df_mst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="38">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FL</td>
+      <td>F</td>
+      <td>36</td>
+      <td>type-2</td>
+      <td>FL</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>36</td>
+      <td>type-3</td>
+      <td>nan</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NJ</td>
+      <td>F</td>
+      <td>38</td>
+      <td>type-9</td>
+      <td>nan</td>
+      <td>OBGYN</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-8</td>
+      <td>NY</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DC</td>
+      <td>F</td>
+      <td>51</td>
+      <td>type-4</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>672629</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>63</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672630</th>
+      <td>NJ</td>
+      <td>M</td>
+      <td>55</td>
+      <td>type-2</td>
+      <td>nan</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672631</th>
+      <td>CT</td>
+      <td>M</td>
+      <td>40</td>
+      <td>type-5</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672632</th>
+      <td>IN</td>
+      <td>F</td>
+      <td>45</td>
+      <td>type-0</td>
+      <td>IN</td>
+      <td>Primary care</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672633</th>
+      <td>LA</td>
+      <td>M</td>
+      <td>48</td>
+      <td>type-1</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>single-unit</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672634 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>synth_df_cen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="39">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>st</th>
+      <th>gndr</th>
+      <th>age_imputed</th>
+      <th>practice_type_random</th>
+      <th>health_sys_state</th>
+      <th>pri_spec_category</th>
+      <th>practice_scope</th>
+      <th>practice_size</th>
+      <th>medicare_charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>60</td>
+      <td>type-0</td>
+      <td>nan</td>
+      <td>Medical specialty</td>
+      <td>single-unit</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>M</td>
+      <td>85</td>
+      <td>type-7</td>
+      <td>TX</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GA</td>
+      <td>M</td>
+      <td>38</td>
+      <td>type-6</td>
+      <td>GA</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NY</td>
+      <td>M</td>
+      <td>56</td>
+      <td>type-4</td>
+      <td>NY</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NY</td>
+      <td>F</td>
+      <td>44</td>
+      <td>type-8</td>
+      <td>MI</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>672609</th>
+      <td>AK</td>
+      <td>M</td>
+      <td>70</td>
+      <td>type-3</td>
+      <td>nan</td>
+      <td>Surgery specialty</td>
+      <td>multi-unit, single-state</td>
+      <td>small (2-5)</td>
+      <td>1000000 - 1999999</td>
+    </tr>
+    <tr>
+      <th>672610</th>
+      <td>PA</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-5</td>
+      <td>PA</td>
+      <td>Medical specialty</td>
+      <td>multi-unit, multi-state</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672611</th>
+      <td>PR</td>
+      <td>M</td>
+      <td>69</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>Primary care</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672612</th>
+      <td>SC</td>
+      <td>M</td>
+      <td>58</td>
+      <td>type-8</td>
+      <td>SC</td>
+      <td>Surgery specialty</td>
+      <td>single-unit</td>
+      <td>large (20-99)</td>
+      <td>0 - 999999</td>
+    </tr>
+    <tr>
+      <th>672613</th>
+      <td>MA</td>
+      <td>M</td>
+      <td>42</td>
+      <td>type-2</td>
+      <td>MA</td>
+      <td>Hospital based</td>
+      <td>multi-unit, single-cbsa</td>
+      <td>medium (6-19)</td>
+      <td>0 - 999999</td>
+    </tr>
+  </tbody>
+</table>
+<p>672614 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-with-redacted" class="level3">
+<h3 class="anchored" data-anchor-id="evaluate-with-redacted">Evaluate with Redacted</h3>
+<p>Redacted has a tool for comparing counting queries across two datasets. We’re going to use it to compare the two synthetic datasets to the original dataset. The metrics returned by Redacted show the differences between distributions in the two datsets over the same sets of features. The metrics are:</p>
+<ul>
+<li>The marginal metric score (value between 0 and 2):
+<ul>
+<li>0: Perfectly matching density distributions (for the marginals used in the comparison).</li>
+<li>2: No overlap whatsoever (for the marginals used in the comparison).</li>
+</ul></li>
+<li>The NIST score (value between 0 and 1000):
+<ul>
+<li>0: No overlap whatsoever (for the marginals used in the comparison).</li>
+<li>960-980: Sampling error baseline scores for ACS datasets tend to fall in this range. The sampling error baseline is computed as the distance between two 50 percent subsamples of the real data. Synthetic data scoring around 970 can generally be considered good quality.</li>
+<li>1000: Perfectly matching density distributions (for the marginals used in the comparison, according to the specified binning).</li>
+</ul></li>
+</ul>
+<section id="configuration-file" class="level4">
+<h4 class="anchored" data-anchor-id="configuration-file">Configuration File</h4>
+<p>Just like with synthesis, the evaluation tool needs a configuration file to run.</p>
+<p>A few notes on the configuration file:</p>
+<ul>
+<li>I’m using the full datasets in this configuration. You can use sampling by changing the filters_a.attributes.proportion feature (same for filters_b)</li>
+<li>MarginalMetric creates the marginal metric score and DensityDistributionMetric creates the NIST score</li>
+<li>In MarginalMetric, you can change sample_ratio to choose more or fewer marginal queries to evaluate
+<ul>
+<li>The current setting, 0.3, randomly evaluates 30% of all possible marginals</li>
+</ul></li>
+<li>marginal_dimensionality changes the marginal degree when calculating MarginalMetric
+<ul>
+<li>Marginal degree is not configurable for DensityDistributionMetric (I think it defaults to 3)</li>
+</ul></li>
+</ul>
+<p>Configuring the Eval tool for the Redacted dataset:</p>
+<div class="cell" data-execution_count="47">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify location for eval report</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>cen_eval_output <span class="op">=</span> <span class="st">"output/eval_cen.txt"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define configurations</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>eval_config_cen <span class="op">=</span> {</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features_file"</span>: feature_location,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"process_features"</span>:  <span class="bu">list</span>(cols),</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ignore_features"</span>: [],</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight_features"</span>: [],</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_files_a"</span>: [redacted_location],</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_files_b"</span>: [cen_output],</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filters_a"</span>: [</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"RandomFilter"</span>,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"proportion"</span>: <span class="fl">1.0</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filters_b"</span>: [</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"RandomFilter"</span>,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"proportion"</span>: <span class="fl">1.0</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"metrics"</span>: [</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"MarginalMetric"</span>,</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_bins"</span>: <span class="va">True</span>,</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_weights"</span>: <span class="va">True</span>,</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">"marginal_dimensionality"</span>: <span class="dv">3</span>,</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"picking_strategy"</span>: <span class="st">"random"</span>,</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"sample_ratio"</span>: <span class="fl">0.3</span>,</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">"maximum_marginals"</span>: <span class="dv">0</span>,</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"stable_features"</span>: [],</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">"logging_level"</span>: <span class="st">"DEBUG"</span>,</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>                <span class="st">"name"</span>: <span class="st">"marginal_metric"</span></span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"DensityDistributionMetric"</span>,</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_bins"</span>: <span class="va">True</span>,</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_weights"</span>: <span class="va">True</span>,</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>                <span class="st">"name"</span>: <span class="st">"density_distribution_metric"</span></span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"report"</span> : {</span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_file"</span>: cen_eval_output,</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_level"</span>: <span class="st">"SUMMARY"</span>,</span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bins_readable_values"</span>: <span class="va">True</span>,</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stable_feature_display_number_lines"</span>: <span class="dv">0</span>,</span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stable_feature_minimum_data_count"</span>: <span class="dv">0</span></span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a>    <span class="st">"processes"</span>: <span class="dv">1</span>,</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>    <span class="st">"logging_level"</span>: <span class="st">"INFO"</span></span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a><span class="co"># write configuration file</span></span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a>eval_config_location <span class="op">=</span> <span class="st">"conf/eval_cen.cfg"</span></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(eval_config_location, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(eval_config_cen, indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Configuring the Eval tool for the MST dataset</p>
+<div class="cell" data-execution_count="48">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify location for eval report</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>mst_eval_output <span class="op">=</span> <span class="st">"output/eval_cen.txt"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write MST syn dataset in parquet format so Redacted can read it</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>mst_parquet <span class="op">=</span> <span class="st">"syn_data/syn_mst.parquet"</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>mst_synth.to_parquet(mst_parquet)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># define configurations</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>eval_config_mst <span class="op">=</span> {</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features_file"</span>: feature_location,</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"process_features"</span>:  <span class="bu">list</span>(cols),</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ignore_features"</span>: [],</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight_features"</span>: [],</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_files_a"</span>: [redacted_location],</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_files_b"</span>: [mst_parquet],</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filters_a"</span>: [</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"RandomFilter"</span>,</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"proportion"</span>: <span class="fl">1.0</span></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filters_b"</span>: [</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"RandomFilter"</span>,</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>                <span class="st">"proportion"</span>: <span class="fl">1.0</span></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"metrics"</span>: [</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"MarginalMetric"</span>,</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_bins"</span>: <span class="va">True</span>,</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_weights"</span>: <span class="va">True</span>,</span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"marginal_dimensionality"</span>: <span class="dv">3</span>,</span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">"picking_strategy"</span>: <span class="st">"random"</span>,</span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>                <span class="st">"sample_ratio"</span>: <span class="fl">0.3</span>,</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>                <span class="st">"maximum_marginals"</span>: <span class="dv">0</span>,</span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>                <span class="st">"stable_features"</span>: [],</span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"logging_level"</span>: <span class="st">"DEBUG"</span>,</span>
+<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>                <span class="st">"name"</span>: <span class="st">"marginal_metric"</span></span>
+<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">"class"</span>: <span class="st">"DensityDistributionMetric"</span>,</span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_bins"</span>: <span class="va">True</span>,</span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>            <span class="st">"use_weights"</span>: <span class="va">True</span>,</span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>            <span class="st">"attributes"</span>: {</span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">"name"</span>: <span class="st">"density_distribution_metric"</span></span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>    <span class="st">"report"</span> : {</span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_file"</span>: mst_eval_output,</span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a>        <span class="st">"report_level"</span>: <span class="st">"SUMMARY"</span>,</span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bins_readable_values"</span>: <span class="va">True</span>,</span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stable_feature_display_number_lines"</span>: <span class="dv">0</span>,</span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">"stable_feature_minimum_data_count"</span>: <span class="dv">0</span></span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a>    <span class="st">"processes"</span>: <span class="dv">1</span>,</span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">"logging_level"</span>: <span class="st">"INFO"</span></span>
+<span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a><span class="co"># write configuration file</span></span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>eval_config_location_mst <span class="op">=</span> <span class="st">"conf/eval_mst.cfg"</span></span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(eval_config_location_mst, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>     <span class="bu">file</span>.write(json.dumps(eval_config_mst, indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="run-evaluator" class="level4">
+<h4 class="anchored" data-anchor-id="run-evaluator">Run Evaluator</h4>
+<p>From the current directory, run the two configuration files, replacing the placeholders below with the actual config filenames.</p>
+<pre><code>redacted --eval_config_file &lt;eval_config_location&gt;
+
+redacted --eval_config_file &lt;eval_config_location_mst&gt;</code></pre>
+<p>You’ll find the reports at the locations specified by <code>cen_eval_output</code> and <code>mst_eval_output</code>.</p>
+<p>The report will begin with something like this:</p>
+<pre><code>Metric: transform_features-time, : 1.069183588027954
+
+Metric: density_distribution_metric, summary of results: 
+Raw Marginal Score: 0.006563742257557543
+Calculated Marginal Score: 996.7181288712212
+
+Metric: density_distribution_metric, Feature error scores: 
+st                      0.017582837051594392
+practice_size           0.012053905590662278
+health_sys_state        0.008716864433821301
+practice_scope          0.006686010968398048
+gndr                    0.0053082513486835126
+practice_type_random    0.00337282712098938
+medicare_charges        0.0028539306408371236
+age_imputed             0.001273383890948221
+pri_spec_category       0.001225669272083632
+
+Metric: density_distribution_metric, Score for medicare_charges: 
+Raw Error Score: 0.0028539306408371236
+Calculated NIST Score: 998.5730346795815
+
+Metric: density_distribution_metric, Density Distribution for medicare_charges: 
++-------------------------------------------------------------+
+|         medicare_charges Density Distribution Values        |
++------+--------------+--------------+-----------+------------+
+| Bins | Data_a Count | Data_b Count | Raw score | NIST score |
++------+--------------+--------------+-----------+------------+
+| 0    |       595885 |       595058 |    0.0014 |    999.306 |
+| 1    |        50651 |        51297 |    0.0127 |    993.663 |
+| 10   |           31 |           36 |    0.1493 |    925.373 |
+| 11   |           40 |           45 |    0.1176 |    941.176 |
+.
+.
+.
+.</code></pre>
+</section>
+</section>
+<section id="rmse-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="rmse-evaluation">RMSE Evaluation</h3>
+<p>Another way to evaluate the two datasets is by looking directly at a desired query. For example, we can look at how the synthetic datasets compare to the true dataset when looking at physicians per specialty</p>
+<div class="cell" data-execution_count="58">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get relevant columns from original and synth datasets</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>phys_estab_state <span class="op">=</span> dataset[[<span class="st">'NPI'</span>, <span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>phys_estab_state_mst <span class="op">=</span> synth_df_mst[[<span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>phys_estab_state_cen <span class="op">=</span> synth_df_cen[[<span class="st">'st'</span>, <span class="st">'pri_spec_category'</span>]]</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># phys per specialty</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>phys_by_spec <span class="op">=</span> phys_estab_state.groupby(<span class="st">"pri_spec_category"</span>).NPI.count()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># phys per specialty from synth data</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>phys_by_spec_mst <span class="op">=</span> phys_estab_state_mst.groupby(<span class="st">"pri_spec_category"</span>).size()</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>phys_by_spec_cen <span class="op">=</span> phys_estab_state_cen.groupby(<span class="st">"pri_spec_category"</span>).size()</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co"># merge query results into a single dataframe</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.concat([phys_by_spec, phys_by_spec_mst, phys_by_spec_cen], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>merged.columns <span class="op">=</span> [<span class="st">"true"</span>, <span class="st">"mst"</span>, <span class="st">"cen"</span>]</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="58">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>true</th>
+      <th>mst</th>
+      <th>cen</th>
+    </tr>
+    <tr>
+      <th>pri_spec_category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Hospital based</th>
+      <td>162826</td>
+      <td>162856</td>
+      <td>165826</td>
+    </tr>
+    <tr>
+      <th>Medical specialty</th>
+      <td>140489</td>
+      <td>140469</td>
+      <td>139313</td>
+    </tr>
+    <tr>
+      <th>OBGYN</th>
+      <td>29471</td>
+      <td>29497</td>
+      <td>29540</td>
+    </tr>
+    <tr>
+      <th>Primary care</th>
+      <td>202206</td>
+      <td>202194</td>
+      <td>201603</td>
+    </tr>
+    <tr>
+      <th>Psychiatry</th>
+      <td>23062</td>
+      <td>23037</td>
+      <td>23072</td>
+    </tr>
+    <tr>
+      <th>Surgery specialty</th>
+      <td>114560</td>
+      <td>114581</td>
+      <td>113260</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="64">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>x_len <span class="op">=</span> np.arange(<span class="bu">len</span>(merged))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">-</span> <span class="fl">0.2</span>, merged[<span class="st">"true"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"True Count"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len, merged[<span class="st">"mst"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"MST Count"</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>plt.bar(x_len <span class="op">+</span> <span class="fl">0.2</span>, merged[<span class="st">"cen"</span>], <span class="fl">0.2</span>, label <span class="op">=</span> <span class="st">"Redacted Count"</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(x_len, <span class="bu">list</span>(merged.index))</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Specialties"</span>)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="E-Health%20DP%20Guide_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="56">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"mst"</span>])</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MST RMSE: "</span>, rmse)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> mean_squared_error(merged[<span class="st">"true"</span>], merged[<span class="st">"cen"</span>])</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Redacted RMSE: "</span>, rmse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>MST RMSE:  531.0
+Redacted RMSE:  2073574.3333333333</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
